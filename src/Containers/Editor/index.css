@@ -1,0 +1,11 @@
+.editor.container {
+    width: 450px;
+    height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
+    background: #ff0000;
+    margin: 0 2rem;
+}
+.editor.core{
+    padding: 1rem 1rem;
+    font-size: 1.5rem;
+    font-style: italic;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Menu, Segment, Checkbox } from 'semantic-ui-react'
 import { DarkTheme } from '../../Themes';
 
@@ -23,7 +23,7 @@ export default function NavbarIndex() {
                         checked={darkTheme.isActive}
                         onChange={changeMode}
                     />
-                    <span style={{ marginLeft:'.5rem' }}>
+                    <span style={{ marginLeft:'1rem' }}>
                         {darkTheme.isActive?"Dark Mode":"Light Mode"}
                     </span>
                 </Menu.Item>

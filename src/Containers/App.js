@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { DarkTheme } from '../Themes'
 
 import Navbar from './Navbar'
+import TextAndImage from './Main'
 
 function App() {
     const storedMode = JSON.parse(localStorage.getItem('darkmode')) || false;
@@ -16,6 +17,7 @@ function App() {
         <DarkTheme.Provider value={{ isActive: darkmode, setDarkmode }}>
             <div className="App">
                 <Navbar />
+                <TextAndImage />
             </div>
         </DarkTheme.Provider>
     );

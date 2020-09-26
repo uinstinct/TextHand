@@ -1,3 +1,3 @@
-import {DarkTheme} from './Darktheme'
+import { DarkTheme } from './Darktheme';
 
 export { DarkTheme };
