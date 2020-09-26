@@ -21,31 +21,36 @@ function Font() {
     const [state, dispatch] = useControl();
     const [loading, setLoading] = useState(false);
 
-    const changeFont = event => {
+    const changeFontFamily = event => {
         setLoading(true);
         addFontFromFile(event.target.files[0], dispatch);
 
-        dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'temp-font' } });
-        // does not work if dispatched once
         dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'temp-font' } });
 
         setLoading(false);
     }
 
+    const changeFontSize = (event, data) => {
+        let value = parseInt(data.value);
+        value = value === NaN ? 0 : value;
+        dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value } });
+    }
+
     return (
+        // the h2 font does not change if the actions is dispatched once, because this component is not re-rendered
         <>
-            <h2 style={{ fontFamily: state.fontFamily+',cursive' }} className='page-a'>Font</h2>
-            <Grid inverted={isActive} columns={3}>
+            <h2>Font</h2>
+            <Grid inverted={isActive} columns={3} >
                 <GridRow>
                     <GridColumn>
                         Font Family
-                            <Input type='file' loading={loading} inverted={isActive} onChange={changeFont}/>
+                            <Input type='file' loading={loading} inverted={isActive} onChange={changeFontFamily}/>
                     </GridColumn>
                 </GridRow>
                 <GridRow>
                     <GridColumn>
                         Font Size
-                            <Input size='mini' inverted={isActive} />
+                            <Input size='mini' inverted={isActive} onChange={changeFontSize} />
                     </GridColumn>
                     <GridColumn>
                         Randomize

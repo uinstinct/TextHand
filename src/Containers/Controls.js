@@ -1,27 +1,29 @@
 import React, { useReducer, createContext, useContext } from 'react';
 
 const initialState = {
-    fontFamily: 'cursive'
+    fontFamily: 'cursive',
+    fontSize: '10'
 }
 
-function init() {
-    return { ...initialState };
-}
 
-function reducer(action, state) {
-            console.log(action, 'was the action');
+function reducer(state, action) {
     switch (action.type) {
+        // FONTS
         case 'CHANGE_FONT_FAMILY':
-            return { fontFamily: action.payload.fontFamily }
+            return { ...state, fontFamily: action.payload.fontFamily };
+        case 'CHANGE_FONT_SIZE':
+            return { ...state, fontSize: action.payload.fontSize };
+
         default:
             return state;
     }
+    
 }
 
 const ControlContext = createContext();
 
 export function ControlProvider({ children }) {
-    const contextValue = useReducer(reducer, initialState, init);
+    const contextValue = useReducer(reducer, initialState);
     return (
         <ControlContext.Provider value={contextValue}>
             {children}

@@ -5,7 +5,7 @@ import Font from './Font';
 import Margin from './Margin';
 import Spacing from './Spacing';
 
-import { Segment, Grid, GridRow, GridColumn, Input, Checkbox } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 import "./index.css";
 
 function ControlPanelIndex() {
