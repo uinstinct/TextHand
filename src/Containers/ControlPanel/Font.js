@@ -32,7 +32,7 @@ function Font() {
 
     const changeFontSize = (event, data) => {
         let value = parseInt(data.value);
-        value = value === NaN ? 0 : value;
+        value = isNaN(value) ? 0 : value;
         dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value } });
     }
 

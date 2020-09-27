@@ -1,39 +1,37 @@
-import React, { useMemo } from 'react';
+import React, { useState, useContext } from 'react';
 
-import { useControl } from '../Controls';
+import Generated from './Generated';
+import Text from './Text';
+import { DarkTheme } from '../../Themes';
 
+import { GridColumn, Segment } from 'semantic-ui-react';
 import "./index.css";
 
 
-function EditorIndex() {
-    // override the problems from the done github app
+function Editor() {
+    // override the problems from the done github one
+    const { isActive } = useContext(DarkTheme)
 
-    const [state, dispatch] = useControl();
+    const [text, setText] = useState('');
 
-    const manipulatedStyles = useMemo(() => {
-        return {
-            background: '#fff', lineHeight: '1.54rem',
-
-            fontFamily: state.fontFamily,
-            fontSize: state.fontSize + 'px,20px',
-            color: state.color,
-
-            marginLeft: state.marginLeft + 'px',
-            marginRight: state.marginRight + 'px',
-            marginTop: state.marginTop + 'px',
-            marginBottom: state.marginBottom + 'px',
-        }
-    }, [state]);
 
     return (
-        <div className="editor container">
-            <div className="editor core" contentEditable style={manipulatedStyles}>
-                something is written<br/>
-                there is something here
-            </div>
-        </div>
+        <>
+            <GridColumn>
+                <Segment inverted={isActive} piled>
+                    <h1>Generated</h1>
+                    <Generated text={text} />
+                </Segment>
+            </GridColumn>
+            <GridColumn>
+                <Segment inverted={isActive} raised stacked >
+                    <h1>Text Area</h1>
+                    <Text text={text} setText={setText} />
+                </Segment>
+            </GridColumn>
+        </>
         )
 
 }
 
-export default EditorIndex;
+export default Editor;

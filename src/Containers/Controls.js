@@ -7,7 +7,6 @@ const initialState = {
 
 
 function reducer(state, action) {
-    console.info(action, 'was dispatched');
     switch (action.type) {
         // FONTS
         case 'CHANGE_FONT_FAMILY':

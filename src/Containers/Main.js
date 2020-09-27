@@ -17,13 +17,12 @@ function Main() {
             <ControlProvider>
                 <GridRow>
                     <GridColumn>
-                        <h1>Editor</h1>
-                        <Editor />
-                    </GridColumn>
-                    <GridColumn>
                         <h1>Control Panel</h1>
                         <ControlPanel />
                     </GridColumn>
+                </GridRow>
+                <GridRow style={{ margin: '1rem' }}>
+                    <Editor />
                 </GridRow>
             </ControlProvider>
         </Grid>

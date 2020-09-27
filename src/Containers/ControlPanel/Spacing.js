@@ -2,13 +2,12 @@ import React, { useContext } from 'react';
 
 import { DarkTheme } from '../../Themes';
 
-import { Segment, Grid, GridRow, GridColumn, Input, Checkbox } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn, Input, Checkbox } from 'semantic-ui-react';
 
 function Spacing() {
     const { isActive } = useContext(DarkTheme);
     return (
         <>
-
             <h2>Spacing</h2>
             <Grid columns={2} inverted={isActive} >
                 <GridRow>
