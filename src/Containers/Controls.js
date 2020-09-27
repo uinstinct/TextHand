@@ -13,6 +13,8 @@ function reducer(state, action) {
             return { ...state, fontFamily: action.payload.fontFamily };
         case 'CHANGE_FONT_SIZE':
             return { ...state, fontSize: action.payload.fontSize };
+        case 'CHANGE_FONT_COLOUR':
+            return { ...state, color: action.payload.fontColour };
 
         default:
             return state;

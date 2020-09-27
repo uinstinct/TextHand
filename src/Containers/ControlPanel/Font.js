@@ -36,6 +36,10 @@ function Font() {
         dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value } });
     }
 
+    const changeInkColour = (event, data) => {
+        dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: data.value } });
+    }
+
     return (
         // the h2 font does not change if the actions is dispatched once, because this component is not re-rendered
         <>
@@ -60,7 +64,7 @@ function Font() {
                 <GridRow>
                     <GridColumn>
                         Ink Colour
-                            <Input type={'color'} inverted={isActive} style={{ marginLeft: '1rem' }} />
+                            <Input type={'color'} inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeInkColour} />
                     </GridColumn>
                 </GridRow>
             </Grid>

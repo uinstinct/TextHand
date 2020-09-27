@@ -10,14 +10,16 @@ function EditorIndex() {
 
     const [state, dispatch] = useControl();
 
+    console.log(state.color);
     const manipulatedStyles = useMemo(() => {
-        return { background: '#f26', lineHeight: '1.54rem', fontFamily: state.fontFamily, fontSize: state.fontSize+'px' }
+        return { background: '#fff', lineHeight: '1.54rem', fontFamily: state.fontFamily, fontSize: state.fontSize+'px,20px', color:state.color }
     }, [state]);
 
     return (
         <div className="editor container">
             <div className="editor core" contentEditable style={manipulatedStyles}>
-                something is written
+                something is written<br/>
+                there is something here
             </div>
         </div>
         )

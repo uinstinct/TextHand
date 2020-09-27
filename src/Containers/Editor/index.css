@@ -1,7 +1,7 @@
 .editor.container {
     width: 450px;
     height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
-    background: #ff0000;
+    background: #fff;
     margin: 0 2rem;
 }
 .editor.core{
