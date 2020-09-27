@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 
-import "./index.css";
 import { useControl } from '../Controls';
 
+import "./index.css";
 
 
 function EditorIndex() {
@@ -10,9 +10,19 @@ function EditorIndex() {
 
     const [state, dispatch] = useControl();
 
-    console.log(state.color);
     const manipulatedStyles = useMemo(() => {
-        return { background: '#fff', lineHeight: '1.54rem', fontFamily: state.fontFamily, fontSize: state.fontSize+'px,20px', color:state.color }
+        return {
+            background: '#fff', lineHeight: '1.54rem',
+
+            fontFamily: state.fontFamily,
+            fontSize: state.fontSize + 'px,20px',
+            color: state.color,
+
+            marginLeft: state.marginLeft + 'px',
+            marginRight: state.marginRight + 'px',
+            marginTop: state.marginTop + 'px',
+            marginBottom: state.marginBottom + 'px',
+        }
     }, [state]);
 
     return (

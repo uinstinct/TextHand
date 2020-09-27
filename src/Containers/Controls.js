@@ -7,6 +7,7 @@ const initialState = {
 
 
 function reducer(state, action) {
+    console.info(action, 'was dispatched');
     switch (action.type) {
         // FONTS
         case 'CHANGE_FONT_FAMILY':
@@ -15,6 +16,16 @@ function reducer(state, action) {
             return { ...state, fontSize: action.payload.fontSize };
         case 'CHANGE_FONT_COLOUR':
             return { ...state, color: action.payload.fontColour };
+
+        // MARGINS
+        case 'CHANGE_MARGIN_LEFT':
+            return { ...state, marginLeft: action.payload.marginLeft }
+        case 'CHANGE_MARGIN_RIGHT':
+            return { ...state, marginRight: action.payload.marginRight }
+        case 'CHANGE_MARGIN_TOP':
+            return { ...state, marginTop: action.payload.marginTop }
+        case 'CHANGE_MARGIN_BOTTOM':
+            return { ...state, marginBottom: action.payload.marginBottom }
 
         default:
             return state;
