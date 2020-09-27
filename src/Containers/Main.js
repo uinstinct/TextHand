@@ -4,6 +4,7 @@ import { Grid, GridColumn, GridRow } from 'semantic-ui-react';
 
 import Editor from './Editor';
 import ControlPanel from './ControlPanel';
+import ImageGenerator from './ImageGenerator';
 
 import { DarkTheme } from '../Themes';
 import { ControlProvider } from './Controls';
@@ -13,9 +14,9 @@ function Main() {
     const { isActive } = useContext(DarkTheme)
 
     return (
-        <Grid columns={1} inverted={isActive} >
+        <Grid stackable inverted={isActive} >
             <ControlProvider>
-                <GridRow>
+                <GridRow columns={1}>
                     <GridColumn>
                         <h1>Control Panel</h1>
                         <ControlPanel />
@@ -25,6 +26,9 @@ function Main() {
                     <Editor />
                 </GridRow>
             </ControlProvider>
+            <GridRow stretched>
+                <ImageGenerator />
+            </GridRow>
         </Grid>
     );
 }
