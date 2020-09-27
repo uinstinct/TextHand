@@ -44,14 +44,14 @@ function Font() {
         // the h2 font does not change if the actions is dispatched once, because this component is not re-rendered
         <>
             <h2>Font</h2>
-            <Grid inverted={isActive} columns={3} >
-                <GridRow>
+            <Grid inverted={isActive} doubling>
+                <GridRow columns={1}>
                     <GridColumn>
                         Font Family
-                            <Input type='file' loading={loading} inverted={isActive} onChange={changeFontFamily}/>
+                            <Input type='file' loading={loading} inverted={isActive} onChange={changeFontFamily} style={{ marginLeft: '1rem' }}/>
                     </GridColumn>
                 </GridRow>
-                <GridRow>
+                <GridRow columns={2}>
                     <GridColumn>
                         Font Size
                             <Input size='mini' inverted={isActive} onChange={changeFontSize} />
@@ -61,7 +61,7 @@ function Font() {
                             <Checkbox style={{ marginTop: '1.5rem', marginLeft: '1rem' }} />
                     </GridColumn>
                 </GridRow>
-                <GridRow>
+                <GridRow columns={1}>
                     <GridColumn>
                         Ink Colour
                             <Input type={'color'} inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeInkColour} />

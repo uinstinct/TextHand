@@ -4,11 +4,14 @@
     background: #fff;
     margin: 0 2rem;
     border: 1px solid black;
+/*    background: rgb(60,60,62);
+    background: linear-gradient(90deg, rgba(60,60,62,0.8830882694874825) 0%, rgba(247,247,255,0.9335084375547094) 61%);*/
 }
-.generated.core{
+.generated.core {
     padding: 1rem 1rem;
     font-size: 1.5rem;
     font-style: italic;
+    letter-spacing: normal;
 }
 
 .text-area {

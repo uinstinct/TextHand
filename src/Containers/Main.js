@@ -13,7 +13,7 @@ function Main() {
     const { isActive } = useContext(DarkTheme)
 
     return (
-        <Grid columns={2} inverted={isActive} >
+        <Grid columns={1} inverted={isActive} >
             <ControlProvider>
                 <GridRow>
                     <GridColumn>
@@ -21,7 +21,7 @@ function Main() {
                         <ControlPanel />
                     </GridColumn>
                 </GridRow>
-                <GridRow style={{ margin: '1rem' }}>
+                <GridRow style={{ margin: '1rem' }} columns={2}>
                     <Editor />
                 </GridRow>
             </ControlProvider>

@@ -19,8 +19,10 @@ function Editor() {
         <>
             <GridColumn>
                 <Segment inverted={isActive} piled>
-                    <h1>Generated</h1>
-                    <Generated text={text} />
+                        <h1>Generated</h1>
+                    <div style={{ color: 'black' }}>
+                        <Generated text={text} />
+                    </div>
                 </Segment>
             </GridColumn>
             <GridColumn>
@@ -30,7 +32,7 @@ function Editor() {
                 </Segment>
             </GridColumn>
         </>
-        )
+    );
 
 }
 

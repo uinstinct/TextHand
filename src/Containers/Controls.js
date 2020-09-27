@@ -26,6 +26,10 @@ function reducer(state, action) {
         case 'CHANGE_MARGIN_BOTTOM':
             return { ...state, marginBottom: action.payload.marginBottom }
 
+        // SPACING
+        case 'CHANGE_LETTER_SPACING':
+            return { ...state, letterSpacing: action.payload.letterSpacing };
+
         default:
             return state;
     }
