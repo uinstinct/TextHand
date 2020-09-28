@@ -26,7 +26,7 @@ function Editor() {
                 </Segment>
             </GridColumn>
             <GridColumn>
-                <Segment inverted={isActive} raised stacked secondary>
+                <Segment inverted={isActive} raised stacked >
                     <h1>Text Area</h1>
                     <Text text={text} setText={setText} />
                 </Segment>

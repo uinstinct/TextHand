@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { Menu, Segment, Checkbox } from 'semantic-ui-react'
 import { DarkTheme } from '../../Themes';
 
+import "./index.css";
+
 
 export default function NavbarIndex() {
 

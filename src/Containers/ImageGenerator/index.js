@@ -5,7 +5,7 @@ import { DarkTheme } from '../../Themes';
 import { generateImages } from './takeSnapshots';
 import ShowOutput from './ShowOutput';
 
-import { Segment, Button, Grid, GridRow, GridColumn } from 'semantic-ui-react';
+import { Segment, Button, Grid, GridRow, GridColumn, Icon } from 'semantic-ui-react';
 
 function ImageGenerator() {
 
@@ -29,7 +29,10 @@ function ImageGenerator() {
             <Grid doubling stretched>
                 <GridRow centered stretched>
                     <Segment inverted={isActive} >
-                        <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} > Generate</Button>
+                        <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} animated='fade'>
+                            <Button.Content visible> Generate</Button.Content>
+                            <Button.Content hidden><Icon name='play' /></Button.Content>
+                        </Button>
                     </Segment>
                 </GridRow>
                 <GridRow style={{ margin: '0 1rem' }}>

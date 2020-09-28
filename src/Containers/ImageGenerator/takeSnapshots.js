@@ -47,7 +47,6 @@ async function generateImages() {
                 content.innerHTML = text;
                 currentWordPos++;
             }
-            console.log(words, text, i, splitContent); // fix empty string
             currentWordPos--;
             content.scrollTo(0, 0);
             container.scrollTo(0, 0);

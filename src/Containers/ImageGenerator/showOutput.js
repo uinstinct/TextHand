@@ -1,5 +1,5 @@
 import React, { useMemo, useContext } from 'react';
-import { Image, Segment, Grid, GridRow, GridColumn } from 'semantic-ui-react';
+import { Image, Segment, Grid, GridRow, GridColumn, Button } from 'semantic-ui-react';
 import { DarkTheme } from '../../Themes';
 
 function ShowOutput(props) {
@@ -11,9 +11,12 @@ function ShowOutput(props) {
             for (let i = 0; i < props.images.length; i += 4) {
                 let row = [];
                 for (let j = i; j < props.images.length && j < i + 4; j++) {
+                    const imageURL = props.images[j].toDataURL('image/jpeg')
                     const col =
                         <GridColumn>
-                            <Image src={props.images[j].toDataURL()} size='large' />
+                            <Image src={imageURL} size='large' />
+                            <br />
+                            <a href={imageURL} > <Button inverted={isActive} > Download</Button></a>
                         </GridColumn>;
                     row.push(col);
                 }
@@ -22,7 +25,7 @@ function ShowOutput(props) {
             }
             return tempImages;
         } else return [];
-    }, [props.images]);
+    }, [props.images, isActive]);
 
     return (
         <>

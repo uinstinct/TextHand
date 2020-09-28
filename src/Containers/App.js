@@ -11,6 +11,10 @@ function App() {
 
     useEffect(() => {
         localStorage.setItem('darkmode', darkmode);
+        if (darkmode)
+            document.body.setAttribute('data-theme', 'dark');
+        else
+            document.body.removeAttribute('data-theme', 'dark');
     }, [darkmode, setDarkmode]);
 
     return (

@@ -29,6 +29,20 @@
 
 .text-area {
     margin-right: 1.2rem;
-    width: 450px;
     height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
+    width: 450px;
+}
+
+.text-area-container{
+    font-size: 1.2rem;
+    background-color: aqua;
+}
+
+body[data-theme='dark'] .ui.form textarea {
+    background-color: #1d2d50;
+    color: #eeecda;
+}
+
+body[data-theme='dark'] .ui.form textarea::selection {
+    color: aqua;
 }

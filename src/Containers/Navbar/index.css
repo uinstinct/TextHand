@@ -1,0 +1,10 @@
+/*applying global styles here*/
+
+body[data-theme='dark'] {
+    background-color: rgb(46, 61, 77);
+    color: rgb(223, 230, 237);
+}
+
+body[data-theme='dark'] h1{
+    color: rgb(223, 230, 237);
+}
