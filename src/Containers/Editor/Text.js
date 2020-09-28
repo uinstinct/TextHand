@@ -7,11 +7,11 @@ function Text(props) {
         props.setText(data.value);
     }
     return (
-        <div className="text-area-container">
-            <Form>
+        <Form>
+            <div className="text-area-container">
                 <TextArea placedholder='type your text here' className='text-area' value={props.text} onInput={changeInput} />
-            </Form>
-        </div>
+            </div>
+        </Form>
     );
 }
 

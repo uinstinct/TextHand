@@ -1,9 +1,14 @@
 import React, { useMemo, useContext } from 'react';
-import { Image, Segment, Grid, GridRow, GridColumn, Button } from 'semantic-ui-react';
+import { saveAs } from 'file-saver';
+
 import { DarkTheme } from '../../Themes';
+
+import { Image, Segment, Grid, GridRow, GridColumn, Button } from 'semantic-ui-react';
 
 function ShowOutput(props) {
     const { isActive } = useContext(DarkTheme);
+
+    const allImageURLs = [];
 
     const images = useMemo(() => {
         if (props.images.length > 0) {
@@ -12,11 +17,12 @@ function ShowOutput(props) {
                 let row = [];
                 for (let j = i; j < props.images.length && j < i + 4; j++) {
                     const imageURL = props.images[j].toDataURL('image/jpeg')
+                    allImageURLs.push(imageURL);
                     const col =
                         <GridColumn>
                             <Image src={imageURL} size='large' />
                             <br />
-                            <a href={imageURL} > <Button inverted={isActive} > Download</Button></a>
+                            <a download href={imageURL} > <Button inverted={isActive} > Download</Button></a>
                         </GridColumn>;
                     row.push(col);
                 }
@@ -27,12 +33,21 @@ function ShowOutput(props) {
         } else return [];
     }, [props.images, isActive]);
 
+    const doDownloadAll = () => {
+        allImageURLs.forEach((imageURL, index) => {
+            saveAs(imageURL, `${index}.jpg` )
+        })
+    }
+
     return (
         <>
             <Segment inverted={isActive} >
                 <Grid>
                     {images.length > 0 ?
-                        <>{images}</>
+                        <div>
+                            <Button onClick={doDownloadAll}>Download All</Button>
+                            {images}
+                            </div>
                         : "Start Generating"
                     }
                 </Grid>

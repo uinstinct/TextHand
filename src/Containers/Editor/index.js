@@ -14,7 +14,6 @@ function Editor() {
 
     const [text, setText] = useState('');
 
-
     return (
         <>
             <GridColumn>

@@ -34,8 +34,7 @@
 }
 
 .text-area-container{
-    font-size: 1.2rem;
-    background-color: aqua;
+    font-size: 1.5rem;
 }
 
 body[data-theme='dark'] .ui.form textarea {
