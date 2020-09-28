@@ -40,18 +40,14 @@ async function generateImages() {
             let text = "";
             content.innerHTML = "";
 
-            console.info(content.scrollHeight <= clientHeight && words <= splitContent.length)
-
             while (content.scrollHeight <= clientHeight && words.length <= splitContent.length) {
                 const word = splitContent[currentWordPos];
                 words.push(word);
                 text = words.join(' '); // apply random space here
                 content.innerHTML = text;
-                console.info(content.scrollHeight, content.scrollHeight <= clientHeight, words.length <= splitContent.length);
                 currentWordPos++;
             }
             console.log(words, text, i, splitContent); // fix empty string
-            //container.innerHTML = text;
             currentWordPos--;
             content.scrollTo(0, 0);
             container.scrollTo(0, 0);

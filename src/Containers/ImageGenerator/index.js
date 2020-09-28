@@ -2,24 +2,26 @@ import React, { useContext, useMemo, useState, useEffect } from 'react';
 
 import { DarkTheme } from '../../Themes';
 
-import { Segment, Button, Grid, GridRow, GridColumn } from 'semantic-ui-react';
 import { generateImages } from './takeSnapshots';
+import ShowOutput from './ShowOutput';
 
+import { Segment, Button, Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
 function ImageGenerator() {
 
     const { isActive } = useContext(DarkTheme);
 
     const [loading, setLoading] = useState(false);
+    const [images, setImages] = useState([]);
 
-    let images = null;
 
     const applyImageGeneration = async () => {
         setLoading(true);
-        images = await generateImages();
+        const canvases = await generateImages();
         setLoading(false);
-        images = images.map(image => image.toDataURL());
-        console.log(images);
+        console.info(canvases);
+        setImages(canvases);
+
     }
 
     return (
@@ -31,9 +33,9 @@ function ImageGenerator() {
                     </Segment>
                 </GridRow>
                 <GridRow style={{ margin: '0 1rem' }}>
-                    <GridColumn width stretched>
-                        <h3>Show section here</h3>
-                        {images && images.length>0?images:"nothing generated"}
+                    <GridColumn stretched>
+                        <h3>Showing output here</h3>
+                        <ShowOutput images={images}/>
                     </GridColumn>
                 </GridRow>
             </Grid>
