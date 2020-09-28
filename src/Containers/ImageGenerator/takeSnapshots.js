@@ -36,17 +36,24 @@ async function generateImages() {
         let currentWordPos = 0;
 
         for (let i = 0; i < totalPages; i++) {
-            container.innerHTML = "";
             let words = [];
             let text = "";
+            content.innerHTML = "";
 
-            while (container.scrollHeight <= clientHeight && words <= splitContent.length) {
-                words.push(splitContent[currentWordPos]);
+            console.info(content.scrollHeight <= clientHeight && words <= splitContent.length)
+
+            while (content.scrollHeight <= clientHeight && words.length <= splitContent.length) {
+                const word = splitContent[currentWordPos];
+                words.push(word);
+                text = words.join(' '); // apply random space here
+                content.innerHTML = text;
+                console.info(content.scrollHeight, content.scrollHeight <= clientHeight, words.length <= splitContent.length);
                 currentWordPos++;
             }
-            text = words.join(' '); // has to random space
-            content.innerHTML = text;
+            console.log(words, text, i, splitContent); // fix empty string
+            //container.innerHTML = text;
             currentWordPos--;
+            content.scrollTo(0, 0);
             container.scrollTo(0, 0);
             const canvas = await convertDIVToImage();
             images.push(canvas);
@@ -56,7 +63,7 @@ async function generateImages() {
         const canvas = await convertDIVToImage();
         images.push(canvas);
     }
-    container.innerHTML = savedInnerHTML;
+    container.innerHTML = savedInnerHTML; // fix this
     return images;
 }
 

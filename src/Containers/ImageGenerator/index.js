@@ -12,13 +12,14 @@ function ImageGenerator() {
 
     const [loading, setLoading] = useState(false);
 
+    let images = null;
+
     const applyImageGeneration = async () => {
         setLoading(true);
-        const images = await generateImages();
+        images = await generateImages();
         setLoading(false);
-        for (let image of images) {
-            console.info(image.toDataURL());
-        }
+        images = images.map(image => image.toDataURL());
+        console.log(images);
     }
 
     return (
@@ -32,6 +33,7 @@ function ImageGenerator() {
                 <GridRow style={{ margin: '0 1rem' }}>
                     <GridColumn width stretched>
                         <h3>Show section here</h3>
+                        {images && images.length>0?images:"nothing generated"}
                     </GridColumn>
                 </GridRow>
             </Grid>
