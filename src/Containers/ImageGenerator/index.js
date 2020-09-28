@@ -1,30 +1,24 @@
-import React, { useContext } from 'react';
-import html2canvas from 'html2canvas'
+import React, { useContext, useMemo, useState, useEffect } from 'react';
 
 import { DarkTheme } from '../../Themes';
 
-import { Segment, Button, Grid, GridRow, GridColumn, Placeholder, PlaceholderImage } from 'semantic-ui-react';
+import { Segment, Button, Grid, GridRow, GridColumn } from 'semantic-ui-react';
+import { generateImages } from './takeSnapshots';
 
-async function convertDIVToImage(pageEl) {
-    const options = {
-        scrollX: 0,
-        scrollY: -window.scrollY,
-        scale: 1
-    };
-
-    const canvas = await html2canvas(pageEl, options);
-    return canvas;
-}
 
 function ImageGenerator() {
 
     const { isActive } = useContext(DarkTheme);
 
-    const applyConversion = async () => {
-        const pageEl = document.getElementById('core-editor');
-        console.log('the element node got is', pageEl);
-        const canvas = await convertDIVToImage(pageEl);
-        console.info(canvas.toDataURL(),canvas);
+    const [loading, setLoading] = useState(false);
+
+    const applyImageGeneration = async () => {
+        setLoading(true);
+        const images = await generateImages();
+        setLoading(false);
+        for (let image of images) {
+            console.info(image.toDataURL());
+        }
     }
 
     return (
@@ -32,17 +26,12 @@ function ImageGenerator() {
             <Grid doubling stretched>
                 <GridRow centered stretched>
                     <Segment inverted={isActive} >
-                        <Button onClick={applyConversion} inverted={isActive} > Generate</Button>
+                        <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} > Generate</Button>
                     </Segment>
                 </GridRow>
                 <GridRow style={{ margin: '0 1rem' }}>
                     <GridColumn width stretched>
-                    <Segment inverted={isActive} >
-                        <h2>Generated Images</h2>
-                        <Placeholder style={{ height: 400, width: 300 }} inverted={isActive} >
-                            <PlaceholderImage />
-                        </Placeholder>
-                        </Segment>
+                        <h3>Show section here</h3>
                     </GridColumn>
                 </GridRow>
             </Grid>
@@ -51,3 +40,15 @@ function ImageGenerator() {
 }
 
 export default ImageGenerator;
+
+
+
+
+/*
+ <Segment inverted={isActive} >
+                        <h2>Generated Images</h2>
+                        <Placeholder style={{ height: 400, width: 300 }} inverted={isActive} >
+                            <PlaceholderImage />
+                        </Placeholder>
+                        </Segment>
+                        */

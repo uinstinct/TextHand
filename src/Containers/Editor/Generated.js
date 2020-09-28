@@ -6,8 +6,11 @@ function createHTML(text) {
 
     const words = text
         .replace(/\n/g, '<br/>')
-        .split(/\s/g)
+        //.split(/\s/g)
         //.replace(/ /g, "<span style='margin-left:100px'></span>")
+    return words;
+
+    // use this in generated image function
     let theHTML = "";
 
     words.forEach(word => {
@@ -46,8 +49,8 @@ function Generated(props) {
 
 
     return (
-        <div className="generated container">
-            <div className="generated core" id="core-editor" style={manipulatedStyles} dangerouslySetInnerHTML={{ __html: madeHTML }} >
+        <div className="generated container" id="page-container">
+            <div className="generated core" id="page-content" style={manipulatedStyles} dangerouslySetInnerHTML={{ __html: madeHTML }} >
             </div>
         </div>
     )

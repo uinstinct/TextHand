@@ -1,14 +1,27 @@
 .generated.container {
-    width: 450px;
+    width: 400px;
     height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
     background: #fff;
-    margin: 0 2rem;
-    border: 1px solid black;
-/*    background: rgb(60,60,62);
+    border: 1px solid var(--elevation-background);
+    font-size: 10pt;
+    position: relative;
+    top: 0px;
+    font-family: var(--handwriting-font);
+    color: var(--ink-color);
+    line-height: 1.5em;
+    overflow-y: auto;
+    scrollbar-color: transparent;
+    scrollbar-width: thin;
+    /*    width: 450px;*/
+    /*height: calc(11.7 * 400px / 8.3);*/ /* A4 Ratio */
+    /*    background: #fff;*/
+    /*    border: 1px solid black;*/
+    /*    padding: 1rem 1rem;*/
+    /*    background: rgb(60,60,62);
     background: linear-gradient(90deg, rgba(60,60,62,0.8830882694874825) 0%, rgba(247,247,255,0.9335084375547094) 61%);*/
 }
 .generated.core {
-    padding: 1rem 1rem;
+    margin: 0 1rem;
     font-size: 20px;
     font-style: italic;
     letter-spacing: normal;
