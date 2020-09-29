@@ -30,10 +30,11 @@ function Generated(props) {
     const manipulatedStyles = useMemo(() => {
 
         return {
-            background: '#fff', lineHeight: '1.54rem',
+            lineHeight: '1.54rem',
 
             fontFamily: state.fontFamily,
             fontSize: state.fontSize + 'px',
+            fontWeight: state.fontWeight,
             color: state.color,
 
             marginLeft: state.marginLeft + 'px',

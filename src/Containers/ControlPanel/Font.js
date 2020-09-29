@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import { DarkTheme } from '../../Themes';
 
-import { Grid, GridRow, GridColumn, Input, Checkbox } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn, Input, Checkbox, Dropdown } from 'semantic-ui-react';
 import { useControl } from '../Controls';
 
 function addFontFromFile(fileObj) {
@@ -15,6 +15,35 @@ function addFontFromFile(fileObj) {
         });
     };
 }
+
+const options = [
+    {
+        key: "normal",
+        text: "normal",
+        value: 400,
+    },
+    {
+        key: "light",
+        text: "light",
+        value: 150,
+    },
+    {
+        key: "lighter",
+        text: "lighter",
+        value: 10,
+    },
+    {
+        key: "bold",
+        text: "bold",
+        value: 600,
+    },
+    {
+        key: "bolder",
+        text: "bolder",
+        value: 800,
+    }
+];
+
 
 function Font() {
     const { isActive } = useContext(DarkTheme);
@@ -40,6 +69,10 @@ function Font() {
         dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: data.value } });
     }
 
+    const changeFontWeight = (event, data) => {
+        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: data.value } });
+    }
+
     return (
         // the h2 font does not change if the actions is dispatched once, because this component is not re-rendered
         <>
@@ -61,10 +94,21 @@ function Font() {
                             <Checkbox style={{ marginTop: '1.5rem', marginLeft: '1rem' }} />
                     </GridColumn>
                 </GridRow>
-                <GridRow columns={1}>
+                <GridRow columns={2}>
                     <GridColumn>
                         Ink Colour
                             <Input type={'color'} inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeInkColour} />
+                    </GridColumn>
+                    <GridColumn>
+                        Font Weight
+                        <Dropdown defaultValue={options[0]}
+                            placeholder='Select Font Weight'
+                            selectedLabel={options[0]}
+                            options={options}
+                            onChange={changeFontWeight}
+                            openOnFocus closeOnEscape
+                            style={{ marginLeft: '2rem' }}
+                        />
                     </GridColumn>
                 </GridRow>
             </Grid>

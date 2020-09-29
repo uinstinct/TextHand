@@ -14,6 +14,8 @@ function reducer(state, action) {
             return { ...state, fontSize: action.payload.fontSize };
         case 'CHANGE_FONT_COLOUR':
             return { ...state, color: action.payload.fontColour };
+        case 'CHANGE_FONT_WEIGHT':
+            return { ...state, fontWeight: action.payload.fontWeight }
 
         // MARGINS
         case 'CHANGE_MARGIN_LEFT':

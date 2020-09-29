@@ -1,7 +1,8 @@
-.generated.container {
+.generated.container {  
     width: 400px;
     height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
-    background: #fff;
+    background: url(../../assets/paper-true.jpg);
+    background-size: cover;
     border: 1px solid var(--elevation-background);
     font-size: 10pt;
     position: relative;
@@ -25,16 +26,17 @@
     font-size: 20px;
     font-style: italic;
     letter-spacing: normal;
+
 }
 
-.text-area {
+.text-area.container{
+    font-size: 1.5rem;
+}
+
+.text-area.core {
     margin-right: 1.2rem;
     height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
     width: 450px;
-}
-
-.text-area-container{
-    font-size: 1.5rem;
 }
 
 body[data-theme='dark'] .ui.form textarea {

@@ -8,8 +8,8 @@ function Text(props) {
     }
     return (
         <Form>
-            <div className="text-area-container">
-                <TextArea placedholder='type your text here' className='text-area' value={props.text} onInput={changeInput} />
+            <div className="text-area container">
+                <TextArea placedholder='type your text here' className='text-area core' value={props.text} onInput={changeInput} />
             </div>
         </Form>
     );

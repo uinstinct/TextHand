@@ -44,11 +44,11 @@ function ShowOutput(props) {
             <Segment inverted={isActive} >
                 <Grid>
                     {images.length > 0 ?
-                        <div>
-                            <Button onClick={doDownloadAll}>Download All</Button>
+                        <>
+                            <Button inverted={isActive} onClick={doDownloadAll}>Download All</Button>
                             {images}
-                            </div>
-                        : "Start Generating"
+                        </>
+                        : <h3>Start Generating</h3>
                     }
                 </Grid>
             </Segment>

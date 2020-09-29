@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { DarkTheme } from '../../Themes';
 
