@@ -1,20 +1,9 @@
 import React, { useContext, useState } from 'react';
 
 import { DarkTheme } from '../../Themes';
-
-import { Grid, GridRow, GridColumn, Input, Checkbox, Dropdown } from 'semantic-ui-react';
 import { useControl } from '../Controls';
 
-function addFontFromFile(fileObj) {
-    const reader = new FileReader();
-    reader.readAsArrayBuffer(fileObj);
-    reader.onload = (e) => {
-        const newFont = new FontFace('temp-font', e.target.result);
-        newFont.load().then((loadedFace) => {
-            document.fonts.add(loadedFace);
-        });
-    };
-}
+import { Grid, GridRow, GridColumn, Input, Checkbox, Dropdown, Popup } from 'semantic-ui-react';
 
 const options = [
     {
@@ -45,6 +34,18 @@ const options = [
 ];
 
 
+function addFontFromFile(fileObj) {
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(fileObj);
+    reader.onload = (e) => {
+        const newFont = new FontFace('temp-font', e.target.result);
+        newFont.load().then((loadedFace) => {
+            document.fonts.add(loadedFace);
+        });
+    };
+}
+
+
 function Font() {
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
@@ -52,7 +53,7 @@ function Font() {
 
     const changeFontFamily = event => {
         setLoading(true);
-        addFontFromFile(event.target.files[0], dispatch);
+        addFontFromFile(event.target.files[0]);
 
         dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'temp-font' } });
 
@@ -81,7 +82,10 @@ function Font() {
                 <GridRow columns={1}>
                     <GridColumn>
                         Font Family
-                            <Input type='file' loading={loading} inverted={isActive} onChange={changeFontFamily} style={{ marginLeft: '1rem' }}/>
+                        <Popup inverted={isActive} trigger=
+                            {
+                                <Input type='file' accept='.ttf,.otf' loading={loading} inverted={isActive} onChange={changeFontFamily} style={{ marginLeft: '1rem' }} />
+                            } content='Upload files of .ttf and .otf format only'/>
                     </GridColumn>
                 </GridRow>
                 <GridRow columns={2}>

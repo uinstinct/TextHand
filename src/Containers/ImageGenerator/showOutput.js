@@ -10,7 +10,6 @@ function ShowOutput(props) {
 
     const allImageURLs = [];
 
-
     const images = useMemo(() => {
 
         if (props.images.length > 0) {

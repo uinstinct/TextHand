@@ -19,7 +19,6 @@ function ImageGenerator() {
         setLoading(true);
         const canvases = await generateImages();
         setLoading(false);
-        console.info(canvases);
         setImages(canvases);
     }
 
