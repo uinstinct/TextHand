@@ -24,10 +24,13 @@ function ImageGenerator() {
     }
 
     const removeImage = (idx) => {
-        let newImages = images; // fix this
-        newImages.splice(idx, 1);
-        console.log(newImages, idx);
-        setImages([]);
+        let newImages = []; // fix this
+        for (let i = 0; i < images.length; i++) {
+            if (i !== idx) {
+                newImages.push(images[i]);
+            }
+        }
+        setImages(newImages);
     }
 
     const removeAllImages = (idx) => {
