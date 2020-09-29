@@ -6,7 +6,7 @@ let content = null;
 async function convertDIVToImage() {
     const options = {
         scrollX: 0,
-        scrollY: -window.scrollY,
+        scrollY: -(window.scrollY),
         scale: 1 // this controls the resolution
     };
 

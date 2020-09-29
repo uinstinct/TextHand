@@ -1,7 +1,7 @@
 import React, { useReducer, createContext, useContext } from 'react';
 
 const initialState = {
-    fontFamily: 'cursive',
+    fontFamily: 'Homemade Apple, cursive',
 }
 
 

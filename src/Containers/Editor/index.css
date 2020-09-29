@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 .generated.container {  
     width: 400px;
     height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
-    background: url(../../assets/paper-true.jpg);
+    background: url(../../assets/paper-2.jpg);
     background-size: cover;
     border: 1px solid var(--elevation-background);
     font-size: 10pt;

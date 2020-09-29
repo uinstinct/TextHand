@@ -21,7 +21,17 @@ function ImageGenerator() {
         setLoading(false);
         console.info(canvases);
         setImages(canvases);
+    }
 
+    const removeImage = (idx) => {
+        let newImages = images; // fix this
+        newImages.splice(idx, 1);
+        console.log(newImages, idx);
+        setImages([]);
+    }
+
+    const removeAllImages = (idx) => {
+        setImages([]);
     }
 
     return (
@@ -38,7 +48,7 @@ function ImageGenerator() {
                 <GridRow style={{ margin: '0 1rem' }}>
                     <GridColumn stretched>
                         <h3>Showing output here</h3>
-                        <ShowOutput images={images}/>
+                        <ShowOutput images={images} removeImage={removeImage} removeAllImages={removeAllImages} />
                     </GridColumn>
                 </GridRow>
             </Grid>
