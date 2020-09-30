@@ -28,11 +28,11 @@ async function generateImages() {
 
     const totalPages = Math.ceil(scrollHeight / clientHeight);
 
-    const savedInnerHTML = container.innerHTML;
+    const copiedInnerHTML = container.innerHTML;
 
     if (totalPages > 1) {
 
-        const splitContent = savedInnerHTML.split(/\s+/g);
+        const splitContent = copiedInnerHTML.split(/\s+/g);
         let currentWordPos = 0;
 
         for (let i = 0; i < totalPages; i++) {
@@ -58,7 +58,6 @@ async function generateImages() {
         const canvas = await convertDIVToImage();
         images.push(canvas);
     }
-    container.innerHTML = savedInnerHTML; // fix this
     return images;
 }
 
