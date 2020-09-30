@@ -3,6 +3,16 @@ import html2canvas from 'html2canvas';
 let container = null;
 let content = null;
 
+function randomizeWord(word) {
+
+    const randomSpace = 5 || Math.ceil(Math.random() * 20);
+    const randomScale = ((Math.random() * 0.4) + 1).toFixed(2);
+
+    const wrapper = `<span style='margin-right:${randomSpace}px; transform: scale(${randomScale})'>${word}</span>`;
+    return wrapper;
+
+}
+
 async function convertDIVToImage() {
     const options = {
         scrollX: 0,
@@ -13,7 +23,6 @@ async function convertDIVToImage() {
     const canvas = await html2canvas(container, options); // just take the snapshot
     return canvas;
 }
-
 
 async function generateImages() {
 
@@ -34,6 +43,7 @@ async function generateImages() {
 
         const splitContent = copiedInnerHTML.split(/\s+/g);
         let currentWordPos = 0;
+        console.log(splitContent, 'see this');
 
         for (let i = 0; i < totalPages; i++) {
             let words = [];
@@ -42,11 +52,16 @@ async function generateImages() {
 
             while (content.scrollHeight <= clientHeight && words.length <= splitContent.length) {
                 const word = splitContent[currentWordPos];
-                words.push(word);
-                text = words.join(' '); // apply random space here
+                if (!word) break;
+
+                const styledWord = randomizeWord(word);
+                words.push(styledWord);
+
+                text = words.join(' ');
                 content.innerHTML = text;
                 currentWordPos++;
             }
+            console.log(words, 'see words');
             currentWordPos--;
             content.scrollTo(0, 0);
             container.scrollTo(0, 0);

@@ -18,8 +18,9 @@ function ImageGenerator() {
     const applyImageGeneration = async () => {
         setLoading(true);
         const canvases = await generateImages();
+        const newImages = images.concat(canvases);
         setLoading(false);
-        setImages(canvases);
+        setImages(newImages);
     }
 
     const removeImage = (idx) => {
@@ -32,7 +33,7 @@ function ImageGenerator() {
         setImages(newImages);
     }
 
-    const removeAllImages = (idx) => {
+    const removeAllImages = () => {
         setImages([]);
     }
 
@@ -59,15 +60,3 @@ function ImageGenerator() {
 }
 
 export default ImageGenerator;
-
-
-
-
-/*
- <Segment inverted={isActive} >
-                        <h2>Generated Images</h2>
-                        <Placeholder style={{ height: 400, width: 300 }} inverted={isActive} >
-                            <PlaceholderImage />
-                        </Placeholder>
-                        </Segment>
-                        */
