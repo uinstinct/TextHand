@@ -13,6 +13,10 @@ function Spacing() {
         dispatch({ type: 'CHANGE_LETTER_SPACING', payload: { letterSpacing: event.target.value } });
     }
 
+    const changeLineHeight = event => {
+        dispatch({ type: 'CHANGE_LINE_HEIGHT', payload: { lineHeight: event.target.value } });
+    }
+
     return (
         <>
             <h2>Spacing</h2>
@@ -36,7 +40,7 @@ function Spacing() {
                 <GridRow>
                     <GridColumn>
                         Line Height
-                        <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} />
+                        <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeLineHeight} />
                     </GridColumn>
                 </GridRow>
             </Grid>

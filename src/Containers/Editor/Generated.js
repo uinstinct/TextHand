@@ -30,8 +30,6 @@ function Generated(props) {
     const manipulatedStyles = useMemo(() => {
 
         return {
-            lineHeight: '1.54rem',
-
             fontFamily: state.fontFamily,
             fontSize: state.fontSize + 'px',
             fontWeight: state.fontWeight,
@@ -42,7 +40,8 @@ function Generated(props) {
             marginTop: state.marginTop + 'px',
             marginBottom: state.marginBottom + 'px',
 
-            letterSpacing: state.letterSpacing+'px'
+            letterSpacing: state.letterSpacing + 'px',
+            lineHeight: state.lineHeight
         }
     }, [state]);
 
@@ -50,7 +49,7 @@ function Generated(props) {
 
 
     return (
-        <div className="generated container" id="page-container">
+        <div className="generated container" id="page-container" >
             <div className="generated core" id="page-content" style={manipulatedStyles} dangerouslySetInnerHTML={{ __html: madeHTML }} >
             </div>
         </div>

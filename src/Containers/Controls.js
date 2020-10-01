@@ -30,6 +30,8 @@ function reducer(state, action) {
         // SPACING
         case 'CHANGE_LETTER_SPACING':
             return { ...state, letterSpacing: action.payload.letterSpacing };
+        case 'CHANGE_LINE_HEIGHT':
+            return { ...state, lineHeight: action.payload.lineHeight }
 
         default:
             return state;
