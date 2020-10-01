@@ -7,7 +7,7 @@ import { Grid, GridRow, GridColumn, Input } from 'semantic-ui-react';
 
 function Margin() {
     const { isActive } = useContext(DarkTheme);
-    const [state, dispatch] = useControl();
+    const dispatch = useControl()[1]; // const [state,dispatch] = useControl();
 
     const changeMarginLeft = event => {
         const value = parseInt(event.target.value);

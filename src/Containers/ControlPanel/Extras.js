@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { DarkTheme } from '../../Themes';
-import { useControl } from '../Controls';
+//import { useControl } from '../Controls';
 
 import { Input, Popup } from 'semantic-ui-react';
 
@@ -24,7 +24,7 @@ function addImageToBackground(fileObj) {
 
 function Extras() {
     const { isActive } = useContext(DarkTheme);
-    const [state, dispatch] = useControl();
+    //const [state, dispatch] = useControl(); // this is not yet required
 
     const changeBackgroundImage = event => {
         addImageToBackground(event.target.files[0]);

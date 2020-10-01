@@ -48,7 +48,7 @@ function addFontFromFile(fileObj) {
 
 function Font() {
     const { isActive } = useContext(DarkTheme);
-    const [state, dispatch] = useControl();
+    const dispatch = useControl()[1]; // const [state, dispatch] = useControl();
     const [loading, setLoading] = useState(false);
 
     const changeFontFamily = event => {

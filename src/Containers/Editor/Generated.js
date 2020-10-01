@@ -4,6 +4,8 @@ import { useControl } from '../Controls';
 
 function createHTML(text) {
 
+    // THIS NEEDS RECONSIDERATION
+
     const words = text
         .replace(/\n/g, '<br/>')
         //.split(/\s/g)
@@ -11,21 +13,21 @@ function createHTML(text) {
     return words;
 
     // use this in generated image function
-    let theHTML = "";
+    //let theHTML = "";
 
-    words.forEach(word => {
-        const space = parseInt(Math.random() * 10);
-        const tempSpan = `<span style='margin-right:${space}px'>${word}</span>`;
-        theHTML += tempSpan;
-    })
+    //words.forEach(word => {
+    //    const space = parseInt(Math.random() * 10);
+    //    const tempSpan = `<span style='margin-right:${space}px'>${word}</span>`;
+    //    theHTML += tempSpan;
+    //})
 
-    return theHTML;
+    //return theHTML;
 }
 
 function Generated(props) {
     // override the problems from the done github app
 
-    const [state, dispatch] = useControl();
+    const state = useControl()[0]; // const [state, dispatch] = useControl();
 
     const manipulatedStyles = useMemo(() => {
 

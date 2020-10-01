@@ -7,7 +7,7 @@ import { Grid, GridRow, GridColumn, Input, Checkbox } from 'semantic-ui-react';
 
 function Spacing() {
     const { isActive } = useContext(DarkTheme);
-    const [state, dispatch] = useControl();
+    const dispatch = useControl()[1]; //const [state, dispatch] = useControl();
 
     const changeLetterSpacing = event => {
         dispatch({ type: 'CHANGE_LETTER_SPACING', payload: { letterSpacing: event.target.value } });
