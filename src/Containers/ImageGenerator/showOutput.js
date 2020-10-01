@@ -25,7 +25,7 @@ function ShowOutput(props) {
 
                     const col =
                         <GridColumn key={j}>
-                            <Label attached='top right' color='red' style={{cursor: 'pointer'}} onClick={() => props.removeImage(j)}>
+                            <Label circular attached='top right' color='red' style={{ cursor: 'pointer' }} onClick={() => props.removeImage(j)}>
                                 <Icon inverted={isActive} name='close' size='big' />
                             </Label>
                             <br/>

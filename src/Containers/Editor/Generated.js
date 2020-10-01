@@ -41,7 +41,7 @@ function Generated(props) {
             marginBottom: state.marginBottom + 'px',
 
             letterSpacing: state.letterSpacing + 'px',
-            lineHeight: state.lineHeight
+            lineHeight: state.lineHeight,
         }
     }, [state]);
 

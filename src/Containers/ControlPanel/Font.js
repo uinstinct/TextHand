@@ -105,9 +105,8 @@ function Font() {
                     </GridColumn>
                     <GridColumn>
                         Font Weight
-                        <Dropdown defaultValue={options[0]}
+                        <Dropdown 
                             placeholder='Select Font Weight'
-                            selectedLabel={options[0]}
                             options={options}
                             onChange={changeFontWeight}
                             openOnFocus closeOnEscape
