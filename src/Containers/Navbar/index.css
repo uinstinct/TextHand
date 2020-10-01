@@ -8,3 +8,18 @@ body[data-theme='dark'] {
 body[data-theme='dark'] h1{
     color: rgb(223, 230, 237);
 }
+
+.markdown.rules{
+    color:black;
+}
+
+.markdown .builtby .image{
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.markdown img{
+    display: block;
+    height: 150px;
+    width: 150px;
+}
