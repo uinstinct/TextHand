@@ -5,10 +5,13 @@ let content = null;
 
 function randomizeWord(word) {
 
-    const randomSpace = 5 || Math.ceil(Math.random() * 20);
-    const randomScale = ((Math.random() * 0.4) + 1).toFixed(2);
+    const randomValue = Math.random();
+    const randomSpace = Math.ceil(randomValue * 30) + 10;
+    const randomScale = 1 || ((randomValue * 0.5) + 1).toFixed(2);
 
-    const wrapper = `<span style='margin-right:${randomSpace}px; transform: scale(${randomScale})'>${word}</span>`;
+    //const wrapper = `<span style='margin-right:${randomSpace}px; transform: scale(${randomScale}); margin-bottom: ${randomSpace}px;'>${word}</span>`;
+
+    const wrapper = `<span style="margin: auto ${randomSpace}px ${randomSpace}px auto; transform: scale(${randomScale}); line-height: ${randomSpace}px" >${word}</span>`
     return wrapper;
 
 }
@@ -37,11 +40,11 @@ async function generateImages() {
 
     const totalPages = Math.ceil(scrollHeight / clientHeight);
 
-    const copiedInnerHTML = container.innerHTML;
+    const copiedInnerText = container.innerText;
 
     if (totalPages > 1) {
 
-        const splitContent = copiedInnerHTML.split(/\s+/g);
+        const splitContent = copiedInnerText.split(/\s+/g);
         let currentWordPos = 0;
         console.log(splitContent, 'see this');
 
@@ -61,7 +64,6 @@ async function generateImages() {
                 content.innerHTML = text;
                 currentWordPos++;
             }
-            console.log(words, 'see words');
             currentWordPos--;
             content.scrollTo(0, 0);
             container.scrollTo(0, 0);

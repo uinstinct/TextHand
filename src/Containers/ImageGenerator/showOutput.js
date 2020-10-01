@@ -55,7 +55,7 @@ function ShowOutput(props) {
     return (
         <>
             <Segment inverted={isActive} >
-                <Grid>
+                <Grid stackable>
                     {images.length > 0 ?
                         <>
                             <Button inverted={isActive} onClick={doDownloadAll}>Download All</Button>

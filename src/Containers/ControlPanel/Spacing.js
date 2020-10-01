@@ -20,7 +20,7 @@ function Spacing() {
                 <GridRow >
                     <GridColumn>
                         Word Spacing
-                            <Input size={'mini'} inverted={isActive} style={{ marginLeft: '1rem' }} />
+                            <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} />
                     </GridColumn>
                     <GridColumn style={{ marginLeft:'1rem' }}>
                         Randomize
@@ -30,7 +30,13 @@ function Spacing() {
                 <GridRow>
                     <GridColumn>
                         Letter Spacing
-                            <Input size={'mini'} inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeLetterSpacing} />
+                            <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeLetterSpacing} />
+                    </GridColumn>
+                </GridRow>
+                <GridRow>
+                    <GridColumn>
+                        Line Height
+                        <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} />
                     </GridColumn>
                 </GridRow>
             </Grid>

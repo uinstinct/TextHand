@@ -24,7 +24,7 @@ function ImageGenerator() {
     }
 
     const removeImage = (idx) => {
-        let newImages = []; // fix this
+        let newImages = [];
         for (let i = 0; i < images.length; i++) {
             if (i !== idx) {
                 newImages.push(images[i]);
