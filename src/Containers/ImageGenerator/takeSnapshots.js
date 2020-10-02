@@ -5,7 +5,7 @@ let content = null;
 
 function randomizeLetters(letter) {
     const randomValue = Math.random();
-    const randomScale = ((randomValue * 0.3) + 30).toFixed(2);
+    const randomScale = ((randomValue * 8) + 20).toFixed(2);
 
     let wrappedLetter = document.createElement('span');
     wrappedLetter.style.fontSize = randomScale + 'px';
@@ -17,7 +17,7 @@ function randomizeLetters(letter) {
 function randomizeWord(word) {
 
     const randomValue = Math.random();
-    const randomSpace =  Math.ceil(randomValue * 30) + 10;
+    const randomSpace = Math.ceil(randomValue * 30) + 10;
     const randomScale = ((randomValue * 0.5) + 1).toFixed(2);
 
 
@@ -26,6 +26,7 @@ function randomizeWord(word) {
         letters[i] = randomizeLetters(letters[i]);
         letters[i] = letters[i].outerHTML;
     }
+    console.log(letters[0], JSON.stringify(letters[0]), 'watch this')
 
 
     const styledLetters = letters.join('');
@@ -37,20 +38,18 @@ function randomizeWord(word) {
     return wordWrapper;
 
 
-    //const wrapper = `<span style='margin-right:${randomSpace}px; transform: scale(${randomScale}); margin-bottom: ${randomSpace}px;'>${word}</span>`;
+    //const wrapper = <span style='margin-right:${randomSpace}px; transform: scale(${randomScale}); margin-bottom: ${randomSpace}px;'>${word}</span>;
 
-    //const wrapper = `<span style="margin: auto ${randomSpace}px ${randomSpace}px auto; transform: scale(${randomScale}); line-height: ${randomSpace}px" >${styledWord}</span>`
+    //const wrapper = <span style="margin: auto ${randomSpace}px ${randomSpace}px auto; transform: scale(${randomScale}); line-height: ${randomSpace}px" >${styledWord}</span>
     //return wrapper;
 
 }
 
 async function convertDIVToImage() {
-    const scale = Number(container.getAttribute('resolution-scale'));
     const options = {
         scrollX: 0,
-        scrollY: -(window.scrollY),
-        //scale: 1 // this controls the resolution
-        scale,
+        scrollY: -(window.scrollY+22.5),
+        scale: 1 // this controls the resolution
     };
 
     const canvas = await html2canvas(container, options); // just take the snapshot
@@ -61,6 +60,7 @@ async function generateImages() {
 
     let images = [];
 
+    container = document.getElementById('page-container');
     content = document.getElementById('page-content');
 
     container.scrollTo(0, 0);
@@ -91,8 +91,6 @@ async function generateImages() {
                 content.innerHTML = text;
                 currentWordPos++;
             }
-
-            currentWordPos--;
             content.scrollTo(0, 0);
             container.scrollTo(0, 0);
             const canvas = await convertDIVToImage();

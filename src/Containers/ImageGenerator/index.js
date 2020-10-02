@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { DarkTheme } from '../../Themes';
 
 import { generateImages } from './takeSnapshots';
-import ShowOutput from './ShowOutput';
+import ShowOutput from './showOutput';
 
 import { Segment, Button, Grid, GridRow, GridColumn, Icon } from 'semantic-ui-react';
 

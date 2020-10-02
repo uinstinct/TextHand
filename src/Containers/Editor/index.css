@@ -2,7 +2,7 @@
 
 .generated.container {  
     width: 400px;
-    height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
+    height: calc(11.13 * 400px / 8.3); /* A4 Ratio */
     background: url(../../assets/paper-2.jpg);
     background-size: cover;
     border: 1px solid var(--elevation-background);
@@ -26,7 +26,6 @@
 .generated.core {
     margin: 0 1rem;
     font-size: 20px;
-    font-style: italic;
     letter-spacing: normal;
     line-height: 1.2;
     transform: rotate(30);
