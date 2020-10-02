@@ -16,11 +16,6 @@ function randomizeLetters(letter) {
 
 function randomizeWord(word) {
 
-    const randomValue = Math.random();
-    const randomSpace = Math.ceil(randomValue * 30) + 10;
-    const randomScale = ((randomValue * 0.5) + 1).toFixed(2);
-
-
     let letters = word.split('');
     for (let i = 0; i < letters.length; i++) {
         letters[i] = randomizeLetters(letters[i]);
@@ -36,12 +31,6 @@ function randomizeWord(word) {
 
     console.log(styledLetters, 'when word is styled');
     return wordWrapper;
-
-
-    //const wrapper = <span style='margin-right:${randomSpace}px; transform: scale(${randomScale}); margin-bottom: ${randomSpace}px;'>${word}</span>;
-
-    //const wrapper = <span style="margin: auto ${randomSpace}px ${randomSpace}px auto; transform: scale(${randomScale}); line-height: ${randomSpace}px" >${styledWord}</span>
-    //return wrapper;
 
 }
 
