@@ -7,7 +7,6 @@ function createHTML(text) {
     // THIS NEEDS RECONSIDERATION
 
     const words = text
-        .replace(/\n/g, '<br/>')
         //.split(/\s/g)
         //.replace(/ /g, "<span style='margin-left:100px'></span>")
     return words;

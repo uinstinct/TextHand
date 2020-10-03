@@ -42,7 +42,7 @@ function ImageGenerator() {
             <Grid doubling stretched>
                 <GridRow centered stretched>
                     <Segment inverted={isActive} >
-                        <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} animated='fade'>
+                        <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} animated='fade' size='huge'>
                             <Button.Content visible> Generate</Button.Content>
                             <Button.Content hidden><Icon name='play' /></Button.Content>
                         </Button>

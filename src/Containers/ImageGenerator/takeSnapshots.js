@@ -21,7 +21,6 @@ function randomizeWord(word) {
         letters[i] = randomizeLetters(letters[i]);
         letters[i] = letters[i].outerHTML;
     }
-    console.log(letters[0], JSON.stringify(letters[0]), 'watch this')
 
 
     const styledLetters = letters.join('');
@@ -29,7 +28,6 @@ function randomizeWord(word) {
     wordWrapper.innerHTML = styledLetters;
 
 
-    console.log(styledLetters, 'when word is styled');
     return wordWrapper;
 
 }
@@ -58,10 +56,14 @@ async function generateImages() {
 
     const totalPages = Math.ceil(scrollHeight / clientHeight);
 
-    const copiedInnerText = container.innerText.trim(); // due to INNER TEXT, we cannot see the <br> tag
+
+    const copiedText = content.innerHTML.trim();
 
     if (totalPages > 1) {
-        const splitContent = copiedInnerText.split(/\s+/g);
+        const splitContent = copiedText
+                                .replace(/\n/g, ' <br> ')
+                                .split(/\s+/g);
+        console.log(splitContent, 'when array');
         let currentWordPos = 0;
 
         for (let i = 0; i < totalPages; i++) {
@@ -71,10 +73,15 @@ async function generateImages() {
 
             while (content.scrollHeight <= clientHeight && words.length <= splitContent.length) {
                 const word = splitContent[currentWordPos];
-                if (!word) break;
+                if (!word) {
+                    break;
+                } else if (word === '<br>') {
+                    words.push(word);
+                } else {
+                    const styledWord = randomizeWord(word);
+                    words.push(styledWord.outerHTML);
+                }
 
-                const styledWord = randomizeWord(word);
-                words.push(styledWord.outerHTML);
 
                 text = words.join(' ');
                 content.innerHTML = text;
