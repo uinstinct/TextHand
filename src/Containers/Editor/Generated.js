@@ -43,6 +43,7 @@ function Generated(props) {
 
             letterSpacing: state.letterSpacing + 'px',
             lineHeight: state.lineHeight,
+            wordSpacing: state.wordSpacing+'px',
         }
     }, [state]);
 

@@ -17,6 +17,10 @@ function Spacing() {
         dispatch({ type: 'CHANGE_LINE_HEIGHT', payload: { lineHeight: event.target.value } });
     }
 
+    const changeWordSpacing = event => {
+        dispatch({ type: 'CHANGE_WORD_SPACING', payload: { wordSpacing: event.target.value } });
+    }
+
     return (
         <>
             <h2>Spacing</h2>
@@ -24,9 +28,9 @@ function Spacing() {
                 <GridRow >
                     <GridColumn>
                         Word Spacing
-                            <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} />
+                            <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeWordSpacing} />
                     </GridColumn>
-                    <GridColumn style={{ marginLeft:'1rem' }}>
+                    <GridColumn style={{ marginLeft:'0.5rem' }}>
                         Randomize
                             <Checkbox style={{ marginTop: '1.5rem', marginLeft: '1rem' }} />
                     </GridColumn>

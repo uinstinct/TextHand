@@ -9,8 +9,10 @@ body[data-theme='dark'] h1{
     color: rgb(223, 230, 237);
 }
 
+
 .markdown.rules{
-    color:black;
+    color: black;
+    font-size: 1.1em;
 }
 
 .markdown .builtby .image{
@@ -18,8 +20,8 @@ body[data-theme='dark'] h1{
     margin-right: 2rem;
 }
 
-.markdown img{
+/*.markdown img{
     display: block;
     height: 150px;
     width: 150px;
-}
+}*/

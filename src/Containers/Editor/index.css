@@ -6,7 +6,6 @@
     background: url(../../assets/paper-2.jpg);
     background-size: cover;
     border: 1px solid var(--elevation-background);
-    font-size: 10pt;
     position: relative;
     top: 0px;
     font-family: var(--handwriting-font);
@@ -27,7 +26,6 @@
 }
 .generated.core {
     margin: 0 1rem;
-    font-size: 20px;
     letter-spacing: normal;
     line-height: 1.2;
     transform: rotate(30);

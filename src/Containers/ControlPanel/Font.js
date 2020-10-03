@@ -75,7 +75,6 @@ function Font() {
     }
 
     return (
-        // the h2 font does not change if the actions is dispatched once, because this component is not re-rendered
         <>
             <h2>Font</h2>
             <Grid inverted={isActive} doubling>

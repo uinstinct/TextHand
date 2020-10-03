@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { DarkTheme } from '../../Themes';
-//import { useControl } from '../Controls';
+import { useControl } from '../Controls';
 
 import { Input, Popup } from 'semantic-ui-react';
 
@@ -24,15 +24,14 @@ function addImageToBackground(fileObj) {
 
 function Extras() {
     const { isActive } = useContext(DarkTheme);
-    //const [state, dispatch] = useControl(); // this is not yet required
+    const dispatch = useControl()[1]; // this is not yet required
 
     const changeBackgroundImage = event => {
         addImageToBackground(event.target.files[0]);
     }
 
     const changeResolutionScale = event => {
-        const container = document.getElementById('page-container');
-        container.setAttribute('resolution-scale', event.target.value);
+        dispatch({ type: 'CHANGE_RESOLUTION_SCALE', payload: { resolutionScale: Number(event.target.value) } });
     }
 
     return (

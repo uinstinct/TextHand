@@ -1,9 +1,15 @@
-import React, { useReducer, createContext, useContext } from 'react';
+import React, { useReducer, createContext, useContext, useEffect } from 'react';
 
 const initialState = {
     fontFamily: 'Homemade Apple, cursive',
     fontWeight: 'normal',
+    fontSize: 20,
+    resolutionScale: 1,
 }
+
+let copyControls = {
+    ...initialState
+};
 
 
 function reducer(state, action) {
@@ -30,9 +36,15 @@ function reducer(state, action) {
 
         // SPACING
         case 'CHANGE_LETTER_SPACING':
-            return { ...state, letterSpacing: action.payload.letterSpacing };
+            return { ...state, letterSpacing: action.payload.letterSpacing }
         case 'CHANGE_LINE_HEIGHT':
             return { ...state, lineHeight: action.payload.lineHeight }
+        case 'CHANGE_WORD_SPACING':
+            return { ...state, wordSpacing: action.payload.wordSpacing }
+
+        // EXTRAS
+        case 'CHANGE_RESOLUTION_SCALE':
+            return { ...state, resolutionScale: action.payload.resolutionScale };
 
         default:
             return state;
@@ -44,6 +56,11 @@ const ControlContext = createContext();
 
 export function ControlProvider({ children }) {
     const contextValue = useReducer(reducer, initialState);
+
+    useEffect(() => {
+        copyControls = { ...contextValue[0] };
+    }, [contextValue[0]]);
+
     return (
         <ControlContext.Provider value={contextValue}>
             {children}
@@ -55,3 +72,5 @@ export function useControl() {
     const contextValue = useContext(ControlContext);
     return contextValue;
 }
+
+export { copyControls };
