@@ -7,25 +7,25 @@ import { Grid, GridRow, GridColumn, Input } from 'semantic-ui-react';
 
 function Margin() {
     const { isActive } = useContext(DarkTheme);
-    const dispatch = useControl()[1]; // const [state,dispatch] = useControl();
+    const [state, dispatch] = useControl();
 
     const changeMarginLeft = event => {
-        const value = parseInt(event.target.value);
-        dispatch({ type: 'CHANGE_MARGIN_LEFT', payload: { marginLeft: value } });
+        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
+        dispatch({ type: 'CHANGE_MARGIN_LEFT', payload: { marginLeft:value } });
     }
 
     const changeMarginRight = event => {
-        const value = parseInt(event.target.value);
+        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
         dispatch({ type: 'CHANGE_MARGIN_RIGHT', payload: { marginRight: value } });
     }
 
     const changeMarginTop = event => {
-        const value = parseInt(event.target.value);
+        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
         dispatch({ type: 'CHANGE_MARGIN_TOP', payload: { marginTop: value } });
     }
 
     const changeMarginBottom = event => {
-        const value = parseInt(event.target.value);
+        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
         dispatch({ type: 'CHANGE_MARGIN_BOTTOM', payload: { marginBottom: value } });
     }
 
@@ -36,21 +36,21 @@ function Margin() {
                 <GridRow>
                     <GridColumn>
                         Left
-                            <Input size={'mini'} inverted={isActive} onChange={changeMarginLeft} />
+                            <Input size={'mini'} inverted={isActive} value={parseInt(state.marginLeft)} onChange={changeMarginLeft} />
                     </GridColumn>
                     <GridColumn>
                         Right
-                            <Input size={'mini'} inverted={isActive} onChange={changeMarginRight} />
+                            <Input size={'mini'} inverted={isActive} value={parseInt(state.marginRight)} onChange={changeMarginRight} />
                     </GridColumn>
                 </GridRow>
                 <GridRow>
                     <GridColumn>
                         Top
-                            <Input size={'mini'} inverted={isActive} onChange={changeMarginTop} />
+                            <Input size={'mini'} inverted={isActive} value={parseInt(state.marginTop)} onChange={changeMarginTop} />
                     </GridColumn>
                     <GridColumn>
                         Bottom
-                            <Input size={'mini'} inverted={isActive} onChange={changeMarginBottom} />
+                            <Input size={'mini'} inverted={isActive} value={parseInt(state.marginBottom)} onChange={changeMarginBottom} />
                     </GridColumn>
                 </GridRow>
             </Grid>

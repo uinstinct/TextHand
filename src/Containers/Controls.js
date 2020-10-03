@@ -1,15 +1,39 @@
 import React, { useReducer, createContext, useContext, useEffect } from 'react';
 
 const initialState = {
+
+    // fonts
     fontFamily: 'Homemade Apple, cursive',
-    fontWeight: 'normal',
+    fontWeight: 400,
     fontSize: 20,
+    color: 'blue',
+
+    // margins
+    marginLeft: '1rem',
+    marginRight: '1rem',
+    marginTop: 0,
+    marginBottom: 0,
+
+    // spacing
+    wordSpacing: '0.25em',
+    letterSpacing: '1px',
+    lineHeight: 1.2,
+
+    // extras
     resolutionScale: 1,
 }
 
 let copyControls = {
     ...initialState
 };
+
+function init() {
+    const storedState = { ...initialState };
+    for (const [key, value] of Object.entries(localStorage)) {
+        storedState[key] = value;
+    }
+    return storedState;
+}
 
 
 function reducer(state, action) {
@@ -18,7 +42,7 @@ function reducer(state, action) {
         case 'CHANGE_FONT_FAMILY':
             return { ...state, fontFamily: action.payload.fontFamily };
         case 'CHANGE_FONT_SIZE':
-            return { ...state, fontSize: action.payload.fontSize };
+            return { ...state, fontSize: action.payload.fontSize+'px' };
         case 'CHANGE_FONT_COLOUR':
             return { ...state, color: action.payload.fontColour };
         case 'CHANGE_FONT_WEIGHT':
@@ -26,21 +50,21 @@ function reducer(state, action) {
 
         // MARGINS
         case 'CHANGE_MARGIN_LEFT':
-            return { ...state, marginLeft: action.payload.marginLeft }
+            return { ...state, marginLeft: action.payload.marginLeft+'px' }
         case 'CHANGE_MARGIN_RIGHT':
-            return { ...state, marginRight: action.payload.marginRight }
+            return { ...state, marginRight: action.payload.marginRight+'px' }
         case 'CHANGE_MARGIN_TOP':
-            return { ...state, marginTop: action.payload.marginTop }
+            return { ...state, marginTop: action.payload.marginTop+'px' }
         case 'CHANGE_MARGIN_BOTTOM':
-            return { ...state, marginBottom: action.payload.marginBottom }
+            return { ...state, marginBottom: action.payload.marginBottom+'px' }
 
         // SPACING
+        case 'CHANGE_WORD_SPACING':
+            return { ...state, wordSpacing: action.payload.wordSpacing+'px' }
         case 'CHANGE_LETTER_SPACING':
-            return { ...state, letterSpacing: action.payload.letterSpacing }
+            return { ...state, letterSpacing: action.payload.letterSpacing+'px' }
         case 'CHANGE_LINE_HEIGHT':
             return { ...state, lineHeight: action.payload.lineHeight }
-        case 'CHANGE_WORD_SPACING':
-            return { ...state, wordSpacing: action.payload.wordSpacing }
 
         // EXTRAS
         case 'CHANGE_RESOLUTION_SCALE':
@@ -54,12 +78,19 @@ function reducer(state, action) {
 
 const ControlContext = createContext();
 
+let timer;
 export function ControlProvider({ children }) {
-    const contextValue = useReducer(reducer, initialState);
+    const contextValue = useReducer(reducer, initialState, init);
 
     useEffect(() => {
         copyControls = { ...contextValue[0] };
-    }, [contextValue[0]]);
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            for (const [key, value] of Object.entries(copyControls)) {
+                localStorage.setItem(key, value);
+            }
+        }, 650);
+    }, [contextValue]);
 
     return (
         <ControlContext.Provider value={contextValue}>

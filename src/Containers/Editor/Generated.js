@@ -31,19 +31,7 @@ function Generated(props) {
     const manipulatedStyles = useMemo(() => {
 
         return {
-            fontFamily: state.fontFamily,
-            fontSize: state.fontSize + 'px',
-            fontWeight: state.fontWeight,
-            color: state.color,
-
-            marginLeft: state.marginLeft + 'px',
-            marginRight: state.marginRight + 'px',
-            marginTop: state.marginTop + 'px',
-            marginBottom: state.marginBottom + 'px',
-
-            letterSpacing: state.letterSpacing + 'px',
-            lineHeight: state.lineHeight,
-            wordSpacing: state.wordSpacing+'px',
+            ...state,
         }
     }, [state]);
 

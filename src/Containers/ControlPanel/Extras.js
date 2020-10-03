@@ -15,7 +15,6 @@ function addImageToBackground(fileObj) {
     const reader = new FileReader();
     reader.readAsDataURL(fileObj);
     reader.onload = e => {
-        console.log(e.target.result);
         var editorContainer = document.getElementById('page-container');
         editorContainer.style.background = `url(${e.target.result})`;
     }
@@ -24,19 +23,21 @@ function addImageToBackground(fileObj) {
 
 function Extras() {
     const { isActive } = useContext(DarkTheme);
-    const dispatch = useControl()[1]; // this is not yet required
+    const [state,dispatch] = useControl();
 
     const changeBackgroundImage = event => {
         addImageToBackground(event.target.files[0]);
     }
 
     const changeResolutionScale = event => {
-        dispatch({ type: 'CHANGE_RESOLUTION_SCALE', payload: { resolutionScale: Number(event.target.value) } });
+        const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
+        dispatch({ type: 'CHANGE_RESOLUTION_SCALE', payload: { resolutionScale: value } });
     }
 
     return (
         <>
             <h2>Extras</h2>
+
             Background Image
             <Popup inverted={isActive}
                 trigger=
@@ -49,7 +50,7 @@ function Extras() {
             Resolution Scale
             <Popup inverted={isActive}
                 trigger={
-                    <Input size='mini' min='0' max='2' inverted={isActive} onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} />
+                    <Input size='mini' min='0' max='2' inverted={isActive} onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} value={parseFloat(state.resolutionScale)} />
                 } content={instructions.resolutionScale} />
         </>
     );

@@ -25,9 +25,6 @@
     background: linear-gradient(90deg, rgba(60,60,62,0.8830882694874825) 0%, rgba(247,247,255,0.9335084375547094) 61%);*/
 }
 .generated.core {
-    margin: 0 1rem;
-    letter-spacing: normal;
-    line-height: 1.2;
     transform: rotate(30);
 }
 

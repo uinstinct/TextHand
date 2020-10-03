@@ -7,7 +7,7 @@ let content = null;
 function randomizeLetters(letter) {
 
     const randomValue = Math.random();
-    const randomScale = ((randomValue * 8) + copyControls.fontSize).toFixed(2);
+    const randomScale = ((randomValue * 8) + parseInt(copyControls.fontSize)).toFixed(2);
 
     let wrappedLetter = document.createElement('span');
     wrappedLetter.style.fontSize = randomScale + 'px';
@@ -34,6 +34,7 @@ function randomizeWord(word) {
 
 async function convertDIVToImage() {
     const options = {
+        logging: false,
         scrollX: 0,
         scrollY: -(window.scrollY + 22.5),
         scale: copyControls.resolutionScale // this controls the resolution

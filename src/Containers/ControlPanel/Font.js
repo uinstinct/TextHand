@@ -48,7 +48,7 @@ function addFontFromFile(fileObj) {
 
 function Font() {
     const { isActive } = useContext(DarkTheme);
-    const dispatch = useControl()[1]; // const [state, dispatch] = useControl();
+    const [state, dispatch] = useControl();
     const [loading, setLoading] = useState(false);
 
     const changeFontFamily = event => {
@@ -61,8 +61,7 @@ function Font() {
     }
 
     const changeFontSize = (event, data) => {
-        let value = parseInt(data.value);
-        value = isNaN(value) ? 0 : value;
+        const value = data.value === '' ? 0 : parseInt(data.value);
         dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value } });
     }
 
@@ -80,29 +79,38 @@ function Font() {
             <Grid inverted={isActive} doubling>
                 <GridRow columns={1}>
                     <GridColumn>
+
                         Font Family
                         <Popup inverted={isActive} trigger=
                             {
                                 <Input type='file' accept='.ttf,.otf' loading={loading} inverted={isActive} onChange={changeFontFamily} style={{ marginLeft: '1rem' }} />
-                            } content='Upload files of .ttf and .otf format only'/>
+                            } content='Upload files of .ttf and .otf format only' />
+
                     </GridColumn>
                 </GridRow>
                 <GridRow columns={2}>
                     <GridColumn>
+
                         Font Size
-                            <Input size='mini' inverted={isActive} onChange={changeFontSize} />
+                            <Input size='mini' inverted={isActive} onChange={changeFontSize} value={parseInt(state.fontSize)} />
+
                     </GridColumn>
                     <GridColumn>
+
                         Randomize
                             <Checkbox style={{ marginTop: '1.5rem', marginLeft: '1rem' }} />
+
                     </GridColumn>
                 </GridRow>
                 <GridRow columns={2}>
                     <GridColumn>
+
                         Ink Colour
                             <Input type={'color'} inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeInkColour} />
+
                     </GridColumn>
                     <GridColumn>
+
                         Font Weight
                         <Dropdown 
                             placeholder='Select Font Weight'
@@ -111,6 +119,7 @@ function Font() {
                             openOnFocus closeOnEscape
                             style={{ marginLeft: '2rem' }}
                         />
+
                     </GridColumn>
                 </GridRow>
             </Grid>
