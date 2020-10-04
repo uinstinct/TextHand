@@ -92,8 +92,10 @@ async function generateImages() {
             container.scrollTo(0, 0);
 
             const overlay = document.querySelector('#overlay');
-            overlay.style.display = 'block';
-            overlay.style.background = `linear-gradient(${Math.random() * 360}deg, #0008, #0000)`;
+            if (JSON.parse(copyControls.shadowEffect) === true) {
+                overlay.style.display = 'block';
+                overlay.style.background = `linear-gradient(${Math.random() * 360}deg, #0008, #0000)`;
+            }
 
             const canvas = await convertDIVToImage();
             images.push(canvas);

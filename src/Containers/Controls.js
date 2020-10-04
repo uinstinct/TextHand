@@ -21,6 +21,7 @@ const initialState = {
 
     // extras
     resolutionScale: 1,
+    shadowEffect: true,
 }
 
 let copyControls = {
@@ -68,7 +69,9 @@ function reducer(state, action) {
 
         // EXTRAS
         case 'CHANGE_RESOLUTION_SCALE':
-            return { ...state, resolutionScale: action.payload.resolutionScale };
+            return { ...state, resolutionScale: action.payload.resolutionScale }
+        case 'APPLY_SHADOW_EFFECT':
+            return { ...state, shadowEffect: action.payload.shadowEffect }
 
         default:
             return state;

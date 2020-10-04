@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Input, Popup } from 'semantic-ui-react';
+import { Input, Popup, Checkbox } from 'semantic-ui-react';
 
 
 const instructions = {
@@ -34,6 +34,10 @@ function Extras() {
         dispatch({ type: 'CHANGE_RESOLUTION_SCALE', payload: { resolutionScale: value } });
     }
 
+    const applyShadowEffect = (event, data) => {
+        dispatch({ type: 'APPLY_SHADOW_EFFECT', payload: { shadowEffect: data.checked } });
+    }
+
     return (
         <>
             <h2>Extras</h2>
@@ -52,6 +56,9 @@ function Extras() {
                 trigger={
                     <Input size='mini' min='0' max='2' inverted={isActive} onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} value={parseFloat(state.resolutionScale)} />
                 } content={instructions.resolutionScale} />
+
+            Use Shadow Effect
+            <br /><Checkbox style={{ marginTop: '1rem' }} slider onChange={applyShadowEffect} defaultChecked={JSON.parse(state.shadowEffect)} />
         </>
     );
 }

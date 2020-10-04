@@ -40,13 +40,15 @@ function ImageGenerator() {
     return (
         <div style={{ margin: "1rem", padding: "1rem" }}>
             <Grid doubling stretched>
-                <GridRow centered stretched>
-                    <Segment inverted={isActive} >
-                        <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} animated='fade' size='huge'>
-                            <Button.Content visible> Generate</Button.Content>
-                            <Button.Content hidden><Icon name='play' /></Button.Content>
-                        </Button>
-                    </Segment>
+                <GridRow columns={2}>
+                    <GridColumn>
+                        <Segment inverted={isActive} >
+                            <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} animated='fade' size='huge'>
+                                <Button.Content visible>Generate</Button.Content>
+                                <Button.Content hidden><Icon name='play' /></Button.Content>
+                            </Button>
+                        </Segment>
+                    </GridColumn>
                 </GridRow>
                 <GridRow style={{ margin: '0 1rem' }}>
                     <GridColumn stretched>
