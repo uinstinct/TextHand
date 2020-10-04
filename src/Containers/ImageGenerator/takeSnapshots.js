@@ -7,7 +7,7 @@ let content = null;
 function randomizeLetters(letter) {
 
     const randomValue = Math.random();
-    const randomScale = ((randomValue * 8) + parseInt(copyControls.fontSize)).toFixed(2);
+    const randomScale = ((randomValue * 4) + parseInt(copyControls.fontSize)).toFixed(2);
 
     let wrappedLetter = document.createElement('span');
     wrappedLetter.style.fontSize = randomScale + 'px';
