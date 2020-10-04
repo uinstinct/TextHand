@@ -7,7 +7,7 @@ let content = null;
 function randomizeLetters(letter) {
 
     const randomValue = Math.random();
-    const randomScale = ((randomValue * copyControls.fontSizeRandom) + parseInt(copyControls.fontSize)).toFixed(2);
+    const randomScale = ((randomValue * JSON.parse(copyControls.fontSizeRandom)) + parseInt(copyControls.fontSize)).toFixed(2);
 
     let wrappedLetter = document.createElement('span');
     wrappedLetter.style.fontSize = randomScale + 'px';
@@ -55,7 +55,7 @@ async function generateImages() {
     const scrollHeight = content.scrollHeight;
     const clientHeight = 514; // height of .page-content when there is no content (increase this value to remove space at the bottom)
 
-    const totalPages = Math.ceil(scrollHeight / clientHeight) + 1; // always add +1 to get the extra page to due to font size
+    const totalPages = Math.ceil(scrollHeight / clientHeight) + 2; // always add +1 to get the extra page to due to random font size
 
 
     const copiedText = content.innerHTML.trim();
@@ -79,18 +79,25 @@ async function generateImages() {
                     break;
                 } else if (word === '<br>') {
                     words.push(word);
+                } else if (JSON.parse(copyControls.fontSizeRandom) === 0) {
+                    words.push(word);
                 } else {
-                    //words.push(word);
-
                     const styledWord = randomizeWord(word);
                     words.push(styledWord.outerHTML);
                 }
-
 
                 text = words.join(' ');
                 content.innerHTML = text;
                 currentWordPos++;
             }
+
+            // remove the last word
+            currentWordPos--;
+            console.log(words[currentWordPos]);
+            delete words[currentWordPos];
+            text = words.join(' ');
+            content.innerHTML = text;
+
             content.scrollTo(0, 0);
             container.scrollTo(0, 0);
 

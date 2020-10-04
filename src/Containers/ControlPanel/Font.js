@@ -103,7 +103,7 @@ function Font() {
                     <GridColumn>
 
                         Randomize Value
-                            <input type='number' min='0' max='20' style={{ width: '3rem' }} onChange={changeFontSizeRandom} value={state.fontSizeRandom} />
+                            <input type='number' min='0' max='30' style={{ width: '3rem' }} onChange={changeFontSizeRandom} value={state.fontSizeRandom} />
 
                     </GridColumn>
                 </GridRow>
