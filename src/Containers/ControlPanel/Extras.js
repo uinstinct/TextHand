@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Input, Popup, Checkbox } from 'semantic-ui-react';
+import { Input, Popup, Checkbox, Button } from 'semantic-ui-react';
 
 
 const instructions = {
@@ -38,6 +38,10 @@ function Extras() {
         dispatch({ type: 'APPLY_SHADOW_EFFECT', payload: { shadowEffect: data.checked } });
     }
 
+    const applyResetAll = () => {
+        dispatch({ type: 'APPLY_RESET' });
+    }
+
     return (
         <>
             <h2>Extras</h2>
@@ -57,8 +61,13 @@ function Extras() {
                     <Input size='mini' min='0' max='2' inverted={isActive} onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} value={parseFloat(state.resolutionScale)} />
                 } content={instructions.resolutionScale} />
 
-            Use Shadow Effect
-            <br /><Checkbox style={{ marginTop: '1rem' }} slider onChange={applyShadowEffect} defaultChecked={JSON.parse(state.shadowEffect)} />
+            <div style={{ margin: '1rem' }}>
+                Use Shadow Effect
+                <Checkbox style={{ marginLeft: '1rem' }} slider onChange={applyShadowEffect} defaultChecked={JSON.parse(state.shadowEffect)} />
+            </div>
+
+            <Popup on='click' position='right center' inverted={isActive} content={<Button color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>} trigger={<Button icon='repeat' inverted={isActive} />} />
+            
         </>
     );
 }

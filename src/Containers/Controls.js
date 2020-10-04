@@ -72,6 +72,8 @@ function reducer(state, action) {
             return { ...state, resolutionScale: action.payload.resolutionScale }
         case 'APPLY_SHADOW_EFFECT':
             return { ...state, shadowEffect: action.payload.shadowEffect }
+        case 'APPLY_RESET':
+            return { ...initialState }
 
         default:
             return state;
