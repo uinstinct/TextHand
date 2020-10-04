@@ -42,6 +42,7 @@ function Generated(props) {
         <div className="generated container" id="page-container" >
             <div className="generated core" id="page-content" style={manipulatedStyles} dangerouslySetInnerHTML={{ __html: madeHTML }} >
             </div>
+            <div id="overlay" className="generated overlay"></div>
         </div>
     )
 

@@ -83,7 +83,7 @@ function Font() {
                         Font Family
                         <Popup inverted={isActive} trigger=
                             {
-                                <Input type='file' accept='.ttf,.otf' loading={loading} inverted={isActive} onChange={changeFontFamily} style={{ marginLeft: '1rem' }} />
+                                <Input type='file' size='small' accept='.ttf,.otf' loading={loading} inverted={isActive} onChange={changeFontFamily} style={{ marginLeft: '1rem' }} />
                             } content='Upload files of .ttf and .otf format only' />
 
                     </GridColumn>

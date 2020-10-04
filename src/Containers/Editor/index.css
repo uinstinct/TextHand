@@ -1,6 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
-.generated.container {  
+body[data-theme='dark'] .ui.form textarea {
+    background-color: #1d2d50;
+    color: #eeecda;
+}
+
+body[data-theme='dark'] .ui.form textarea::selection {
+    color: aqua;
+}
+
+.text-area.container {
+    font-size: 1.5rem;
+}
+
+.text-area.core {
+    margin-right: 1.2rem;
+    height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
+    width: 450px;
+}
+
+.generated.container {
     width: 400px;
     height: calc(11.13 * 400px / 8.3); /* A4 Ratio */
     background: url(../../assets/paper-2.jpg);
@@ -14,7 +33,6 @@
     overflow-y: auto;
     scrollbar-color: transparent;
     scrollbar-width: thin;
-
     white-space: pre-wrap;
     /*    width: 450px;*/
     /*height: calc(11.7 * 400px / 8.3);*/ /* A4 Ratio */
@@ -24,25 +42,16 @@
     /*    background: rgb(60,60,62);
     background: linear-gradient(90deg, rgba(60,60,62,0.8830882694874825) 0%, rgba(247,247,255,0.9335084375547094) 61%);*/
 }
+
 .generated.core {
     transform: rotate(30);
 }
 
-.text-area.container{
-    font-size: 1.5rem;
-}
-
-.text-area.core {
-    margin-right: 1.2rem;
-    height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
-    width: 450px;
-}
-
-body[data-theme='dark'] .ui.form textarea {
-    background-color: #1d2d50;
-    color: #eeecda;
-}
-
-body[data-theme='dark'] .ui.form textarea::selection {
-    color: aqua;
+.generated.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
 }
