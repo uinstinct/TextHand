@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn, Input, Checkbox, Dropdown, Popup } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn, Input, Dropdown, Popup } from 'semantic-ui-react';
 
 const options = [
     {
@@ -65,6 +65,11 @@ function Font() {
         dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value } });
     }
 
+    const changeFontSizeRandom = (event) => {
+        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
+        dispatch({ type: 'CHANGE_FONT_SIZE_RANDOM', payload: { fontSizeRandom: value } });
+    }
+
     const changeInkColour = (event, data) => {
         dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: data.value } });
     }
@@ -97,8 +102,8 @@ function Font() {
                     </GridColumn>
                     <GridColumn>
 
-                        Randomize
-                            <Checkbox style={{ marginTop: '1.5rem', marginLeft: '1rem' }} />
+                        Randomize Value
+                            <input type='number' min='0' max='20' style={{ width: '3rem' }} onChange={changeFontSizeRandom} value={state.fontSizeRandom} />
 
                     </GridColumn>
                 </GridRow>

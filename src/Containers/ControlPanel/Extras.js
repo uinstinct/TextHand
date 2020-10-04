@@ -23,10 +23,14 @@ function addImageToBackground(fileObj) {
 
 function Extras() {
     const { isActive } = useContext(DarkTheme);
-    const [state,dispatch] = useControl();
+    const [state, dispatch] = useControl();
 
     const changeBackgroundImage = event => {
         addImageToBackground(event.target.files[0]);
+    }
+    const changeToWhiteBackground = () => {
+        var editorContainer = document.getElementById('page-container');
+        editorContainer.style.background = "white";
     }
 
     const changeResolutionScale = event => {
@@ -50,8 +54,14 @@ function Extras() {
             <Popup inverted={isActive}
                 trigger=
                 {
-                    <Input size='small' type='file' accept='.jpg,.jpeg,.png' inverted={isActive} onChange={changeBackgroundImage} />
-                } content={instructions.imageUpload} />
+                    <span>
+                        <Input size='mini' type='file' accept='.jpg,.jpeg,.png' inverted={isActive} onChange={changeBackgroundImage} />
+                        <Button style={{ marginLeft: '0.2rem' }} size='mini' inverted={isActive} icon='repeat' onClick={changeToWhiteBackground} />
+                    </span>
+                } content={instructions.imageUpload}>
+
+            </Popup>
+
 
             <div style={{ margin: '10px 0' }} />
 
@@ -66,8 +76,10 @@ function Extras() {
                 <Checkbox style={{ marginLeft: '1rem' }} slider onChange={applyShadowEffect} defaultChecked={JSON.parse(state.shadowEffect)} />
             </div>
 
-            <Popup on='click' position='right center' inverted={isActive} content={<Button color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>} trigger={<Button icon='repeat' inverted={isActive} />} />
-            
+            <Popup on='click' position='right center' inverted={isActive}
+                content={<Button color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>}
+                trigger={<Button icon='repeat' inverted={isActive} />} />
+
         </>
     );
 }

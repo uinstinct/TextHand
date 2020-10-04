@@ -7,7 +7,7 @@ let content = null;
 function randomizeLetters(letter) {
 
     const randomValue = Math.random();
-    const randomScale = ((randomValue * 4) + parseInt(copyControls.fontSize)).toFixed(2);
+    const randomScale = ((randomValue * copyControls.fontSizeRandom) + parseInt(copyControls.fontSize)).toFixed(2);
 
     let wrappedLetter = document.createElement('span');
     wrappedLetter.style.fontSize = randomScale + 'px';
@@ -59,6 +59,7 @@ async function generateImages() {
 
 
     const copiedText = content.innerHTML.trim();
+    container.style.overflowY= 'hidden';
 
     if (totalPages > 1) {
         const splitContent = copiedText
@@ -79,6 +80,8 @@ async function generateImages() {
                 } else if (word === '<br>') {
                     words.push(word);
                 } else {
+                    //words.push(word);
+
                     const styledWord = randomizeWord(word);
                     words.push(styledWord.outerHTML);
                 }
@@ -102,8 +105,8 @@ async function generateImages() {
 
             overlay.style.display = 'none';
             overlay.style.background = 'none';
-
         }
+        container.style.overflowY = 'scroll';
 
     } else {
         const canvas = await convertDIVToImage();

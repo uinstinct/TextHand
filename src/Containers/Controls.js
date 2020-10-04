@@ -5,7 +5,8 @@ const initialState = {
     // fonts
     fontFamily: 'Homemade Apple, cursive',
     fontWeight: 400,
-    fontSize: 20,
+    fontSize: '20px',
+    fontSizeRandom: 0,
     color: 'blue',
 
     // margins
@@ -43,11 +44,13 @@ function reducer(state, action) {
         case 'CHANGE_FONT_FAMILY':
             return { ...state, fontFamily: action.payload.fontFamily };
         case 'CHANGE_FONT_SIZE':
-            return { ...state, fontSize: action.payload.fontSize+'px' };
+            return { ...state, fontSize: action.payload.fontSize + 'px' };
+        case 'CHANGE_FONT_SIZE_RANDOM':
+            return { ...state, fontSizeRandom: action.payload.fontSizeRandom };
         case 'CHANGE_FONT_COLOUR':
             return { ...state, color: action.payload.fontColour };
         case 'CHANGE_FONT_WEIGHT':
-            return { ...state, fontWeight: action.payload.fontWeight }
+            return { ...state, fontWeight: action.payload.fontWeight };
 
         // MARGINS
         case 'CHANGE_MARGIN_LEFT':

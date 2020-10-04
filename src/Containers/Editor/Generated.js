@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { useControl } from '../Controls';
 
-function createHTML(text) {
+/*function createHTML(text) {
 
     // THIS NEEDS RECONSIDERATION
 
@@ -21,12 +21,12 @@ function createHTML(text) {
     //})
 
     //return theHTML;
-}
+}*/
 
 function Generated(props) {
     // override the problems from the done github app
 
-    const state = useControl()[0]; // const [state, dispatch] = useControl();
+    const state = useControl()[0];
 
     const manipulatedStyles = useMemo(() => {
 
@@ -35,8 +35,8 @@ function Generated(props) {
         }
     }, [state]);
 
-    const madeHTML = useMemo(() => createHTML(props.text), [props.text]);
-
+    //const madeHTML = useMemo(() => createHTML(props.text), [props.text]);
+    const madeHTML = props.text;
 
     return (
         <div className="generated container" id="page-container" >
