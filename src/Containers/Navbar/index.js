@@ -26,6 +26,11 @@ export default function NavbarIndex() {
                         name='home'
                         active={true}
                     />
+                    <Menu.Item >
+                        <a target='_blank' rel='noopener noreferrer' href="https://t.me/AdityaMitra" >
+                            Report a Bug
+                        </a>
+                    </Menu.Item>
                     <Menu.Item position='right'>
                         <Button color='olive' inverted={darkTheme.isActive} onClick={() => setShowRules(true)} style={{ marginRight: '2rem' }}>
                             Show Guide
