@@ -28,7 +28,7 @@ export default function NavbarIndex() {
                     />
                     <Menu.Item position='right'>
                         <Button color='olive' inverted={darkTheme.isActive} onClick={() => setShowRules(true)} style={{ marginRight: '2rem' }}>
-                            Show Rules
+                            Show Guide
                         </Button>
                         <Checkbox toggle
                             checked={darkTheme.isActive}

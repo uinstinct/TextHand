@@ -56,7 +56,7 @@ function Extras() {
                 {
                     <span>
                         <Input size='mini' type='file' accept='.jpg,.jpeg,.png' inverted={isActive} onChange={changeBackgroundImage} />
-                        <Button style={{ marginLeft: '0.2rem' }} size='mini' inverted={isActive} icon='repeat' onClick={changeToWhiteBackground} />
+                        <Button circular style={{ marginLeft: '0.2rem' }} size='mini' inverted={isActive} icon='repeat' onClick={changeToWhiteBackground} />
                     </span>
                 } content={instructions.imageUpload}>
 
@@ -77,7 +77,7 @@ function Extras() {
             </div>
 
             <Popup on='click' position='right center' inverted={isActive}
-                content={<Button color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>}
+                content={<Button size='massive' color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>}
                 trigger={<Button icon='repeat' inverted={isActive} />} />
 
         </>

@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn, Input, Checkbox } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn, Input } from 'semantic-ui-react';
 
 function Spacing() {
     const { isActive } = useContext(DarkTheme);
@@ -33,12 +33,6 @@ function Spacing() {
 
                         Word Spacing
                             <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} value={parseFloat(state.wordSpacing)} onChange={changeWordSpacing} />
-
-                    </GridColumn>
-                    <GridColumn style={{ marginLeft: '0.5rem' }}>
-
-                        Randomize
-                            <Checkbox style={{ marginTop: '1.5rem', marginLeft: '1rem' }} />
 
                     </GridColumn>
                 </GridRow>

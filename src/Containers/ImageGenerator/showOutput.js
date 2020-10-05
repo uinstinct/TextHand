@@ -3,7 +3,7 @@ import { saveAs } from 'file-saver';
 
 import { DarkTheme } from '../../Themes';
 
-import { Image, Segment, Grid, GridRow, GridColumn, Button, Label, Icon } from 'semantic-ui-react';
+import { Image, Segment, Grid, GridRow, GridColumn, Button, Label, Icon, Dimmer, Loader, Placeholder } from 'semantic-ui-react';
 
 function ShowOutput(props) {
     const { isActive } = useContext(DarkTheme);
@@ -55,16 +55,29 @@ function ShowOutput(props) {
     return (
         <>
             <Segment inverted={isActive} >
-                <Grid stackable>
-                    {images.length > 0 ?
-                        <>
-                            <Button inverted={isActive} onClick={doDownloadAll}>Download All</Button>
-                            <Button floated='right' inverted={isActive} onClick={props.removeAllImages}>Remove All Images</Button>
-                            {images}
-                        </>
-                        : <h3>Start Generating</h3>
-                    }
-                </Grid>
+                {props.loading && images.length === 0 ?
+                    <>
+                        <Dimmer active>
+                            <Loader indeterminate>Preparing your Images</Loader>
+                        </Dimmer>
+                        <Placeholder>
+                            <Placeholder.Image>
+                            </Placeholder.Image>
+                        </Placeholder>
+                    </>
+                    :
+
+                    <Grid stackable>
+                        {images.length > 0 ?
+                            <>
+                                <Button inverted={isActive} onClick={doDownloadAll}>Download All</Button>
+                                <Button floated='right' inverted={isActive} onClick={props.removeAllImages}>Remove All Images</Button>
+                                {images}
+                            </>
+                            : <h3>Start Generating</h3>
+                        }
+                    </Grid>
+                }
             </Segment>
         </>
     );

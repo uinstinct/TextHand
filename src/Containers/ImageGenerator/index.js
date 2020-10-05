@@ -50,10 +50,10 @@ function ImageGenerator() {
                         </Segment>
                     </GridColumn>
                 </GridRow>
-                <GridRow style={{ margin: '0 1rem' }}>
-                    <GridColumn stretched>
+                <GridRow style={{ margin: '0 1rem' }} >
+                    <GridColumn >
                         <h3>Showing output here</h3>
-                        <ShowOutput images={images} removeImage={removeImage} removeAllImages={removeAllImages} />
+                        <ShowOutput images={images} removeImage={removeImage} removeAllImages={removeAllImages} loading={loading}/>
                     </GridColumn>
                 </GridRow>
             </Grid>
