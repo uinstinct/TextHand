@@ -1,5 +1,6 @@
 import React, { useMemo, useContext } from 'react';
 import { saveAs } from 'file-saver';
+import { jsPDF } from 'jspdf';
 
 import { DarkTheme } from '../../Themes';
 
@@ -52,6 +53,21 @@ function ShowOutput(props) {
         })
     }
 
+    const doDownloadAllAsPDF = () => {
+        const doc = new jsPDF('p', 'pt', 'a4');
+        const width = doc.internal.pageSize.width;
+        const height = doc.internal.pageSize.height;
+
+        for (const i in allImageURLs) {
+            doc.text(10, 20, '');
+            doc.addImage(allImageURLs[i], 'JPEG', 25, 50, width - 50, height - 80, 'image-true');
+            if (i != allImageURLs.length - 1)
+                doc.addPage();
+        }
+        doc.save();
+
+    }
+
     return (
         <>
             <Segment inverted={isActive} >
@@ -70,8 +86,15 @@ function ShowOutput(props) {
                     <Grid stackable>
                         {images.length > 0 ?
                             <>
-                                <Button inverted={isActive} onClick={doDownloadAll}>Download All</Button>
-                                <Button floated='right' inverted={isActive} onClick={props.removeAllImages}>Remove All Images</Button>
+                                <GridRow columns={3}>
+                                    <GridColumn floated='left'>
+                                        <Button inverted={isActive} onClick={doDownloadAll}><Icon name='download' inverted={isActive} />Download All</Button>
+                                        <Button floated='right' inverted={isActive} onClick={props.removeAllImages}>Remove All Images</Button>
+                                    </GridColumn>
+                                    <GridColumn floated='right'>
+                                        <Button inverted={isActive} onClick={doDownloadAllAsPDF}><Icon name='file pdf' inverted={isActive} /> Download All as PDF</Button>
+                                    </GridColumn>
+                                </GridRow>
                                 {images}
                             </>
                             : <h3>Start Generating</h3>
