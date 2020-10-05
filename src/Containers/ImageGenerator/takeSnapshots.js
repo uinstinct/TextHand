@@ -37,6 +37,7 @@ function randomizeWord(word) {
 async function convertDIVToImage() {
     const options = {
         logging: false,
+        useCORS: true,
         scrollX: 0,
         scrollY: -(window.scrollY + 22.5),
         scale: copyControls.resolutionScale // this controls the resolution
@@ -70,6 +71,7 @@ async function generateImages() {
 
         let currentWordPos = 0;
 
+
         for (let i = 0; i < totalPages; i++) {
             let words = [];
             let text = "";
@@ -81,7 +83,7 @@ async function generateImages() {
                     break;
                 } else if (word === '<br>') {
                     words.push(word);
-                } else if (JSON.parse(copyControls.fontSizeRandom) === 0) {
+                }else if (JSON.parse(copyControls.fontSizeRandom) === 0) {
                     words.push(word);
                 } else {
                     const styledWord = randomizeWord(word);
@@ -109,7 +111,8 @@ async function generateImages() {
             }
 
             const canvas = await convertDIVToImage();
-            images.push(canvas);
+            const image = canvas.toDataURL('image/jpeg');
+            images.push(image);
 
             overlay.style.display = 'none';
             overlay.style.background = 'none';

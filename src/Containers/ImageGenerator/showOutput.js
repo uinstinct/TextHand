@@ -21,7 +21,7 @@ function ShowOutput(props) {
 
                 for (let j = i; j < props.images.length && j < i + 4; j++) {
 
-                    const imageURL = props.images[j].toDataURL('image/jpeg')
+                    const imageURL = props.images[j];
                     allImageURLs.push(imageURL);
 
                     const col =
@@ -29,7 +29,7 @@ function ShowOutput(props) {
                             <Label circular attached='top right' color='red' style={{ cursor: 'pointer' }} onClick={() => props.removeImage(j)}>
                                 <Icon inverted={isActive} name='close' size='big' />
                             </Label>
-                            <br/>
+                            <br />
                             <Image src={imageURL} size='large' />
                             <br />
                             <a download href={imageURL} >
@@ -61,7 +61,7 @@ function ShowOutput(props) {
         for (const i in allImageURLs) {
             doc.text(10, 20, '');
             doc.addImage(allImageURLs[i], 'JPEG', 25, 50, width - 50, height - 80, 'image-true');
-            if (i != allImageURLs.length - 1)
+            if (i !== allImageURLs.length - 1)
                 doc.addPage();
         }
         doc.save();
@@ -97,7 +97,8 @@ function ShowOutput(props) {
                                 </GridRow>
                                 {images}
                             </>
-                            : <h3>Start Generating</h3>
+                            : 
+                            <h3>Start Generating</h3>
                         }
                     </Grid>
                 }
