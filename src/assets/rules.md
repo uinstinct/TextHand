@@ -17,6 +17,11 @@ When you check the **randomize Checkboxes**, random variations will be applied.
 
 *Each letter* of your word will have a random size variation.
 
+- When you set this random font size value to **0**, then there will be **no randomization** applied.
+
+- Applying randomization of font size, consumes more ram and there is *very slight possibility* that the script might not run and *slow down your browser*.
+In that case, just try to close the other tabs of your browser.
+
 ##### 2. Random Spacing
 
 Need help in this. Not yet implemented
