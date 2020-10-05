@@ -77,8 +77,8 @@ function Extras() {
             </div>
 
             <Popup on='click' position='right center' inverted={isActive}
-                content={<Button size='massive' color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>}
-                trigger={<Button icon='repeat' inverted={isActive} />} />
+                content={<Button size='big' color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>}
+                trigger={<Button icon='repeat' inverted={isActive} size='big' />} />
 
         </>
     );

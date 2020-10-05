@@ -10,6 +10,7 @@ function randomizeLetters(letter) {
     const randomScale = ((randomValue * JSON.parse(copyControls.fontSizeRandom)) + parseInt(copyControls.fontSize)).toFixed(2);
 
     let wrappedLetter = document.createElement('span');
+    wrappedLetter.style = "all:unset";
     wrappedLetter.style.fontSize = randomScale + 'px';
     wrappedLetter.innerText = letter;
 
@@ -27,6 +28,7 @@ function randomizeWord(word) {
     const styledLetters = letters.join('');
     let wordWrapper = document.createElement('span');
     wordWrapper.innerHTML = styledLetters;
+    wordWrapper.style = 'all:unset';
 
     return wordWrapper;
 
@@ -65,7 +67,7 @@ async function generateImages() {
         const splitContent = copiedText
                                 .replace(/\n/g, ' <br> ')
                                 .split(/\s+/g);
-        console.log(splitContent, 'when array');
+
         let currentWordPos = 0;
 
         for (let i = 0; i < totalPages; i++) {
@@ -93,8 +95,7 @@ async function generateImages() {
 
             // remove the last word
             currentWordPos--;
-            const p = words.pop(words[currentWordPos]);
-            console.info(p);
+            words.pop(words[currentWordPos]);
             text = words.join(' ');
             content.innerHTML = text;
 
