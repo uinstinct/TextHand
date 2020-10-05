@@ -59,7 +59,7 @@ async function generateImages() {
 
 
     const copiedText = content.innerHTML.trim();
-    container.style.overflowY= 'hidden';
+    container.style.overflowY = 'hidden';
 
     if (totalPages > 1) {
         const splitContent = copiedText
@@ -93,8 +93,8 @@ async function generateImages() {
 
             // remove the last word
             currentWordPos--;
-            console.log(words[currentWordPos]);
-            delete words[currentWordPos];
+            const p = words.pop(words[currentWordPos]);
+            console.info(p);
             text = words.join(' ');
             content.innerHTML = text;
 
