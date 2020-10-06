@@ -21,7 +21,7 @@ function ShowOutput(props) {
 
                 for (let j = i; j < props.images.length && j < i + 4; j++) {
 
-                    const imageURL = props.images[j];
+                    const imageURL = props.images[j].toDataURL();
                     allImageURLs.push(imageURL);
 
                     const col =
@@ -60,7 +60,7 @@ function ShowOutput(props) {
 
         for (const i in allImageURLs) {
             doc.text(10, 20, '');
-            doc.addImage(allImageURLs[i], 'JPEG', 25, 50, width - 50, height - 80, 'image-true');
+            doc.addImage(allImageURLs[i], 'JPEG', 25, 50, width - 50, height - 80, 'image-' + i);
             if (i !== allImageURLs.length - 1)
                 doc.addPage();
         }

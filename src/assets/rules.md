@@ -11,7 +11,6 @@ If you again want to regenerate this page, you will have to make atleast **1 cha
 
 ### Randomization
 
-When you check the **randomize Checkboxes**, random variations will be applied.
 
 ##### 1. Random Font Size
 
@@ -37,13 +36,7 @@ This indicates the [scale](https://html2canvas.hertzen.com/configuration) of the
 
 ## Problems
 
-1. Anything written in between `< >` these will be **taken as HTML** because we are replacing the text with innerHTML of the *div*
-
-2. The **Generated Container** and the **Generated Image** have different views.
-
-3. Randomize Checkboxed in **Word Spacing** and **Font Size** are not connected.
-    By default letters of all words are randomized.
-
+1. The **Generated Container** and the **Generated Image** have different views *only when random font size is applied.*
 
 ---
 

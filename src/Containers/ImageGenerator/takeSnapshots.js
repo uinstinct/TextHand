@@ -18,7 +18,6 @@ function randomizeLetters(letter) {
 }
 
 function randomizeWord(word) {
-
     let letters = word.split('');
     for (let i = 0; i < letters.length; i++) {
         letters[i] = randomizeLetters(letters[i]);
@@ -30,6 +29,9 @@ function randomizeWord(word) {
     wordWrapper.innerHTML = styledLetters;
     wordWrapper.style = 'all:unset';
 
+    const randomRotation = Math.random() * 6;
+    wordWrapper.style.transform = `rotate(-${randomRotation}deg)`;
+
     return wordWrapper;
 
 }
@@ -37,7 +39,6 @@ function randomizeWord(word) {
 async function convertDIVToImage() {
     const options = {
         logging: false,
-        useCORS: true,
         scrollX: 0,
         scrollY: -(window.scrollY + 22.5),
         scale: copyControls.resolutionScale // this controls the resolution
@@ -69,6 +70,7 @@ async function generateImages() {
                                 .replace(/\n/g, ' <br> ')
                                 .split(/\s+/g);
 
+
         let currentWordPos = 0;
 
 
@@ -83,14 +85,17 @@ async function generateImages() {
                     break;
                 } else if (word === '<br>') {
                     words.push(word);
-                }else if (JSON.parse(copyControls.fontSizeRandom) === 0) {
+                } else if (parseInt(copyControls.fontSizeRandom) === 0) {
                     words.push(word);
+                } else if (word.includes('&lt') || word.includes('&gt')) {
+                    words.push(word)
                 } else {
                     const styledWord = randomizeWord(word);
                     words.push(styledWord.outerHTML);
                 }
 
                 text = words.join(' ');
+
                 content.innerHTML = text;
                 currentWordPos++;
             }
@@ -111,8 +116,7 @@ async function generateImages() {
             }
 
             const canvas = await convertDIVToImage();
-            const image = canvas.toDataURL('image/jpeg');
-            images.push(image);
+            images.push(canvas);
 
             overlay.style.display = 'none';
             overlay.style.background = 'none';

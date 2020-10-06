@@ -7,7 +7,7 @@ const initialState = {
     fontWeight: 400,
     fontSize: '20px',
     fontSizeRandom: 0,
-    color: 'blue',
+    color: 'rgb(0, 15, 85)',
 
     // margins
     marginLeft: '1rem',
