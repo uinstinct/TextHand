@@ -1,3 +1,8 @@
 .imggen.container{
     padding: 1rem 1rem;
 }
+
+.outputarea.noimages{
+    margin: 3rem;
+    padding-left: 3rem;
+}

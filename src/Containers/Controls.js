@@ -8,6 +8,7 @@ const initialState = {
     fontSize: '20px',
     fontSizeRandom: 0,
     color: 'rgb(0, 15, 85)',
+    wordRotation: 0,
 
     // margins
     marginLeft: '1rem',
@@ -51,7 +52,8 @@ function reducer(state, action) {
             return { ...state, color: action.payload.fontColour };
         case 'CHANGE_FONT_WEIGHT':
             return { ...state, fontWeight: action.payload.fontWeight };
-
+        case 'CHANGE_WORD_ROTATION':
+            return { ...state, wordRotation: action.payload.wordRotation };
         // MARGINS
         case 'CHANGE_MARGIN_LEFT':
             return { ...state, marginLeft: action.payload.marginLeft+'px' }

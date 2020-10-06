@@ -29,8 +29,9 @@ function randomizeWord(word) {
     wordWrapper.innerHTML = styledLetters;
     wordWrapper.style = 'all:unset';
 
-    const randomRotation = Math.random() * 6;
-    wordWrapper.style.transform = `rotate(-${randomRotation}deg)`;
+    const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
+    const randomRotation = Math.random() * parseFloat(copyControls.wordRotation) * sign;
+    wordWrapper.style.transform = `rotate(${randomRotation}deg)`;
 
     return wordWrapper;
 

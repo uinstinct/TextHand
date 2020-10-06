@@ -60,8 +60,8 @@ function Font() {
         setLoading(false);
     }
 
-    const changeFontSize = (event, data) => {
-        const value = data.value === '' ? 0 : parseInt(data.value);
+    const changeFontSize = (event) => {
+        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
         dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value } });
     }
 
@@ -70,12 +70,17 @@ function Font() {
         dispatch({ type: 'CHANGE_FONT_SIZE_RANDOM', payload: { fontSizeRandom: value } });
     }
 
-    const changeInkColour = (event, data) => {
-        dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: data.value } });
+    const changeInkColour = (event) => {
+        dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: event.target.value } });
     }
 
-    const changeFontWeight = (event, data) => {
-        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: data.value } });
+    const changeFontWeight = (event) => {
+        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: event.target.value } });
+    }
+
+    const changeWordRotation = (event) => {
+        const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
+        dispatch({ type: 'CHANGE_WORD_ROTATION', payload: { wordRotation: value } });
     }
 
     return (
@@ -124,6 +129,14 @@ function Font() {
                             openOnFocus closeOnEscape
                             style={{ marginLeft: '2rem' }}
                         />
+
+                    </GridColumn>
+                </GridRow>
+                <GridRow columns={1}>
+                    <GridColumn>
+
+                        Word Rotation (in degs)
+                            <br /><Input size='small' type='number' step='0.1' min='0' max='10' onChange={changeWordRotation} value={parseFloat(state.wordRotation)} />
 
                     </GridColumn>
                 </GridRow>

@@ -5,6 +5,7 @@ import { jsPDF } from 'jspdf';
 import { DarkTheme } from '../../Themes';
 
 import { Image, Segment, Grid, GridRow, GridColumn, Button, Label, Icon, Dimmer, Loader, Placeholder } from 'semantic-ui-react';
+import "./index.css";
 
 function ShowOutput(props) {
     const { isActive } = useContext(DarkTheme);
@@ -69,7 +70,7 @@ function ShowOutput(props) {
     }
 
     return (
-        <>
+        <div className="outputarea">
             <Segment inverted={isActive} >
                 {props.loading && images.length === 0 ?
                     <>
@@ -97,13 +98,15 @@ function ShowOutput(props) {
                                 </GridRow>
                                 {images}
                             </>
-                            : 
-                            <h3>Start Generating</h3>
+                            :
+                            <div className="outputarea noimages">
+                                <h3>Start Generating</h3>
+                            </div>
                         }
                     </Grid>
                 }
             </Segment>
-        </>
+        </div>
     );
 }
 

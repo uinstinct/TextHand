@@ -21,7 +21,18 @@ If you again want to regenerate this page, you will have to make atleast **1 cha
 - Applying randomization of font size, consumes more ram and there is *very slight possibility* that the script might not run and *slow down your browser*.
 In that case, just try to close the other tabs of your browser.
 
-##### 2. Random Spacing
+##### 2. Random Rotation
+
+This property is indicated by the input labelled **Word Rotation**. A *random* value between `0` and `input integer` will be applied to each word in your text. The values is in `degrees`.
+
+- This **can only be applied** when random *fontSize* has **`value > 0`**.
+
+- For the best result, we suggest you to apply keep *random fontSize* value to low (between `1` and `3`).
+
+- Do not use a value greater than `5`.
+
+
+##### 3. Random Spacing
 
 Need help in this. Not yet implemented
 
