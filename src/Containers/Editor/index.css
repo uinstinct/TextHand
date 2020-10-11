@@ -28,7 +28,7 @@ body[data-theme='dark'] .ui.form textarea::selection {
 
 .generated.container {
     width: 400px;
-    height: calc(10.92 * 400px / 8.3); /*A4 Ratio*/
+    height: calc(11.7 * 400px / 8.3); /*A4 Ratio*/
     background: url(../../assets/paper-2.jpg);
     background-size: cover;
     border: 1px solid var(--elevation-background);

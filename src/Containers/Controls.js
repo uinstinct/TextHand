@@ -5,7 +5,7 @@ const initialState = {
     // fonts
     fontFamily: 'Homemade Apple, cursive',
     fontWeight: 400,
-    fontSize: '20px',
+    fontSize: '10px',
     fontSizeRandom: 0,
     color: 'rgb(0, 15, 85)',
     wordRotation: 0,
@@ -19,7 +19,7 @@ const initialState = {
     // spacing
     wordSpacing: '4px',
     letterSpacing: '1px',
-    lineHeight: 1.2,
+    lineHeight: 1,
 
     // extras
     resolutionScale: 1,
