@@ -1,6 +1,6 @@
 {
-  "short_name": "React Text Handwriting",
-  "name": "Text to Handwriting using React",
+  "short_name": "Text Hand",
+  "name": "The Text-to-Handwriting Converter customized to the Core and built for Convenience.",
   "icons": [
     {
       "src": "favicon.ico",

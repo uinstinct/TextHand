@@ -19,9 +19,12 @@ function randomizeLetters(letter) {
 
 function randomizeWord(word) {
     let letters = word.split('');
-    for (let i = 0; i < letters.length; i++) {
-        letters[i] = randomizeLetters(letters[i]);
-        letters[i] = letters[i].outerHTML;
+
+    if (parseInt(copyControls.fontSizeRandom) !== 0) {
+        for (let i = 0; i < letters.length; i++) {
+            letters[i] = randomizeLetters(letters[i]);
+            letters[i] = letters[i].outerHTML;
+        }
     }
 
     const styledLetters = letters.join('');
@@ -60,7 +63,7 @@ async function generateImages() {
     const scrollHeight = content.scrollHeight;
     const clientHeight = 514; // height of .page-content when there is no content (increase this value to remove space at the bottom)
 
-    const totalPages = Math.ceil(scrollHeight / clientHeight) + 2; // always add +1 to get the extra page to due to random font size
+    const totalPages = Math.ceil(scrollHeight / clientHeight) + 3; // always add +1 to get the extra page to due to random font size
 
 
     const copiedText = content.innerHTML.trim();
@@ -86,9 +89,7 @@ async function generateImages() {
                     break;
                 } else if (word === '<br>') {
                     words.push(word);
-                } else if (parseInt(copyControls.fontSizeRandom) === 0) {
-                    words.push(word);
-                } else if (word.includes('&lt') || word.includes('&gt')) {
+                } else if (word.includes('&lt') || word.includes('&gt') || word.includes('&amp')) {
                     words.push(word)
                 } else {
                     const styledWord = randomizeWord(word);

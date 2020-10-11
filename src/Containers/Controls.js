@@ -17,7 +17,7 @@ const initialState = {
     marginBottom: 0,
 
     // spacing
-    wordSpacing: '0.25em',
+    wordSpacing: '4px',
     letterSpacing: '1px',
     lineHeight: 1.2,
 

@@ -47,29 +47,7 @@ This indicates the [scale](https://html2canvas.hertzen.com/configuration) of the
 
 ## Problems
 
-1. The **Generated Container** and the **Generated Image** have different views *only when random font size is applied.*
+1. The **Generated Container** and the **Generated Image** have different views.
+2. Fix **indentation spacing.**
 
 ---
-
-## Built By
-
-<div class='builtby'>
-
-<div class='image'>
-
-
-<img class ="ui avatar small circular bordered image" loading="lazy" src="https://avatars0.githubusercontent.com/u/56789607?s=460&v=4">
-
-### assdriller
-
-</div>
-
-<div class='image'>
-
-<img class="ui avatar image small ciruclar bordered" loading="lazy" src="https://avatars1.githubusercontent.com/u/61635505?s=460&u=b0ab7424c6c2303b6b16d51dda8bb4d38f7b4c3e&v=4">
-
-### uinstinct
-
-</div>
-
-</div>

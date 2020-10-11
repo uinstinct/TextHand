@@ -50,7 +50,7 @@ function ShowOutput(props) {
 
     const doDownloadAll = () => {
         allImageURLs.forEach((imageURL, index) => {
-            saveAs(imageURL, `${index}.jpg` )
+            saveAs(imageURL, `${index + 1 < 10 ? "0" + (index + 1) : index + 1}.jpg`);
         })
     }
 
