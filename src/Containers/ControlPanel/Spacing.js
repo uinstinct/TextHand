@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn, Input } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
 function Spacing() {
     const { isActive } = useContext(DarkTheme);
@@ -32,7 +32,7 @@ function Spacing() {
                     <GridColumn>
 
                         Word Spacing
-                            <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} value={parseFloat(state.wordSpacing)} onChange={changeWordSpacing} />
+                            <input type="text" style={{ marginLeft: '1rem' }} value={parseFloat(state.wordSpacing)} onChange={changeWordSpacing} />
 
                     </GridColumn>
                 </GridRow>
@@ -40,7 +40,7 @@ function Spacing() {
                     <GridColumn>
 
                         Letter Spacing
-                            <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeLetterSpacing} value={parseFloat(state.letterSpacing)} />
+                            <input type="text" style={{ marginLeft: '1rem' }} onChange={changeLetterSpacing} value={parseFloat(state.letterSpacing)} />
 
                     </GridColumn>
                 </GridRow>
@@ -48,7 +48,7 @@ function Spacing() {
                     <GridColumn>
 
                         Line Height
-                        <Input size='mini' inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeLineHeight} value={state.lineHeight} />
+                        <input type="text" style={{ marginLeft: '1rem' }} onChange={changeLineHeight} value={state.lineHeight} />
                     </GridColumn>
 
                 </GridRow>

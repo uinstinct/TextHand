@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn, Input } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
 function Margin() {
     const { isActive } = useContext(DarkTheme);
@@ -36,21 +36,21 @@ function Margin() {
                 <GridRow>
                     <GridColumn>
                         Left
-                            <Input size={'mini'} inverted={isActive} value={parseInt(state.marginLeft)} onChange={changeMarginLeft} />
+                            <input type="number" value={parseInt(state.marginLeft)} onChange={changeMarginLeft} />
                     </GridColumn>
                     <GridColumn>
                         Right
-                            <Input size={'mini'} inverted={isActive} value={parseInt(state.marginRight)} onChange={changeMarginRight} />
+                            <input type="number" value={parseInt(state.marginRight)} onChange={changeMarginRight} />
                     </GridColumn>
                 </GridRow>
                 <GridRow>
                     <GridColumn>
                         Top
-                            <Input size={'mini'} inverted={isActive} value={parseInt(state.marginTop)} onChange={changeMarginTop} />
+                            <input type="number" value={parseInt(state.marginTop)} onChange={changeMarginTop} />
                     </GridColumn>
                     <GridColumn>
                         Bottom
-                            <Input size={'mini'} inverted={isActive} value={parseInt(state.marginBottom)} onChange={changeMarginBottom} />
+                            <input type="number" value={parseInt(state.marginBottom)} onChange={changeMarginBottom} />
                     </GridColumn>
                 </GridRow>
             </Grid>

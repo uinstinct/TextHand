@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
@@ -49,15 +49,10 @@ function addFontFromFile(fileObj) {
 function Font() {
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
-    const [loading, setLoading] = useState(false);
 
     const changeFontFamily = event => {
-        setLoading(true);
         addFontFromFile(event.target.files[0]);
-
         dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'temp-font' } });
-
-        setLoading(false);
     }
 
     const changeFontSize = (event) => {
@@ -93,7 +88,7 @@ function Font() {
                         Font Family
                         <Popup inverted={isActive} trigger=
                             {
-                                <Input type='file' size='small' accept='.ttf,.otf' loading={loading} inverted={isActive} onChange={changeFontFamily} style={{ marginLeft: '1rem' }} />
+                                <input type='file' accept='.ttf,.otf'  onChange={changeFontFamily} style={{ marginLeft: '1rem' }} />
                             } content='Upload files of .ttf and .otf format only' />
 
                     </GridColumn>
@@ -102,7 +97,7 @@ function Font() {
                     <GridColumn>
 
                         Font Size
-                            <Input size='mini' inverted={isActive} onChange={changeFontSize} value={parseInt(state.fontSize)} />
+                            <input type="number" onChange={changeFontSize} value={parseInt(state.fontSize)} min="0"/>
 
                     </GridColumn>
                     <GridColumn>
@@ -116,7 +111,7 @@ function Font() {
                     <GridColumn>
 
                         Ink Colour
-                            <Input type={'color'} inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeInkColour} />
+                            <Input type='color' inverted={isActive} style={{ marginLeft: '1rem' }} onChange={changeInkColour} />
 
                     </GridColumn>
                     <GridColumn>
@@ -136,7 +131,7 @@ function Font() {
                     <GridColumn>
 
                         Word Rotation (in degs)
-                            <br /><Input size='small' type='number' step='0.1' min='0' max='10' onChange={changeWordRotation} value={parseFloat(state.wordRotation)} />
+                            <br /><input size='small' type='number' step='0.1' min='0' max='10' onChange={changeWordRotation} value={parseFloat(state.wordRotation)} />
 
                     </GridColumn>
                 </GridRow>

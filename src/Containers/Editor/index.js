@@ -9,7 +9,6 @@ import "./index.css";
 
 
 function Editor() {
-    // override the problems from the done github one
     const { isActive } = useContext(DarkTheme)
 
     const [text, setText] = useState('');

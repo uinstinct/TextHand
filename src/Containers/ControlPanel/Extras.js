@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Input, Popup, Checkbox, Button } from 'semantic-ui-react';
+import { Popup, Checkbox, Button } from 'semantic-ui-react';
 
 
 const instructions = {
@@ -43,6 +43,7 @@ function Extras() {
     }
 
     const applyResetAll = () => {
+        localStorage.clear();
         dispatch({ type: 'APPLY_RESET' });
     }
 
@@ -55,7 +56,7 @@ function Extras() {
                 trigger=
                 {
                     <span>
-                        <Input size='mini' type='file' accept='.jpg,.jpeg,.png' inverted={isActive} onChange={changeBackgroundImage} />
+                        <input type='file' accept='.jpg,.jpeg,.png' onChange={changeBackgroundImage} />
                         <Button circular style={{ marginLeft: '0.2rem' }} size='mini' inverted={isActive} icon='repeat' onClick={changeToWhiteBackground} />
                     </span>
                 } content={instructions.imageUpload}>
@@ -68,7 +69,7 @@ function Extras() {
             Resolution Scale
             <Popup inverted={isActive}
                 trigger={
-                    <Input size='mini' min='0' max='2' step='0.1' inverted={isActive} onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} value={parseFloat(state.resolutionScale)} />
+                    <input min='0' max='2' step='0.1' onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} value={parseFloat(state.resolutionScale)} />
                 } content={instructions.resolutionScale} />
 
             <div style={{ margin: '1rem' }}>
