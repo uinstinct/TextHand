@@ -3,8 +3,9 @@ import { saveAs } from 'file-saver';
 import { jsPDF } from 'jspdf';
 
 import { DarkTheme } from '../../Themes';
+import GenerationProgress from '../GenerationProgress';
 
-import { Image, Segment, Grid, GridRow, GridColumn, Button, Label, Icon, Dimmer, Loader, Placeholder } from 'semantic-ui-react';
+import { Image, Segment, Grid, GridRow, GridColumn, Button, Label, Icon } from 'semantic-ui-react';
 import "./index.css";
 
 function ShowOutput(props) {
@@ -71,41 +72,28 @@ function ShowOutput(props) {
 
     return (
         <div className="outputarea">
-            <Segment inverted={isActive} >
-                {props.loading && images.length === 0 ?
-                    <>
-                        <Dimmer active>
-                            <Loader indeterminate>Preparing your Images</Loader>
-                        </Dimmer>
-                        <Placeholder>
-                            <Placeholder.Image>
-                            </Placeholder.Image>
-                        </Placeholder>
-                    </>
-                    :
-
-                    <Grid stackable>
-                        {images.length > 0 ?
-                            <>
-                                <GridRow columns={3}>
-                                    <GridColumn floated='left'>
-                                        <Button inverted={isActive} onClick={doDownloadAll}><Icon name='download' inverted={isActive} />Download All</Button>
-                                        <Button floated='right' inverted={isActive} onClick={props.removeAllImages}>Remove All Images</Button>
-                                    </GridColumn>
-                                    <GridColumn floated='right'>
-                                        <Button inverted={isActive} onClick={doDownloadAllAsPDF}><Icon name='file pdf' inverted={isActive} /> Download All as PDF</Button>
-                                    </GridColumn>
-                                </GridRow>
-                                {images}
-                            </>
-                            :
-                            <div className="outputarea noimages">
-                                <h3>Start Generating</h3>
-                            </div>
-                        }
-                    </Grid>
-                }
-            </Segment>
+            {props.loading || images.length === 0 ?
+                <>
+                    <GenerationProgress />
+                </>
+                :
+                <>
+                    <Segment inverted={isActive}>
+                        <Grid stackable>
+                            <GridRow columns={3}>
+                                <GridColumn floated='left'>
+                                    <Button inverted={isActive} onClick={doDownloadAll}><Icon name='download' inverted={isActive} />Download All</Button>
+                                    <Button floated='right' inverted={isActive} onClick={props.removeAllImages}>Remove All Images</Button>
+                                </GridColumn>
+                                <GridColumn floated='right'>
+                                    <Button inverted={isActive} onClick={doDownloadAllAsPDF}><Icon name='file pdf' inverted={isActive} /> Download All as PDF</Button>
+                                </GridColumn>
+                            </GridRow>
+                            {images}
+                        </Grid>
+                    </Segment>
+                </>
+            }
         </div>
     );
 }

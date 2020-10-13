@@ -28,7 +28,9 @@ function Main() {
                 </GridRow>
             </ControlProvider>
             <GridRow stretched>
-                <ImageGenerator />
+                <GridColumn>
+                    <ImageGenerator />
+                </GridColumn>
             </GridRow>
         </Grid>
     );

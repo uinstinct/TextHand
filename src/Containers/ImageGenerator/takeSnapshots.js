@@ -1,5 +1,6 @@
 import html2canvas from 'html2canvas';
 import { copyControls } from '../Controls';
+import { updateProgess } from '../GenerationProgress';
 
 let container = null;
 let content = null;
@@ -78,6 +79,9 @@ async function generateImages() {
 
 
     for (let i = 0; i < totalPages; i++) {
+        
+        updateProgess({ type: "INCREMENT_PROGRESS", payload: { i, totalPages } });
+
         let words = [];
         let text = "";
         content.innerHTML = "";

@@ -18,6 +18,8 @@ If you again want to regenerate this page, you will have to make atleast **1 cha
 
 - When you set this random font size value to **0**, then there will be **no randomization** applied.
 
+- It is better to apply **Margin Bottom** and increase the **line height** when random font size is applied.
+
 - Applying randomization of font size, consumes more ram and there is *very slight possibility* that the script might not run and *slow down your browser*.
 In that case, just try to close the other tabs of your browser.
 

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 
 import { DarkTheme } from '../../Themes';
+import { updateProgess } from '../GenerationProgress';
 
 import { generateImages } from './takeSnapshots';
 import ShowOutput from './showOutput';
@@ -16,6 +17,7 @@ function ImageGenerator() {
 
 
     const applyImageGeneration = async () => {
+        updateProgess({ type: "START" });
         setLoading(true);
         const canvases = await generateImages();
         const newImages = images.concat(canvases);
@@ -39,8 +41,8 @@ function ImageGenerator() {
 
     return (
         <div style={{ margin: "1rem", padding: "1rem" }}>
-            <Grid doubling stretched>
-                <GridRow columns={2}>
+            <Grid>
+                <GridRow stretched>
                     <GridColumn>
                         <Segment inverted={isActive} >
                             <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} animated='fade' size='huge'>
@@ -50,10 +52,10 @@ function ImageGenerator() {
                         </Segment>
                     </GridColumn>
                 </GridRow>
-                <GridRow style={{ margin: '0 1rem' }} >
-                    <GridColumn >
+                <GridRow style={{ margin: '0 1rem' }} columns={1} stretched>
+                    <GridColumn>
                         <h3>Showing output here</h3>
-                        <ShowOutput images={images} removeImage={removeImage} removeAllImages={removeAllImages} loading={loading}/>
+                        <ShowOutput images={images} removeImage={removeImage} removeAllImages={removeAllImages} loading={loading} />
                     </GridColumn>
                 </GridRow>
             </Grid>
