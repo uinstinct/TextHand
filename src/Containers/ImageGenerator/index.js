@@ -8,6 +8,47 @@ import ShowOutput from './showOutput';
 
 import { Segment, Button, Grid, GridRow, GridColumn, Icon } from 'semantic-ui-react';
 
+async function applyFilters(canvases) {
+
+    let newImages = [];
+    if (canvases.length > 0) {
+        for (const convertedCanvas of canvases) {
+            const convertedImageURI = convertedCanvas.toDataURL();
+            const imgEl = document.createElement('img');
+            imgEl.src = convertedImageURI;
+
+            async function makeNewImage() {
+                return new Promise((resolve, reject) => {
+                    imgEl.onload = function () {
+                        const newCanvas = document.createElement('canvas');
+                        newCanvas.width = imgEl.width;
+                        newCanvas.height = imgEl.height;
+
+                        const ctx = newCanvas.getContext('2d');
+                        ctx.filter = "contrast(25)";
+                        /* ctx.filter = "blur(2px)";
+                         * preview the filters in OVERLAY and NOT GENERATEDCONTAINER
+                         * most values are in %
+                         * refer https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter
+                         * this is a default html slider - <input type="range" min="1" max="100" />
+                         * styling has to be done manually
+                         */
+                        ctx.drawImage(imgEl, 0, 0);
+
+                        const newImage = newCanvas.toDataURL();
+                        resolve(newImage);
+                    }
+                });
+            }
+
+            const newImg = await makeNewImage();
+            newImages.push(newImg);
+        }
+    }
+    return newImages;
+}
+
+
 function ImageGenerator() {
 
     const { isActive } = useContext(DarkTheme);
@@ -19,10 +60,11 @@ function ImageGenerator() {
     const applyImageGeneration = async () => {
         updateProgess({ type: "START" });
         setLoading(true);
-        const canvases = await generateImages();
-        const newImages = images.concat(canvases);
-        setLoading(false);
+        const newCanvases = await generateImages();
+        const filteredImages = await applyFilters(newCanvases);
+        const newImages = images.concat(filteredImages);
         setImages(newImages);
+        setLoading(false);
     }
 
     const removeImage = (idx) => {
@@ -42,10 +84,10 @@ function ImageGenerator() {
     return (
         <div style={{ margin: "1rem", padding: "1rem" }}>
             <Grid>
-                <GridRow stretched>
-                    <GridColumn>
+                <GridRow textAlign='center'>
+                    <GridColumn textAlign='center'>
                         <Segment inverted={isActive} >
-                            <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} loading={loading} animated='fade' size='huge'>
+                            <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} animated='fade' size='huge'>
                                 <Button.Content visible>Generate</Button.Content>
                                 <Button.Content hidden><Icon name='play' /></Button.Content>
                             </Button>
@@ -55,7 +97,7 @@ function ImageGenerator() {
                 <GridRow style={{ margin: '0 1rem' }} columns={1} stretched>
                     <GridColumn>
                         <h3>Showing output here</h3>
-                        <ShowOutput images={images} removeImage={removeImage} removeAllImages={removeAllImages} loading={loading} />
+                        <ShowOutput images={images} removeImage={removeImage} removeAllImages={removeAllImages} />
                     </GridColumn>
                 </GridRow>
             </Grid>

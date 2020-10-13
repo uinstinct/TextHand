@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 import TextAndImage from './Main'
 
 function App() {
-    const storedMode = JSON.parse(localStorage.getItem('darkmode')) || false;
+    const storedMode = JSON.parse(localStorage.getItem('darkmode')) || true;
     const [darkmode, setDarkmode] = useState(storedMode);
 
     useEffect(() => {

@@ -126,6 +126,7 @@ async function generateImages() {
         overlay.style.display = 'none';
         overlay.style.background = 'none';
     }
+    updateProgess({ type: "APPLY_FILTERS" });
     container.style.overflowY = 'scroll';
 
     return images;

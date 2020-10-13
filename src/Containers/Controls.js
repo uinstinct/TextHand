@@ -13,7 +13,7 @@ const initialState = {
     // margins
     marginLeft: '1rem',
     marginRight: '1rem',
-    marginTop: 0,
+    marginTop: '1rem',
     marginBottom: 0,
 
     // spacing
@@ -99,6 +99,7 @@ export function ControlProvider({ children }) {
             for (const [key, value] of Object.entries(copyControls)) {
                 localStorage.setItem(key, value);
             }
+            localStorage.removeItem('fontFamily');
         }, 650);
     }, [contextValue]);
 

@@ -11,24 +11,24 @@ import "./index.css";
 function ShowOutput(props) {
     const { isActive } = useContext(DarkTheme);
 
-    const allImageURLs = [];
+    const allImageURLs = props.images;
+    const removeImage = props.removeImage;
 
     const images = useMemo(() => {
 
-        if (props.images.length > 0) {
+        if (allImageURLs.length > 0) {
             let tempImages = [];
 
-            for (let i = 0; i < props.images.length; i += 4) {
+            for (let i = 0; i < allImageURLs.length; i += 4) {
                 let row = [];
 
-                for (let j = i; j < props.images.length && j < i + 4; j++) {
+                for (let j = i; j < allImageURLs.length && j < i + 4; j++) {
 
-                    const imageURL = props.images[j].toDataURL();
-                    allImageURLs.push(imageURL);
+                    const imageURL = allImageURLs[j];
 
                     const col =
                         <GridColumn key={j}>
-                            <Label circular attached='top right' color='red' style={{ cursor: 'pointer' }} onClick={() => props.removeImage(j)}>
+                            <Label circular attached='top right' color='red' style={{ cursor: 'pointer' }} onClick={() => removeImage(j)}>
                                 <Icon inverted={isActive} name='close' size='big' />
                             </Label>
                             <br />
@@ -47,7 +47,7 @@ function ShowOutput(props) {
             }
             return tempImages;
         } else return [];
-    }, [props, allImageURLs, isActive]);
+    }, [allImageURLs, removeImage, isActive]);
 
     const doDownloadAll = () => {
         allImageURLs.forEach((imageURL, index) => {
