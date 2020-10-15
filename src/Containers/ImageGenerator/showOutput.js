@@ -79,6 +79,7 @@ function ShowOutput(props) {
                 :
                 <>
                     <Segment inverted={isActive}>
+                        <GenerationProgress attached />
                         <Grid stackable>
                             <GridRow columns={3}>
                                 <GridColumn floated='left'>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import { DarkTheme } from '../../Themes';
 import { updateProgess } from '../GenerationProgress';
@@ -25,7 +25,7 @@ async function applyFilters(canvases) {
                         newCanvas.height = imgEl.height;
 
                         const ctx = newCanvas.getContext('2d');
-                        ctx.filter = "contrast(25)";
+                        //ctx.filter = "contrast(25)";
                         /* ctx.filter = "blur(2px)";
                          * preview the filters in OVERLAY and NOT GENERATEDCONTAINER
                          * most values are in %
@@ -58,7 +58,6 @@ function ImageGenerator() {
 
 
     const applyImageGeneration = async () => {
-        updateProgess({ type: "START" });
         setLoading(true);
         const newCanvases = await generateImages();
         const filteredImages = await applyFilters(newCanvases);
@@ -66,6 +65,12 @@ function ImageGenerator() {
         setImages(newImages);
         setLoading(false);
     }
+
+    useEffect(() => {
+        if (loading) {
+            updateProgess({ type: "START" });
+        }
+    }, [loading])
 
     const removeImage = (idx) => {
         let newImages = [];

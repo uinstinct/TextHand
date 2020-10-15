@@ -19,10 +19,10 @@ const initialState = {
     // spacing
     wordSpacing: '4px',
     letterSpacing: '1px',
-    lineHeight: 1,
+    lineHeight: 1.1,
 
     // extras
-    resolutionScale: 1,
+    resolutionScale: 2,
     shadowEffect: true,
 }
 
@@ -54,31 +54,32 @@ function reducer(state, action) {
             return { ...state, fontWeight: action.payload.fontWeight };
         case 'CHANGE_WORD_ROTATION':
             return { ...state, wordRotation: action.payload.wordRotation };
+
         // MARGINS
         case 'CHANGE_MARGIN_LEFT':
-            return { ...state, marginLeft: action.payload.marginLeft+'px' }
+            return { ...state, marginLeft: action.payload.marginLeft + 'px' };
         case 'CHANGE_MARGIN_RIGHT':
-            return { ...state, marginRight: action.payload.marginRight+'px' }
+            return { ...state, marginRight: action.payload.marginRight + 'px' };
         case 'CHANGE_MARGIN_TOP':
-            return { ...state, marginTop: action.payload.marginTop+'px' }
+            return { ...state, marginTop: action.payload.marginTop + 'px' };
         case 'CHANGE_MARGIN_BOTTOM':
-            return { ...state, marginBottom: action.payload.marginBottom+'px' }
+            return { ...state, marginBottom: action.payload.marginBottom + 'px' };
 
         // SPACING
         case 'CHANGE_WORD_SPACING':
-            return { ...state, wordSpacing: action.payload.wordSpacing+'px' }
+            return { ...state, wordSpacing: action.payload.wordSpacing + 'px' };
         case 'CHANGE_LETTER_SPACING':
-            return { ...state, letterSpacing: action.payload.letterSpacing+'px' }
+            return { ...state, letterSpacing: action.payload.letterSpacing + 'px' };
         case 'CHANGE_LINE_HEIGHT':
-            return { ...state, lineHeight: action.payload.lineHeight }
+            return { ...state, lineHeight: action.payload.lineHeight };
 
         // EXTRAS
         case 'CHANGE_RESOLUTION_SCALE':
-            return { ...state, resolutionScale: action.payload.resolutionScale }
+            return { ...state, resolutionScale: action.payload.resolutionScale };
         case 'APPLY_SHADOW_EFFECT':
-            return { ...state, shadowEffect: action.payload.shadowEffect }
+            return { ...state, shadowEffect: action.payload.shadowEffect };
         case 'APPLY_RESET':
-            return { ...initialState }
+            return { ...initialState };
 
         default:
             return state;

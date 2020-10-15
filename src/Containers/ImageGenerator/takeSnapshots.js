@@ -41,16 +41,30 @@ function randomizeWord(word) {
 
 }
 
+
 async function convertDIVToImage() {
+
+    /* the scale does not default to 1 but to the browser window device pixel ration
+     * disabling the scale option results in a higher quality image
+     * replace this with blur filter of canvas
+     * use blur as slider and show in overlay
+     * make indentation optional
+     */
     const options = {
         logging: false,
         scrollX: 0,
         scrollY: -(window.scrollY + 22.5),
-        scale: copyControls.resolutionScale // this controls the resolution
+        scale: copyControls.resolutionScale
     };
 
     const canvas = await html2canvas(container, options); // just take the snapshot
     return canvas;
+}
+
+function transformSpaces(match) {
+    const len = match.length - 4;
+    const temp = " " + len + ":~: ";
+    return temp;
 }
 
 async function generateImages() {
@@ -62,7 +76,7 @@ async function generateImages() {
 
     container.scrollTo(0, 0);
     const scrollHeight = content.scrollHeight;
-    const clientHeight = 560; // height of .page-content when there is no content (increase this value to remove space at the bottom)
+    const clientHeight = 540; // height of .page-content when there is no content (increase this value to remove space at the bottom)
 
     const totalPages = Math.ceil(scrollHeight / clientHeight) + 1; // always add +1 to get the extra page to due to random font size
 
@@ -73,6 +87,7 @@ async function generateImages() {
 
     const splitContent = copiedText
         .replace(/\n/g, ' <br> ')
+        .replace(/\s{3,}/g, transformSpaces)
         .split(/\s+/g)
 
     let currentWordPos = 0;
@@ -93,7 +108,15 @@ async function generateImages() {
             } else if (word === '<br>') {
                 words.push(word);
             } else if (word.includes('&lt') || word.includes('&gt') || word.includes('&amp')) {
-                words.push(word)
+                words.push(word);
+            } else if (word.includes(":~:")) {
+                //console.info(word, 'this was the word');
+                const len = parseInt(word);
+                let newWord = "";
+                for (let i = 0; i < len; i++) {
+                    newWord += " ";
+                }
+                words.push(newWord);
             } else {
                 const styledWord = randomizeWord(word);
                 words.push(styledWord.outerHTML);

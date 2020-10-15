@@ -29,14 +29,14 @@ function reducer(state, action) {
 
 let updateProgess = null;
 
-function GenerationProgress() {
+function GenerationProgress({ attached }) {
 
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useReducer(reducer, initialState);
     updateProgess = dispatch;
 
     return (
-        <Progress inverted={isActive} indicating percent={state.percent} >
+        <Progress attached={attached ? "top" : null} inverted={isActive} indicating percent={state.percent}>
             {state.label}
         </Progress>
     );
