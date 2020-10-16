@@ -76,7 +76,7 @@ async function generateImages() {
 
     container.scrollTo(0, 0);
     const scrollHeight = content.scrollHeight;
-    const clientHeight = 540; // height of .page-content when there is no content (increase this value to remove space at the bottom)
+    const clientHeight = copyControls.clientHeight; // height of .page-content when there is no content (increase this value to remove space at the bottom)
 
     const totalPages = Math.ceil(scrollHeight / clientHeight) + 1; // always add +1 to get the extra page to due to random font size
 
@@ -85,10 +85,17 @@ async function generateImages() {
     copiedText += " lastDummy"; // preserve the last word or letter also
     container.style.overflowY = 'hidden';
 
-    const splitContent = copiedText
-        .replace(/\n/g, ' <br> ')
-        .replace(/\s{3,}/g, transformSpaces)
-        .split(/\s+/g)
+    let splitContent;
+    if (copyControls.preserveIndentation === true) {
+        splitContent = copiedText
+            .replace(/\n/g, ' <br> ')
+            .replace(/\s{3,}/g, transformSpaces)
+            .split(/\s+/g)
+    } else {
+        splitContent = copiedText
+            .replace(/\n/g, ' <br> ')
+            .split(/\s+/g);
+    }
 
     let currentWordPos = 0;
 
@@ -110,7 +117,6 @@ async function generateImages() {
             } else if (word.includes('&lt') || word.includes('&gt') || word.includes('&amp')) {
                 words.push(word);
             } else if (word.includes(":~:")) {
-                //console.info(word, 'this was the word');
                 const len = parseInt(word);
                 let newWord = "";
                 for (let i = 0; i < len; i++) {

@@ -14,7 +14,7 @@ const initialState = {
     marginLeft: '1rem',
     marginRight: '1rem',
     marginTop: '1rem',
-    marginBottom: 0,
+    clientHeight: 540,
 
     // spacing
     wordSpacing: '4px',
@@ -24,6 +24,7 @@ const initialState = {
     // extras
     resolutionScale: 2,
     shadowEffect: true,
+    preserveIndentation: true,
 }
 
 let copyControls = {
@@ -35,6 +36,7 @@ function init() {
     for (const [key, value] of Object.entries(localStorage)) {
         storedState[key] = value;
     }
+    storedState['preserveIndentation'] = JSON.parse(localStorage.getItem('preserveIndentation'));
     return storedState;
 }
 
@@ -80,6 +82,10 @@ function reducer(state, action) {
             return { ...state, shadowEffect: action.payload.shadowEffect };
         case 'APPLY_RESET':
             return { ...initialState };
+        case 'CHANGE_CLIENT_HEIGHT':
+            return { ...state, clientHeight: action.payload.clientHeight };
+        case 'APPLY_PRESERVE_INDENTATION':
+            return { ...state, preserveIndentation: action.payload.preserveIndentation };
 
         default:
             return state;

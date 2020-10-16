@@ -47,6 +47,10 @@ function Extras() {
         dispatch({ type: 'APPLY_RESET' });
     }
 
+    const applyPreserveIndentation = (event, data) => {
+        dispatch({ type: 'APPLY_PRESERVE_INDENTATION', payload: { preserveIndentation: data.checked } });
+    }
+
     return (
         <>
             <h2>Extras</h2>
@@ -77,10 +81,17 @@ function Extras() {
                 <Checkbox style={{ marginLeft: '1rem' }} slider onChange={applyShadowEffect} defaultChecked={JSON.parse(state.shadowEffect)} />
             </div>
 
+            <div style={{ margin: '1rem' }}>
+                Preserve Indentation
+                <Checkbox style={{ marginLeft: '1rem' }} onChange={applyPreserveIndentation} defaultChecked={JSON.parse(state.preserveIndentation)} />
+            </div>
+
             <Popup on='click' position='right center' inverted={isActive}
                 content={<Button size='big' color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>}
                 trigger={<Button icon='repeat' inverted={isActive} size='big' />} />
+            <br />
 
+            
         </>
     );
 }

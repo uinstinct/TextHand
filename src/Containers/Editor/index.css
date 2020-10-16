@@ -29,7 +29,7 @@ body[data-theme='dark'] .ui.form textarea::selection {
 .generated.container {
     width: 400px;
     height: calc(11.7 * 400px / 8.3); /*A4 Ratio*/
-/*    background: url(../../assets/paper-2.jpg);*/
+    /*background: url(../../assets/paper-2.jpg);*/
     background: white;
     background-size: cover;
     border: 1px solid var(--elevation-background);
@@ -42,10 +42,6 @@ body[data-theme='dark'] .ui.form textarea::selection {
     scrollbar-color: transparent;
     scrollbar-width: thin;
     white-space: pre-wrap;
-}
-
-.generated.core {
-    transform: rotate(30);
 }
 
 .generated.overlay {

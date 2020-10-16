@@ -26,8 +26,10 @@ async function applyFilters(canvases) {
 
                         const ctx = newCanvas.getContext('2d');
                         //ctx.filter = "contrast(25)";
+
                         /* ctx.filter = "blur(2px)";
                          * preview the filters in OVERLAY and NOT GENERATEDCONTAINER
+                         * do not use another canvas
                          * most values are in %
                          * refer https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter
                          * this is a default html slider - <input type="range" min="1" max="100" />

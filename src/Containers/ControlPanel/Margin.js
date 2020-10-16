@@ -24,9 +24,8 @@ function Margin() {
         dispatch({ type: 'CHANGE_MARGIN_TOP', payload: { marginTop: value } });
     }
 
-    const changeMarginBottom = event => {
-        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
-        dispatch({ type: 'CHANGE_MARGIN_BOTTOM', payload: { marginBottom: value } });
+    const changeClientHeight = (event) => {
+        dispatch({ type: 'CHANGE_CLIENT_HEIGHT', payload: { clientHeight: event.target.value } });
     }
 
     return (
@@ -48,9 +47,11 @@ function Margin() {
                         Top
                             <input type="number" value={parseInt(state.marginTop)} onChange={changeMarginTop} />
                     </GridColumn>
+                </GridRow>
+                <GridRow>
                     <GridColumn>
-                        Bottom
-                            <input type="number" value={parseInt(state.marginBottom)} onChange={changeMarginBottom} />
+                        Client Height
+                        <input type="number" onChange={changeClientHeight} value={parseInt  (state.clientHeight)} min="0" max="700" />
                     </GridColumn>
                 </GridRow>
             </Grid>
