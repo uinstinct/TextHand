@@ -27,13 +27,20 @@ function reducer(state, action) {
     }
 }
 
-let updateProgess = null;
+let progress = {};
 
 function GenerationProgress({ attached }) {
 
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useReducer(reducer, initialState);
-    updateProgess = dispatch;
+
+    const updateProgress = (obj) => {
+        setTimeout(() => {
+            dispatch(obj);
+        }, 1000);
+    }
+
+    progress = { progressState: state, updateProgress };
 
     return (
         <Progress attached={attached ? "top" : null} inverted={isActive} indicating percent={state.percent}>
@@ -42,5 +49,5 @@ function GenerationProgress({ attached }) {
     );
 }
 
-export { updateProgess };
+export { progress };
 export default GenerationProgress;

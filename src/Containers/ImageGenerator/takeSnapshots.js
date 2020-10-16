@@ -1,6 +1,6 @@
 import html2canvas from 'html2canvas';
 import { copyControls } from '../Controls';
-import { updateProgess } from '../GenerationProgress';
+import { progress } from '../GenerationProgress';
 
 let container = null;
 let content = null;
@@ -8,7 +8,7 @@ let content = null;
 function randomizeLetters(letter) {
 
     const randomValue = Math.random();
-    const randomScale = ((randomValue * JSON.parse(copyControls.fontSizeRandom)) + parseInt(copyControls.fontSize)).toFixed(2);
+    const randomScale = ((randomValue * parseInt(copyControls.fontSizeRandom)) + parseInt(copyControls.fontSize)).toFixed(2);
 
     let wrappedLetter = document.createElement('span');
     wrappedLetter.style = "all:unset";
@@ -69,6 +69,7 @@ function transformSpaces(match) {
 
 async function generateImages() {
 
+    const { updateProgress } = progress;
     let images = [];
 
     container = document.getElementById('page-container');
@@ -99,10 +100,9 @@ async function generateImages() {
 
     let currentWordPos = 0;
 
-
     for (let i = 0; i < totalPages; i++) {
-        
-        updateProgess({ type: "INCREMENT_PROGRESS", payload: { i, totalPages } });
+
+        updateProgress({ type: "INCREMENT_PROGRESS", payload: { i, totalPages } });
 
         let words = [];
         let text = "";
@@ -155,7 +155,8 @@ async function generateImages() {
         overlay.style.display = 'none';
         overlay.style.background = 'none';
     }
-    updateProgess({ type: "APPLY_FILTERS" });
+
+    updateProgress({ type: "APPLY_FILTERS" });
     container.style.overflowY = 'scroll';
 
     return images;

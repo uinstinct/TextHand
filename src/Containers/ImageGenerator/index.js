@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 import { DarkTheme } from '../../Themes';
-import { updateProgess } from '../GenerationProgress';
+import { progress } from '../GenerationProgress';
 
 import { generateImages } from './takeSnapshots';
 import ShowOutput from './showOutput';
@@ -60,19 +60,18 @@ function ImageGenerator() {
 
 
     const applyImageGeneration = async () => {
+        const { updateProgress } = progress;
+        updateProgress({ type: "START" });
         setLoading(true);
+
         const newCanvases = await generateImages();
         const filteredImages = await applyFilters(newCanvases);
         const newImages = images.concat(filteredImages);
         setImages(newImages);
+
         setLoading(false);
     }
 
-    useEffect(() => {
-        if (loading) {
-            updateProgess({ type: "START" });
-        }
-    }, [loading])
 
     const removeImage = (idx) => {
         let newImages = [];
@@ -94,10 +93,9 @@ function ImageGenerator() {
                 <GridRow textAlign='center'>
                     <GridColumn textAlign='center'>
                         <Segment inverted={isActive} >
-                            <Button onClick={applyImageGeneration} inverted={isActive} disabled={loading} animated='fade' size='huge'>
-                                <Button.Content visible>Generate</Button.Content>
-                                <Button.Content hidden><Icon name='play' /></Button.Content>
-                            </Button>
+                            <button disabled={loading} onClick={applyImageGeneration} >
+                                GENERATE
+                            </button>
                         </Segment>
                     </GridColumn>
                 </GridRow>

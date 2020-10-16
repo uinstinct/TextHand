@@ -18,8 +18,20 @@ function Generated(props) {
     const manipulatedStyles = useMemo(() => {
 
         return {
-            ...state,
+            fontFamily: state.fontFamily,
+            fontWeight: state.fontWeight,
+            fontSize: state.fontSize,
+            color: state.color,
+
+            marginLeft: state.marginLeft,
+            marginRight: state.marginRight,
+            marginTop: state.marginTop,
+
+            wordSpacing: state.wordSpacing,
+            letterSpacing: state.letterSpacing,
+            lineHeight: state.lineHeight,
         }
+
     }, [state]);
 
     const madeHTML = useMemo(() => createHTML(props.text), [props.text]);

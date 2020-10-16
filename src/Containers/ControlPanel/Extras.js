@@ -73,7 +73,7 @@ function Extras() {
             Resolution Scale
             <Popup inverted={isActive}
                 trigger={
-                    <input min='0' max='2' step='0.1' onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} value={parseFloat(state.resolutionScale)} />
+                    <input min='0.8' max='4' step='0.1' onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} value={parseFloat(state.resolutionScale)} />
                 } content={instructions.resolutionScale} />
 
             <div style={{ margin: '1rem' }}>
