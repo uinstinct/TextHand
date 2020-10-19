@@ -5,10 +5,14 @@ body[data-theme='dark'] {
     color: rgb(223, 230, 237);
 }
 
-body[data-theme='dark'] h1{
-    color: rgb(223, 230, 237);
+
+* {
+    margin: 0;
 }
 
+body[data-theme='dark'] input {
+    filter: invert(1) hue-rotate(180deg);
+}
 
 .markdown.rules{
     color: black;

@@ -39,6 +39,7 @@ body[data-theme='dark'] .ui.form textarea::selection {
     color: var(--ink-color);
     line-height: 1.5em;
     overflow-y: auto;
+    overflow-x: hidden;
     scrollbar-color: transparent;
     scrollbar-width: thin;
     white-space: pre-wrap;

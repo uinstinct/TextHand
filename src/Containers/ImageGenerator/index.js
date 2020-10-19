@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { DarkTheme } from '../../Themes';
 import { progress } from '../GenerationProgress';
@@ -6,7 +6,7 @@ import { progress } from '../GenerationProgress';
 import { generateImages } from './takeSnapshots';
 import ShowOutput from './showOutput';
 
-import { Segment, Button, Grid, GridRow, GridColumn, Icon } from 'semantic-ui-react';
+import { Segment, Grid, GridRow, GridColumn } from 'semantic-ui-react';
 
 async function applyFilters(canvases) {
 

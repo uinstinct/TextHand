@@ -126,6 +126,7 @@ async function generateImages() {
             } else {
                 const styledWord = randomizeWord(word);
                 words.push(styledWord.outerHTML);
+                styledWord.remove();
             }
 
             text = words.join(' ');

@@ -14,7 +14,7 @@ function Main() {
     const { isActive } = useContext(DarkTheme)
 
     return (
-        <Grid stackable inverted={isActive} >
+        <Grid stackable inverted={isActive} className='mainer'>
             <ControlProvider>
                 <GridRow columns={1}>
                     <GridColumn>

@@ -62,7 +62,7 @@ function ShowOutput(props) {
 
         for (const i in allImageURLs) {
             doc.text(10, 20, '');
-            doc.addImage(allImageURLs[i], 'JPEG', 25, 50, width - 50, height - 80, 'image-' + i);
+            doc.addImage(allImageURLs[i], 'JPEG', 25, 50, width - 50, height - 80, 'image-' + i, 'FAST');
             if (i !== allImageURLs.length - 1)
                 doc.addPage();
         }
