@@ -1,3 +1,5 @@
-import { DarkTheme } from './Darktheme';
+import { createContext } from 'react';
+
+const DarkTheme = createContext();
 
 export { DarkTheme };

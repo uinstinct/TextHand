@@ -44,12 +44,6 @@ This indicates the [scale](https://html2canvas.hertzen.com/configuration) of the
 
 0 means that your generated image will have almost no quality and 1 means that the image will retain its quality for as shown in the **text generated section**.
 
-👉 ***Suggestion*** : Keep the value to `0.4` if you want a low quality image.
-
-
-## Problems
-
-1. The **Generated Container** and the **Generated Image** have different views.
-2. Fix **indentation spacing.**
+👉 ***Suggestion*** : Keep the value to `0.8` if you want a low quality image.
 
 ---

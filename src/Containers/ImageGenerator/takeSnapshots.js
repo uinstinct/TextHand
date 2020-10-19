@@ -36,6 +36,7 @@ function randomizeWord(word) {
     const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
     const randomRotation = Math.random() * parseFloat(copyControls.wordRotation) * sign;
     wordWrapper.style.transform = `rotate(${randomRotation}deg)`;
+    wordWrapper.style.fontSize = copyControls.fontSize;
 
     return wordWrapper;
 
