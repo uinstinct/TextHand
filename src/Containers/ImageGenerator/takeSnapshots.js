@@ -19,27 +19,32 @@ function randomizeLetters(letter) {
 }
 
 function randomizeWord(word) {
-    let letters = word.split('');
-
     if (parseInt(copyControls.fontSizeRandom) !== 0) {
+        let letters = word.split('');
         for (let i = 0; i < letters.length; i++) {
             letters[i] = randomizeLetters(letters[i]);
             letters[i] = letters[i].outerHTML;
         }
+        const styledLetters = letters.join('');
+        let wordWrapper = document.createElement('span');
+        wordWrapper.innerHTML = styledLetters;
+        wordWrapper.style = 'all:unset';
+
+        const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
+        const randomRotation = Math.random() * parseFloat(copyControls.wordRotation) * sign;
+        wordWrapper.style.transform = `rotate(${randomRotation}deg)`;
+        return wordWrapper;
+    } else {
+        let wordWrapper = document.createElement('span');
+        wordWrapper.innerHTML = word;
+        wordWrapper.style = 'all:unset';
+
+        const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
+        const randomRotation = Math.random() * parseFloat(copyControls.wordRotation) * sign;
+        wordWrapper.style.transform = `rotate(${randomRotation}deg)`;
+        wordWrapper.style.fontSize = copyControls.fontSize;
+        return wordWrapper;
     }
-
-    const styledLetters = letters.join('');
-    let wordWrapper = document.createElement('span');
-    wordWrapper.innerHTML = styledLetters;
-    wordWrapper.style = 'all:unset';
-
-    const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
-    const randomRotation = Math.random() * parseFloat(copyControls.wordRotation) * sign;
-    wordWrapper.style.transform = `rotate(${randomRotation}deg)`;
-    wordWrapper.style.fontSize = copyControls.fontSize;
-
-    return wordWrapper;
-
 }
 
 
