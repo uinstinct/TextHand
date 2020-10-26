@@ -14,7 +14,8 @@ const initialState = {
     marginLeft: '1rem',
     marginRight: '1rem',
     marginTop: '1rem',
-    clientHeight: 540,
+    clientHeight: 550,
+    paperLines: false,
 
     // spacing
     wordSpacing: '4px',
@@ -36,7 +37,6 @@ function init() {
     for (const [key, value] of Object.entries(localStorage)) {
         storedState[key] = value;
     }
-    storedState['preserveIndentation'] = JSON.parse(localStorage.getItem('preserveIndentation'));
     return storedState;
 }
 
@@ -66,6 +66,8 @@ function reducer(state, action) {
             return { ...state, marginTop: action.payload.marginTop + 'px' };
         case 'CHANGE_MARGIN_BOTTOM':
             return { ...state, marginBottom: action.payload.marginBottom + 'px' };
+        case 'APPLY_PAPER_LINES':
+            return { ...state, paperLines: action.payload.paperLines };
 
         // SPACING
         case 'CHANGE_WORD_SPACING':

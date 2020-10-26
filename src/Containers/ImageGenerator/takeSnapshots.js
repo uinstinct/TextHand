@@ -83,7 +83,7 @@ async function generateImages() {
 
     container.scrollTo(0, 0);
     const scrollHeight = content.scrollHeight;
-    const clientHeight = copyControls.clientHeight; // height of .page-content when there is no content (increase this value to remove space at the bottom)
+    const clientHeight = copyControls.clientHeight || 550; // height of .page-content when there is no content (increase this value to remove space at the bottom)
 
     const totalPages = Math.ceil(scrollHeight / clientHeight) + 1; // always add +1 to get the extra page to due to random font size
 
@@ -93,7 +93,7 @@ async function generateImages() {
     container.style.overflowY = 'hidden';
 
     let splitContent;
-    if (copyControls.preserveIndentation === true) {
+    if (JSON.parse(copyControls.preserveIndentation) === true) {
         splitContent = copiedText
             .replace(/\n/g, ' <br> ')
             .replace(/\s{3,}/g, transformSpaces)

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 
 import { useControl } from '../Controls';
 
@@ -11,25 +11,46 @@ function createHTML(text) {
 
 }
 
+const originalStyles = state => {
+    return {
+        fontFamily: state.fontFamily,
+        fontWeight: state.fontWeight,
+        fontSize: state.fontSize,
+        color: state.color,
+
+        marginLeft: state.marginLeft,
+        marginRight: state.marginRight,
+        marginTop: state.marginTop,
+
+        wordSpacing: state.wordSpacing,
+        letterSpacing: state.letterSpacing,
+        lineHeight: state.lineHeight,
+    };
+}
+
+const paperLines = state => {
+    const spaceInBetween = `${parseInt(state.fontSize) + 1}px`;
+    return {
+        backgroundImage: "linear-gradient(#999 0.05em, transparent 0.1em)",
+        backgroundColor: "unset !important",
+        backgroundSize: `100% ${spaceInBetween}`,
+        height: state.clientHeight + 'px',
+    };
+}
+
 function Generated(props) {
 
     const state = useControl()[0];
 
     const manipulatedStyles = useMemo(() => {
 
-        return {
-            fontFamily: state.fontFamily,
-            fontWeight: state.fontWeight,
-            fontSize: state.fontSize,
-            color: state.color,
-
-            marginLeft: state.marginLeft,
-            marginRight: state.marginRight,
-            marginTop: state.marginTop,
-
-            wordSpacing: state.wordSpacing,
-            letterSpacing: state.letterSpacing,
-            lineHeight: state.lineHeight,
+        if (JSON.parse(state.paperLines) === true) {
+            return {
+                ...originalStyles(state),
+                ...paperLines(state)
+            };
+        } else {
+            return { ...originalStyles(state) };
         }
 
     }, [state]);
@@ -42,7 +63,7 @@ function Generated(props) {
             </div>
             <div id="overlay" className="generated overlay"></div>
         </div>
-    )
+    );
 
 }
 

@@ -9,6 +9,12 @@
 After you have *generated* the images, you will be able to see that the generated container shows the last snapshot of the last page.
 If you again want to regenerate this page, you will have to make atleast **1 change** in the text area.
 
+
+### Problems
+
+- When text is wrapping, the next line is being shifted a little towards the left.
+(*Check the initial preserve indentation value*)
+
 ### Randomization
 
 
@@ -22,6 +28,8 @@ If you again want to regenerate this page, you will have to make atleast **1 cha
 
 - Applying randomization of font size, consumes more ram and there is *very slight possibility* that the script might not run and *slow down your browser*.
 In that case, just try to close the other tabs of your browser.
+
+- **Note :** When you apply this feature, the preview on the *generated area* may not look the same, when you get the output.
 
 ##### 2. Random Rotation
 
@@ -45,5 +53,11 @@ This indicates the [scale](https://html2canvas.hertzen.com/configuration) of the
 0 means that your generated image will have almost no quality and 1 means that the image will retain its quality for as shown in the **text generated section**.
 
 👉 ***Suggestion*** : Keep the value to `0.8` if you want a low quality image.
+
+### Paper Lines
+
+When applied, *paper lines* will be applied on the page.
+
+**The preview might look bad in the *generated section*, but it will be correct in the *output*.**
 
 ---

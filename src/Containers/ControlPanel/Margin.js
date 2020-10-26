@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn, Checkbox } from 'semantic-ui-react';
 
 function Margin() {
     const { isActive } = useContext(DarkTheme);
@@ -26,6 +26,10 @@ function Margin() {
 
     const changeClientHeight = (event) => {
         dispatch({ type: 'CHANGE_CLIENT_HEIGHT', payload: { clientHeight: event.target.value } });
+    }
+
+    const applyPaperLines = (event, data) => {
+        dispatch({ type: 'APPLY_PAPER_LINES', payload: { paperLines: data.checked } });
     }
 
     return (
@@ -52,6 +56,14 @@ function Margin() {
                     <GridColumn>
                         Client Height
                         <input type="number" onChange={changeClientHeight} value={parseInt  (state.clientHeight)} min="0" max="700" />
+                    </GridColumn>
+                </GridRow>
+                <GridRow>
+                    <GridColumn>
+                        <span>
+                            Use Paper Lines
+                            <Checkbox style={{ marginLeft: '0.5rem' }} onChange={applyPaperLines} defaultChecked={JSON.parse(state.paperLines)} />
+                        </span>
                     </GridColumn>
                 </GridRow>
             </Grid>
