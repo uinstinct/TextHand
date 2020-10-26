@@ -11,7 +11,7 @@ function Margin() {
 
     const changeMarginLeft = event => {
         const value = event.target.value === '' ? 0 : parseInt(event.target.value);
-        dispatch({ type: 'CHANGE_MARGIN_LEFT', payload: { marginLeft:value } });
+        dispatch({ type: 'CHANGE_MARGIN_LEFT', payload: { marginLeft: value } });
     }
 
     const changeMarginRight = event => {
@@ -33,7 +33,7 @@ function Margin() {
     }
 
     return (
-        <>
+        <div className="controlpanel margin">
             <h2>Margin</h2>
             <Grid inverted={isActive} columns={2} stretched>
                 <GridRow>
@@ -54,8 +54,10 @@ function Margin() {
                 </GridRow>
                 <GridRow>
                     <GridColumn>
-                        Client Height
-                        <input type="number" onChange={changeClientHeight} value={parseInt  (state.clientHeight)} min="0" max="700" />
+                        <div className="controlpanel inline">
+                            Page Content Height
+                        <input type="number" onChange={changeClientHeight} value={parseInt(state.clientHeight)} min="0" max="700" />
+                        </div>
                     </GridColumn>
                 </GridRow>
                 <GridRow>
@@ -67,7 +69,7 @@ function Margin() {
                     </GridColumn>
                 </GridRow>
             </Grid>
-        </>
+        </div>
     );
 }
 

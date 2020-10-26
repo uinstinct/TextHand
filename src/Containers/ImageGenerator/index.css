@@ -1,3 +1,14 @@
+#generate-button{
+    padding: 1rem;
+    font-weight: lighter;
+    border-radius: 20%;
+    border: none;
+    cursor: pointer;
+}
+#generate-button:disabled{
+    cursor: none;
+}
+
 .imggen.container{
     padding: 1rem 1rem;
 }

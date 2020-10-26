@@ -79,7 +79,7 @@ function Font() {
     }
 
     return (
-        <>
+        <div className="controlpanel font">
             <h2>Font</h2>
             <Grid inverted={isActive} doubling>
                 <GridRow columns={1}>
@@ -136,7 +136,7 @@ function Font() {
                     </GridColumn>
                 </GridRow>
             </Grid>
-        </>
+        </div>
     );
 }
 

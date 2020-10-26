@@ -93,7 +93,7 @@ function ImageGenerator() {
                 <GridRow textAlign='center'>
                     <GridColumn textAlign='center'>
                         <Segment inverted={isActive} >
-                            <button disabled={loading} onClick={applyImageGeneration} >
+                            <button disabled={loading} onClick={applyImageGeneration} id="generate-button">
                                 GENERATE
                             </button>
                         </Segment>

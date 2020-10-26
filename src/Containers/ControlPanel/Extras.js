@@ -52,7 +52,7 @@ function Extras() {
     }
 
     return (
-        <>
+        <div className="controlpanel extras">
             <h2>Extras</h2>
 
             Background Image
@@ -92,7 +92,7 @@ function Extras() {
             <br />
 
             
-        </>
+        </div>
     );
 }
 

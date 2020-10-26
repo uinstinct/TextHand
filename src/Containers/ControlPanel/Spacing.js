@@ -25,14 +25,14 @@ function Spacing() {
 
 
     return (
-        <>
+        <div className="controlpanel spacing">
             <h2>Spacing</h2>
             <Grid columns={2} inverted={isActive} stackable>
                 <GridRow >
                     <GridColumn>
 
                         Word Spacing
-                            <input type="text" style={{ marginLeft: '1rem' }} value={parseFloat(state.wordSpacing)} onChange={changeWordSpacing} />
+                            <input type="number" style={{ marginLeft: '1rem' }} value={parseFloat(state.wordSpacing)} onChange={changeWordSpacing} />
 
                     </GridColumn>
                 </GridRow>
@@ -40,7 +40,7 @@ function Spacing() {
                     <GridColumn>
 
                         Letter Spacing
-                            <input type="text" style={{ marginLeft: '1rem' }} onChange={changeLetterSpacing} value={parseFloat(state.letterSpacing)} />
+                            <input type="number" style={{ marginLeft: '1rem' }} onChange={changeLetterSpacing} value={parseFloat(state.letterSpacing)} />
 
                     </GridColumn>
                 </GridRow>
@@ -48,12 +48,12 @@ function Spacing() {
                     <GridColumn>
 
                         Line Height
-                        <input type="text" style={{ marginLeft: '1rem' }} onChange={changeLineHeight} value={state.lineHeight} />
+                        <input type="number" step="0.1" style={{ marginLeft: '1rem' }} onChange={changeLineHeight} value={state.lineHeight} />
                     </GridColumn>
 
                 </GridRow>
             </Grid>
-        </>
+        </div>
     );
 }
 
