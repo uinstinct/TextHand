@@ -2,7 +2,7 @@
     padding: 1rem;
     font-weight: lighter;
     border-radius: 20%;
-    border: none;
+    border: 2px solid lightgreen;
     cursor: pointer;
 }
 #generate-button:disabled{
