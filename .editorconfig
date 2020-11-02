@@ -1,12 +1,16 @@
-# Rules in this file were initially inferred by Visual Studio IntelliCode from the C:\Users\uinst\Desktop\react-text-handwriting codebase based on best match to current usage at 26-09-2020
-# You can modify the rules from these initially generated values to suit your own policies
-# You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 root = true
 
 [*.js]
 [*.css]
 [*.html]
-
-
 end_of_line = lf
+charset = utf-8
+indent_size = 4
+indent_style = space
 insert_final_newline = false
+trim_trailing_whitespace = true
+
+switch_case_indent = true
+
+[*.{js,jsx}]
+max_line_length = 100

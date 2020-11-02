@@ -29,11 +29,12 @@ const originalStyles = state => {
 }
 
 const paperLines = state => {
-    const spaceInBetween = `${parseInt(state.fontSize) * state.lineHeight}px`;
+    const spaceInBetween = `${(parseInt(state.fontSize) + 1) * state.lineHeight}px`;
     return {
         backgroundImage: "linear-gradient(#999 0.05em, transparent 0.1em)",
         backgroundColor: "unset !important",
         backgroundSize: `100% ${spaceInBetween}`,
+        backgroundPosition: "top",
         height: state.clientHeight + 'px',
     };
 }
