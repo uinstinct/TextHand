@@ -17,7 +17,7 @@ async function applyFilters(canvases) {
             const imgEl = document.createElement('img');
             imgEl.src = convertedImageURI;
 
-            async function makeNewImage() {
+            const makeNewImage = async function() {
                 return new Promise((resolve, reject) => {
                     imgEl.onload = function () {
                         const newCanvas = document.createElement('canvas');
