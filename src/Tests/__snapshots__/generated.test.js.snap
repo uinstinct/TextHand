@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test the generated container and its functionalities renders and matches snapshot 1`] = `
+<div
+  className="generated container"
+  id="page-container"
+>
+  <div
+    className="generated core"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "text inside generated container",
+      }
+    }
+    data-testid="page-content"
+    id="page-content"
+    style={
+      Object {
+        "backgroundColor": "unset !important",
+        "backgroundImage": "linear-gradient(#999 0.05em, transparent 0.1em)",
+        "backgroundPosition": "top",
+        "backgroundSize": "100% 12.100000000000001px",
+        "color": "#000",
+        "fontFamily": "san-serif",
+        "fontSize": 10,
+        "fontWeight": 12,
+        "height": "undefinedpx",
+        "letterSpacing": 1,
+        "lineHeight": 1.1,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "wordSpacing": 2,
+      }
+    }
+  />
+  <div
+    className="generated overlay"
+    id="overlay"
+  />
+</div>
+`;
