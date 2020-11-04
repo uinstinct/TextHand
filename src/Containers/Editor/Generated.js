@@ -60,7 +60,7 @@ function Generated(props) {
 
     return (
         <div className="generated container" id="page-container" >
-            <div className="generated core" id="page-content" style={manipulatedStyles} dangerouslySetInnerHTML={{ __html: madeHTML }} >
+            <div className="generated core" id="page-content" style={manipulatedStyles} dangerouslySetInnerHTML={{ __html: madeHTML }} data-testid="page-content">
             </div>
             <div id="overlay" className="generated overlay"></div>
         </div>
