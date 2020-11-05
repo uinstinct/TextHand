@@ -11,33 +11,33 @@ jest.mock("../assets/rules.md", () => {
     return mockTextContent;
 });
 
-//jest.mock("semantic-ui-react", () => {
-//    const semanticCompons = require('semantic-ui-react');
-//    return {
-//        __esModule: true,
-//        ...semanticCompons,
-//    };
-//})
+jest.mock("semantic-ui-react", () => {
+    const ui = jest.requireActual("semantic-ui-react");
+    return {
+        ...ui
+    };
+})
 
 const navBarTests = () => {
+    
     afterEach(cleanup);
 
     describe("test the guide component and its functionalities", () => {
 
-        it("renders using static render", () => {
-            const guideModal = staticRender(<Guide />);
+        /*it("renders using static render", () => {
+            const guideModal = staticRender(<Guide showRules={true}/>);
             expect(guideModal).toMatchSnapshot();
         });
-
+*/
         it("renders using rtl render", () => {
-            const guideModal = render(<Guide />);
+            const guideModal = render(<Guide showRules={true}/>);
             expect(guideModal).toMatchSnapshot();
         });
-
+/*
         it("matches shallow render", () => {
-            const guideModal = shallow(<Guide />)
+            const guideModal = shallow(<Guide showRules={true}/>)
             expect(guideModal.text).toMatchSnapshot();
-        });
+        });*/
 
         //it("the markdown file is fetched and rendered", async () => {
         //    const { container, findByText } = render(<Guide />);
