@@ -3,18 +3,23 @@ import { shallow } from 'enzyme';
 import { cleanup, render, fireEvent, waitFor, screen, } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
+import { withDarkThemeProvider, dummyShortText } from './testUtils';
 import Navbar from '../containers/Navbar/index';
 import Guide from '../containers/Navbar/Rules';
 
 
 const navBarTests = () => {
     
-
     describe("test the guide component and its functionalities | ", () => {
+
+        const mockFetch = jest.spyOn(global, 'fetch');
+
+        beforeEach(() => {
+            mockFetch.mockImplementation(() => Promise.reject("guide file is unavailable at test"));
+        });
 
         afterEach(cleanup);
 
-        const mockFetch = jest.spyOn(global, 'fetch');
 
         it("renders using rtl render", () => {
             const guideModal = render(<Guide showRules={true}/>);
@@ -29,9 +34,8 @@ const navBarTests = () => {
         it("the markdown file is fetched and rendered", async () => {
             const setShowRules = jest.fn();
 
-            const mockTextContent = "mock text content written";
             const mockTextFetchResponse = Promise.resolve({
-                text: () => Promise.resolve(mockTextContent)
+                text: () => Promise.resolve(dummyShortText)
             });
 
             await act(async () => {
@@ -42,10 +46,9 @@ const navBarTests = () => {
                 await waitFor(() => {
                     expect(mockFetch).toHaveBeenCalled();
                     expect(setShowRules).not.toHaveBeenCalled();
-                    screen.getByText(mockTextContent);
-                    screen.debug();
+                    screen.getByText(dummyShortText);
                 });
-            });  
+            });
             
         });
 
@@ -55,20 +58,10 @@ const navBarTests = () => {
 
         afterEach(cleanup);
 
-        let DarkTheme = null;
-        let withDarkThemeProvider = null;
-        beforeEach(() => {
-            const Theme = require('../Themes');
-            DarkTheme = Theme.DarkTheme;
-            withDarkThemeProvider = children =>
-                <DarkTheme.Provider value={{ isActive: true, setDarkmode: 'function' }}>
-                    {children}
-                </DarkTheme.Provider>
-        });
-
         it("renders using rtl render", async () => {
-            let navbar = null;
-            navbar = render(withDarkThemeProvider(<Navbar />));
+            jest.spyOn(console, 'warn').mockImplementation(() => { });
+            jest.spyOn(console, 'error').mockImplementation(() => { });
+            const navbar = render(withDarkThemeProvider(<Navbar />));
             expect(navbar).toMatchSnapshot();
         });
 
