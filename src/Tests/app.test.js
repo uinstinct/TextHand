@@ -2,7 +2,7 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import App from "../Containers/App";
 
-describe("test the app container", () => {
+describe("test the app container | ", () => {
     afterEach(cleanup);
 
     it("whole app is rendered without failing", () => {

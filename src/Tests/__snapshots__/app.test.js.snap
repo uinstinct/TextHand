@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test the app container whole app is rendered without failing 1`] = `
+exports[`test the app container |  whole app is rendered without failing 1`] = `
 <DocumentFragment>
   <div
     class="App"

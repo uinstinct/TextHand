@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from 'react';
+import React, {  useState, useEffect, useRef } from 'react';
 import marked from 'marked';
 
 import rulesFile from '../../assets/rules.md';
@@ -8,14 +8,19 @@ import { Modal, ModalHeader, ModalContent, ModalActions, Button } from 'semantic
 function Rules(props) {
 
     const [md, setMd] = useState('');
+    const isMounted = useRef(true);
 
     useEffect(() => {
         fetch(rulesFile)
             .then(response => response.text())
             .then(text => {
-                setMd(marked(text));
+                if (isMounted) {
+                    setMd(marked(text));
+                    isMounted.current = false;
+                }
             })
             .catch(e => console.log('error while fetching rules.md', e));
+
     }, []);
 
     return (

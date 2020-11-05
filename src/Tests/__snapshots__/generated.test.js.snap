@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test the generated container and its functionalities renders and matches snapshot 1`] = `
+exports[`test the generated container and its functionalities |  renders and matches snapshot 1`] = `
 <div
   className="generated container"
   id="page-container"

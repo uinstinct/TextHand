@@ -1,54 +1,59 @@
 import React from 'react';
-import { render as staticRender, shallow } from 'enzyme';
-import { cleanup, render, fireEvent, waitFor, screen } from "@testing-library/react";
+import { shallow } from 'enzyme';
+import { cleanup, render, fireEvent, waitFor, screen, } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 
 import Navbar from '../containers/Navbar/index';
 import Guide from '../containers/Navbar/Rules';
 
 
-jest.mock("../assets/rules.md", () => {
-    const mockTextContent = "mock text content written";
-    return mockTextContent;
-});
-
-jest.mock("semantic-ui-react", () => {
-    const ui = jest.requireActual("semantic-ui-react");
-    return {
-        ...ui
-    };
-})
-
 const navBarTests = () => {
     
-    afterEach(cleanup);
 
-    describe("test the guide component and its functionalities", () => {
+    describe("test the guide component and its functionalities | ", () => {
 
-        /*it("renders using static render", () => {
-            const guideModal = staticRender(<Guide showRules={true}/>);
-            expect(guideModal).toMatchSnapshot();
-        });
-*/
+        afterEach(cleanup);
+
+        const mockFetch = jest.spyOn(global, 'fetch');
+
         it("renders using rtl render", () => {
             const guideModal = render(<Guide showRules={true}/>);
             expect(guideModal).toMatchSnapshot();
         });
-/*
+
         it("matches shallow render", () => {
             const guideModal = shallow(<Guide showRules={true}/>)
             expect(guideModal.text).toMatchSnapshot();
-        });*/
+        });
 
-        //it("the markdown file is fetched and rendered", async () => {
-        //    const { container, findByText } = render(<Guide />);
-        //    const mockTextContent = "mock text content written";
-        //    await waitFor(() => {
-        //    });
-        //});
+        it("the markdown file is fetched and rendered", async () => {
+            const setShowRules = jest.fn();
+
+            const mockTextContent = "mock text content written";
+            const mockTextFetchResponse = Promise.resolve({
+                text: () => Promise.resolve(mockTextContent)
+            });
+
+            await act(async () => {
+                mockFetch.mockImplementation(() => mockTextFetchResponse);
+                render(
+                    <Guide showRules={true} setShowRules={setShowRules} />
+                );
+                await waitFor(() => {
+                    expect(mockFetch).toHaveBeenCalled();
+                    expect(setShowRules).not.toHaveBeenCalled();
+                    screen.getByText(mockTextContent);
+                    screen.debug();
+                });
+            });  
+            
+        });
 
     });
 
     describe("test the navbar component", () => {
+
+        afterEach(cleanup);
 
         let DarkTheme = null;
         let withDarkThemeProvider = null;
@@ -59,10 +64,11 @@ const navBarTests = () => {
                 <DarkTheme.Provider value={{ isActive: true, setDarkmode: 'function' }}>
                     {children}
                 </DarkTheme.Provider>
-        })
+        });
 
-        it("renders using rtl render", () => {
-            const navbar = render(withDarkThemeProvider(<Navbar />));
+        it("renders using rtl render", async () => {
+            let navbar = null;
+            navbar = render(withDarkThemeProvider(<Navbar />));
             expect(navbar).toMatchSnapshot();
         });
 
@@ -83,4 +89,4 @@ const navBarTests = () => {
 
 }
 
-describe("test the navbar container and its components", navBarTests);
+describe("test the navbar container and its components | ", navBarTests);

@@ -24,7 +24,7 @@ jest.mock("../Containers/Controls", () => {
     };
 });
 
-describe("test the generated container and its functionalities", () => {
+describe("test the generated container and its functionalities | ", () => {
     it("renders and matches snapshot", () => {
         const generated = create(<Generated text="text inside generated container" />);
         expect(generated.toJSON()).toMatchSnapshot();
