@@ -74,6 +74,8 @@ Object {
 }
 `;
 
+exports[`test the navbar container and its components test the navbar component has the same content as guide modal 1`] = `""`;
+
 exports[`test the navbar container and its components test the navbar component renders using rtl render 1`] = `
 Object {
   "asFragment": [Function],
@@ -106,6 +108,7 @@ Object {
           >
             <button
               class="ui olive inverted button"
+              id="guide-modal"
               style="margin-right: 2rem;"
             >
               Show Guide
@@ -165,6 +168,7 @@ Object {
         >
           <button
             class="ui olive inverted button"
+            id="guide-modal"
             style="margin-right: 2rem;"
           >
             Show Guide

@@ -12,7 +12,6 @@ exports[`test the generated container and its functionalities renders and matche
         "__html": "text inside generated container",
       }
     }
-    data-testid="page-content"
     id="page-content"
     style={
       Object {

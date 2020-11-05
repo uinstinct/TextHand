@@ -16,7 +16,7 @@ function Rules(props) {
                 setMd(marked(text));
             })
             .catch(e => console.log('error while fetching rules.md', e));
-    });
+    }, []);
 
     return (
         <>

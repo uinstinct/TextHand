@@ -32,7 +32,12 @@ export default function NavbarIndex() {
                         </a>
                     </Menu.Item>
                     <Menu.Item position='right'>
-                        <Button color='olive' inverted={darkTheme.isActive} onClick={() => setShowRules(true)} style={{ marginRight: '2rem' }}>
+                        <Button color='olive'
+                            inverted={darkTheme.isActive}
+                            onClick={() => setShowRules(true)}
+                            style={{ marginRight: '2rem' }}
+                            id='guide-modal'
+                        >
                             Show Guide
                         </Button>
                         <Checkbox toggle

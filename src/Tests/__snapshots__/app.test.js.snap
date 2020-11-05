@@ -32,6 +32,7 @@ exports[`test the app container whole app is rendered without failing 1`] = `
         >
           <button
             class="ui olive inverted button"
+            id="guide-modal"
             style="margin-right: 2rem;"
           >
             Show Guide
@@ -538,7 +539,6 @@ exports[`test the app container whole app is rendered without failing 1`] = `
               >
                 <div
                   class="generated core"
-                  data-testid="page-content"
                   id="page-content"
                   style="font-family: Homemade Apple, cursive; font-weight: 400; font-size: 10px; color: rgb(0, 15, 85); margin-left: 1rem; margin-right: 1rem; margin-top: 1rem; word-spacing: 4px; letter-spacing: 1px; line-height: 1.1;"
                 />
