@@ -2,30 +2,24 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import { withDarkThemeProvider, dummyText, text1, text2 } from './testUtils';
+import {
+    withDarkThemeProvider,
+    dummyText, text1, text2,
+    mockUseControl,
+} from './testUtils';
 import EditorIndex from "../Containers/Editor/index";
 import TextEdit from "../Containers/Editor/Text";
 import Generated from "../Containers/Editor/Generated";
 
 /** jest.mock needs to be defined outside describe blocks
+ * the "mock" keyword ensures that we are allowed to reference out-of-scope variables
  * */
-jest.mock("../Containers/Controls", () => {
-    return {
-        useControl: () => [{
-            fontFamily: 'san-serif',
-            fontWeight: 12,
-            fontSize: 10,
-            color: '#000',
-            marginLeft: 0,
-            marginRight: 0,
-            marginTop: 0,
-            wordSpacing: 2,
-            letterSpacing: 1,
-            lineHeight: 1.1,
-            paperLines: true,
-        }]
-    };
-});
+jest.mock("../Containers/Controls", () => (
+    {
+    useControl: mockUseControl,
+    }
+));
+
 
 describe("test the generated container and its functionalities | ", () => {
     it("renders and matches snapshot", () => {
@@ -55,10 +49,11 @@ describe("test the text area container and it functionalities | ", () => {
         const { container, rerender } = render(
             <TextEdit text={text1} setText={setText} />
         );
-        const textArea = container.querySelector(".core");
+        const textArea = container.querySelector(".text-area.core");
         expect(textArea.value).toBe(text1);
 
         fireEvent.input(textArea, { target: { value: text2 } });
+
         expect(setText).toHaveBeenCalledWith(text2);
         expect(setText).toHaveBeenCalledTimes(1);
 
@@ -69,9 +64,27 @@ describe("test the text area container and it functionalities | ", () => {
 });
 
 
+/** this is an Integration test
+ * test the working of both the generated and the text container
+ * */
 describe("test the whole editor container and its functionalities | ", () => {
     it("renders and matches snapshot", () => {
-        const { container } = render(withDarkThemeProvider(< EditorIndex />));
+        const { container } = render(withDarkThemeProvider(<EditorIndex />));
         expect(container.innerHTML).toMatchSnapshot();
     });
+
+    it("changes the content of the editor container when text container changes",
+        async () => {
+            const { container } = render(withDarkThemeProvider(<EditorIndex />));
+            const textArea = container.querySelector(".text-area.core");
+            const pageContent = container.querySelector(".generated.core");
+
+            fireEvent.input(textArea, { target: { value: dummyText } });
+
+            expect(pageContent.innerHTML).toMatch(dummyText);
+            expect(mockUseControl).toHaveBeenCalled();
+            expect(container.innerHTML).toMatchSnapshot();
+        }
+    );
+
 });

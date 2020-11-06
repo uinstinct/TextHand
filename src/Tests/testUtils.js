@@ -26,3 +26,20 @@ export const dummyShortText = "React Testing Library builds on top of DOM Testin
 
 export const text1 = "1 formerly before change it was this text";
 export const text2 = "2 now it has changed to that writing";
+
+
+export const mockUseControl = jest.fn(() => {
+    return [{
+        fontFamily: 'san-serif',
+        fontWeight: 12,
+        fontSize: 10,
+        color: '#000',
+        marginLeft: 0,
+        marginRight: 0,
+        marginTop: 0,
+        wordSpacing: 2,
+        letterSpacing: 1,
+        lineHeight: 1.1,
+        paperLines: true,
+    },]
+});
