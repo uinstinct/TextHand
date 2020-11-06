@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 
 import {
     withDarkThemeProvider,
@@ -16,10 +16,11 @@ import Generated from "../Containers/Editor/Generated";
  * */
 jest.mock("../Containers/Controls", () => (
     {
-    useControl: mockUseControl,
+        useControl: mockUseControl,
     }
 ));
 
+afterEach(() => cleanup());
 
 describe("test the generated container and its functionalities | ", () => {
     it("renders and matches snapshot", () => {
@@ -86,5 +87,4 @@ describe("test the whole editor container and its functionalities | ", () => {
             expect(container.innerHTML).toMatchSnapshot();
         }
     );
-
 });

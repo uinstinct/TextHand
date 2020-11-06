@@ -96,7 +96,6 @@ function ImageGenerator() {
                             <button disabled={loading}
                                 onClick={applyImageGeneration}
                                 id="generate-button"
-                                data-testid="generate-button"
                             >
                                 GENERATE
                             </button>

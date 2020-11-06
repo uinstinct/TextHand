@@ -597,7 +597,6 @@ exports[`test the app container |  whole app is rendered without failing 1`] = `
                     class="ui inverted segment"
                   >
                     <button
-                      data-testid="generate-button"
                       id="generate-button"
                     >
                       GENERATE
