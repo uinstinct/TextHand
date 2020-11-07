@@ -12,6 +12,7 @@
     "file-saver": "^2.0.2",
     "html2canvas": "^1.0.0-rc.7",
     "jest-environment-jsdom-sixteen": "^1.0.3",
+    "jsdom": "^16.4.0",
     "jspdf": "^2.1.1",
     "marked": "^1.2.0",
     "react": "^16.13.1",
@@ -27,9 +28,6 @@
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
     "lint": "eslint ."
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

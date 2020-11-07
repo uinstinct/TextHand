@@ -30,16 +30,25 @@ export const text2 = "2 now it has changed to that writing";
 
 export const mockUseControl = jest.fn(() => {
     return [{
-        fontFamily: 'san-serif',
-        fontWeight: 12,
-        fontSize: 10,
-        color: '#000',
-        marginLeft: 0,
-        marginRight: 0,
-        marginTop: 0,
-        wordSpacing: 2,
-        letterSpacing: 1,
+        fontFamily: 'cursive',
+        fontWeight: 400,
+        fontSize: '10px',
+        fontSizeRandom: 0,
+        color: 'rgb(0, 15, 85)',
+        wordRotation: 0,
+
+        marginLeft: '1rem',
+        marginRight: '1rem',
+        marginTop: '1rem',
+        clientHeight: 550,
+        paperLines: false,
+
+        wordSpacing: '4px',
+        letterSpacing: '1px',
         lineHeight: 1.1,
-        paperLines: true,
+
+        resolutionScale: 2,
+        shadowEffect: true,
+        preserveIndentation: true,
     },]
 });
