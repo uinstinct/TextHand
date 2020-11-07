@@ -28,27 +28,28 @@ export const text1 = "1 formerly before change it was this text";
 export const text2 = "2 now it has changed to that writing";
 
 
+export const sampleControls = {
+    fontFamily: 'cursive',
+    fontWeight: 400,
+    fontSize: '10px',
+    fontSizeRandom: 0,
+    color: 'rgb(0, 15, 85)',
+    wordRotation: 0,
+
+    marginLeft: '1rem',
+    marginRight: '1rem',
+    marginTop: '1rem',
+    clientHeight: 550,
+    paperLines: false,
+
+    wordSpacing: '4px',
+    letterSpacing: '1px',
+    lineHeight: 1.1,
+
+    resolutionScale: 2,
+    shadowEffect: true,
+    preserveIndentation: true,
+};
 export const mockUseControl = jest.fn(() => {
-    return [{
-        fontFamily: 'cursive',
-        fontWeight: 400,
-        fontSize: '10px',
-        fontSizeRandom: 0,
-        color: 'rgb(0, 15, 85)',
-        wordRotation: 0,
-
-        marginLeft: '1rem',
-        marginRight: '1rem',
-        marginTop: '1rem',
-        clientHeight: 550,
-        paperLines: false,
-
-        wordSpacing: '4px',
-        letterSpacing: '1px',
-        lineHeight: 1.1,
-
-        resolutionScale: 2,
-        shadowEffect: true,
-        preserveIndentation: true,
-    },]
+    return [sampleControls,];
 });
