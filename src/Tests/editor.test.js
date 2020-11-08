@@ -1,5 +1,4 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 
 import {
@@ -24,8 +23,8 @@ afterEach(() => cleanup());
 
 describe("test the generated container and its functionalities | ", () => {
     it("renders and matches snapshot", () => {
-        const generated = create(<Generated text="text inside generated container" />);
-        expect(generated.toJSON()).toMatchSnapshot();
+        const generated = render(<Generated text={dummyText} />);
+        expect(generated.container.outerHTML).toMatchSnapshot();
     });
 
     it("changes input on props change", () => {

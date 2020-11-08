@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test the navbar container and its components |  test the guide component and its functionalities |  matches shallow render 1`] = `[Function]`;
-
-exports[`test the navbar container and its components |  test the guide component and its functionalities |  renders using rtl render 1`] = `
+exports[`test the navbar container and its components |  test the guide component and its functionalities |  renders and matches its snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body
@@ -101,7 +99,7 @@ Object {
 
 exports[`test the navbar container and its components |  test the navbar component has the same content as guide modal 1`] = `""`;
 
-exports[`test the navbar container and its components |  test the navbar component renders using rtl render 1`] = `
+exports[`test the navbar container and its components |  test the navbar component renders and matches its snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body

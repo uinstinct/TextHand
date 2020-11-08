@@ -113,6 +113,9 @@ describe("test the image generation phenomenon | ", () => {
 
     it("has both random fontSize and random word rotation and applied the same",
         async () => {
+            jest.spyOn(console, 'warn').mockImplementation(() => { });
+            jest.spyOn(console, 'error').mockImplementation(() => { });
+
             mockCopyControlsGetter.mockReturnValue({
                 ...sampleControls,
                 fontSize: '12px',

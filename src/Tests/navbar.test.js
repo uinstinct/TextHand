@@ -1,6 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { cleanup, render, fireEvent, waitFor, screen, } from "@testing-library/react";
+import {
+    cleanup, 
+    fireEvent, waitFor,
+    render, screen,
+} from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
 import { withDarkThemeProvider, dummyShortText } from './testUtils';
@@ -21,14 +24,9 @@ const navBarTests = () => {
         afterEach(cleanup);
 
 
-        it("renders using rtl render", () => {
+        it("renders and matches its snapshot", () => {
             const guideModal = render(<Guide showRules={true}/>);
             expect(guideModal).toMatchSnapshot();
-        });
-
-        it("matches shallow render", () => {
-            const guideModal = shallow(<Guide showRules={true}/>)
-            expect(guideModal.text).toMatchSnapshot();
         });
 
         it("the markdown file is fetched and rendered", async () => {
@@ -49,7 +47,6 @@ const navBarTests = () => {
                     screen.getByText(dummyShortText);
                 });
             });
-            
         });
 
     });
@@ -58,7 +55,7 @@ const navBarTests = () => {
 
         afterEach(cleanup);
 
-        it("renders using rtl render", async () => {
+        it("renders and matches its snapshot", async () => {
             jest.spyOn(console, 'warn').mockImplementation(() => { });
             jest.spyOn(console, 'error').mockImplementation(() => { });
             const navbar = render(withDarkThemeProvider(<Navbar />));
