@@ -32,11 +32,8 @@ body[data-theme='dark'] .ui.form textarea::selection {
     /*background: url(../../assets/paper-2.jpg);*/
     background: white;
     background-size: cover;
-    border: 1px solid var(--elevation-background);
     position: relative;
     top: 0px;
-    font-family: var(--handwriting-font);
-    color: var(--ink-color);
     line-height: 1.5em;
     overflow-y: auto;
     overflow-x: hidden;
@@ -51,5 +48,13 @@ body[data-theme='dark'] .ui.form textarea::selection {
     left: 0;
     height: 100%;
     width: 100%;
+    display: none;
+}
+
+.generated.signature {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transform: rotate(-15deg);
     display: none;
 }

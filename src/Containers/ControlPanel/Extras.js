@@ -17,6 +17,7 @@ function addImageToBackground(fileObj) {
     reader.onload = e => {
         var editorContainer = document.getElementById('page-container');
         editorContainer.style.background = `url(${e.target.result})`;
+        editorContainer.style.backgroundSize = 'cover';
     }
 }
 

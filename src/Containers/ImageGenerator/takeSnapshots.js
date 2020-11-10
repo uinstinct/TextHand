@@ -120,6 +120,8 @@ async function generateImages() {
         container.scrollTo(0, 0);
 
         const overlay = document.querySelector('#overlay');
+        const signature = document.querySelector("#signature");
+        signature.style.display = 'block';
         if (JSON.parse(copyControls.shadowEffect) === true) {
             overlay.style.display = 'block';
             overlay.style.background = `linear-gradient(${Math.random() * 360}deg, #0008, #0000)`;
@@ -128,6 +130,7 @@ async function generateImages() {
         const canvas = await convertDIVToImage();
         images.push(canvas);
 
+        signature.style.display = 'none';
         overlay.style.display = 'none';
         overlay.style.background = 'none';
     }

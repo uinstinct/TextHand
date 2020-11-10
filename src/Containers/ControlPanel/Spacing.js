@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn, TextArea, Form, Dropdown } from 'semantic-ui-react';
 
 function Spacing() {
     const { isActive } = useContext(DarkTheme);
@@ -39,8 +39,6 @@ function Spacing() {
                             <input type="number" style={{ marginLeft: '1rem' }} value={parseFloat(state.wordSpacing)} onChange={changeWordSpacing} />
 
                     </GridColumn>
-                </GridRow>
-                <GridRow>
                     <GridColumn>
 
                         Letter Spacing
@@ -51,15 +49,31 @@ function Spacing() {
                 <GridRow>
                     <GridColumn>
 
-                        Line Height
+                        Line Height*
                         <input type="number" step="0.1" style={{ marginLeft: '1rem' }} onChange={changeLineHeight} value={state.lineHeight} />
+
+                    </GridColumn>
+                    <GridColumn>
+
+                        Strike Frequency*
+                        <input type="number" step="1" style={{ marginLeft: '1rem' }} onChange={changeStrikeFreq} value={state.strikeFreq} />
+
                     </GridColumn>
                 </GridRow>
                 <GridRow>
                     <GridColumn>
+                        
+                        Signature*
+                        <Form>
+                            <TextArea placeholder="signature" rows="1" />
+                        </Form>
 
-                        Strike Frequency
-                        <input type="number" step="1" style={{ marginLeft: '1rem' }} onChange={changeStrikeFreq} value={state.strikeFreq} />
+                    </GridColumn>
+                    <GridColumn>
+
+                        Signature Position*
+                        <Dropdown />
+
                     </GridColumn>
                 </GridRow>
             </Grid>

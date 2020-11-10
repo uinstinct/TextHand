@@ -26,7 +26,7 @@ input {
     }
 
 .controlpanel.spacing input[type="number"] {
-    width: 100%;
+    width: 65%;
     border-radius: 20%;
 }
 

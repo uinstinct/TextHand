@@ -35,7 +35,7 @@ function Margin() {
     return (
         <div className="controlpanel margin">
             <h2>Margin</h2>
-            <Grid inverted={isActive} columns={2} stretched>
+            <Grid inverted={isActive} columns={3} stretched>
                 <GridRow>
                     <GridColumn>
                         Left
@@ -45,8 +45,6 @@ function Margin() {
                         Right
                             <input type="number" value={parseInt(state.marginRight)} onChange={changeMarginRight} />
                     </GridColumn>
-                </GridRow>
-                <GridRow>
                     <GridColumn>
                         Top
                             <input type="number" value={parseInt(state.marginTop)} onChange={changeMarginTop} />
@@ -55,7 +53,7 @@ function Margin() {
                 <GridRow>
                     <GridColumn>
                         <div className="controlpanel inline">
-                            Page Content Height
+                            Page Content Height*
                         <input type="number" onChange={changeClientHeight} value={parseInt(state.clientHeight)} min="0" max="700" />
                         </div>
                     </GridColumn>
@@ -63,7 +61,7 @@ function Margin() {
                 <GridRow>
                     <GridColumn>
                         <span>
-                            Use Paper Lines
+                            Use Paper Lines*
                             <Checkbox style={{ marginLeft: '0.5rem' }} onChange={applyPaperLines} defaultChecked={JSON.parse(state.paperLines)} />
                         </span>
                     </GridColumn>

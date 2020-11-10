@@ -60,9 +60,17 @@ function Generated(props) {
 
     return (
         <div className="generated container" id="page-container" >
-            <div className="generated core" id="page-content" style={manipulatedStyles} dangerouslySetInnerHTML={{ __html: madeHTML }}>
-            </div>
-            <div id="overlay" className="generated overlay"></div>
+            <div className="generated core" id="page-content"
+                style={manipulatedStyles}
+                dangerouslySetInnerHTML={{ __html: madeHTML }}
+            />
+            <div id="overlay" className="generated overlay" />
+            <div id="signature" className="generated signature"
+                style={{
+                    fontFamily: state.fontFamily,
+                    color: state.color,
+                }}
+            >Aditya</div>
         </div>
     );
 
