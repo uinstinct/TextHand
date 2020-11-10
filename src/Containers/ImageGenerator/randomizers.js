@@ -39,7 +39,7 @@ function randomizeWord(word, shouldLetterRandomize) {
 
 
 function createStrikePositions(pages, noOfWords) {
-    const frequency = 3;
+    const frequency = copyControls.strikeFreq || 0;
     let prev = 0;
     let positions = [];
 
@@ -51,7 +51,6 @@ function createStrikePositions(pages, noOfWords) {
         prev += interval;
         positions.push(position);
     }
-console.log(positions);
     return positions;
 }
 
@@ -61,19 +60,18 @@ export default class TakeSnapshotRandomizer {
         this.applyRandomization = this.applyRandomization.bind(this);
         this.strikePositions = createStrikePositions(pages, noOfWords);
         this.strikeCurrPos = 0;
+        this.willStrike = copyControls.strikeFreq > 0 ? true : false;
     }
 
     applyRandomization(word, shouldLetterRandomize, currentWord) {
 
-        const willStrike = true;
-
-        if(willStrike 
+        if(this.willStrike
             && this.strikePositions.includes(currentWord.value, this.strikeCurrPos)){
             this.strikeCurrPos++;
             currentWord.value--;
 
             const styledWord = randomizeWord(word, false);
-            styledWord.style.textDecoration = "underline";
+            styledWord.style.textDecoration = "line-through";
             return styledWord;
 
         }else{

@@ -23,6 +23,10 @@ function Spacing() {
         dispatch({ type: 'CHANGE_LINE_HEIGHT', payload: { lineHeight: event.target.value } });
     }
 
+    const changeStrikeFreq = event =>{
+        const value = event.target.value === '' ? 0:parseInt(event.target.value);
+        dispatch({type:'CHANGE_STRIKE_FREQUENCY',payload:{strikeFreq:value}});
+    }
 
     return (
         <div className="controlpanel spacing">
@@ -50,7 +54,13 @@ function Spacing() {
                         Line Height
                         <input type="number" step="0.1" style={{ marginLeft: '1rem' }} onChange={changeLineHeight} value={state.lineHeight} />
                     </GridColumn>
+                </GridRow>
+                <GridRow>
+                    <GridColumn>
 
+                        Strike Frequency
+                        <input type="number" step="1" style={{ marginLeft: '1rem' }} onChange={changeStrikeFreq} value={state.strikeFreq} />
+                    </GridColumn>
                 </GridRow>
             </Grid>
         </div>

@@ -21,6 +21,7 @@ const initialState = {
     wordSpacing: '4px',
     letterSpacing: '1px',
     lineHeight: 1.1,
+    strikeFreq: 0,
 
     // extras
     resolutionScale: 2,
@@ -68,6 +69,8 @@ function reducer(state, action) {
             return { ...state, marginBottom: action.payload.marginBottom + 'px' };
         case 'APPLY_PAPER_LINES':
             return { ...state, paperLines: action.payload.paperLines };
+        case 'CHANGE_STRIKE_FREQUENCY': 
+            return {...state,strikeFreq:action.payload.strikeFreq};
 
         // SPACING
         case 'CHANGE_WORD_SPACING':

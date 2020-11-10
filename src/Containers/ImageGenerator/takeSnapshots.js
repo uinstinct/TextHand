@@ -75,7 +75,7 @@ async function generateImages() {
         let text = "";
         content.innerHTML = "";
 
-        while (content.scrollHeight <= clientHeight && words.length <= splitContent.length+3) {
+        while (content.scrollHeight <= clientHeight && words.length <= splitContent.length + copyControls.strikeFreq) {
             const word = splitContent[currentWordPos];
             if (!word) {
                 break;
