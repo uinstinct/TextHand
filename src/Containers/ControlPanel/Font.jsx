@@ -3,31 +3,30 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn, Input, Dropdown, Popup } from 'semantic-ui-react';
+import {
+    Grid, GridRow, GridColumn,
+    Input,
+    Popup
+} from 'semantic-ui-react';
 
 const options = [
     {
-        key: "normal",
         text: "normal",
         value: 400,
     },
     {
-        key: "light",
         text: "light",
         value: 150,
     },
     {
-        key: "lighter",
         text: "lighter",
         value: 10,
     },
     {
-        key: "bold",
         text: "bold",
         value: 600,
     },
     {
-        key: "bolder",
         text: "bolder",
         value: 800,
     }
@@ -38,7 +37,7 @@ function addFontFromFile(fileObj) {
     const reader = new FileReader();
     reader.readAsArrayBuffer(fileObj);
     reader.onload = (e) => {
-        const newFont = new FontFace('temp-font', e.target.result);
+        const newFont = new FontFace('loadedFont', e.target.result);
         newFont.load().then((loadedFace) => {
             document.fonts.add(loadedFace);
         });
@@ -52,7 +51,7 @@ function Font() {
 
     const changeFontFamily = event => {
         addFontFromFile(event.target.files[0]);
-        dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'temp-font' } });
+        dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'loadedFont' } });
     }
 
     const changeFontSize = (event) => {
@@ -74,7 +73,7 @@ function Font() {
     }
 
     const changeWordRotation = (event) => {
-        const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
+        const value = event.target.value === "" ? 0 : parseFloat(event.target.value);
         dispatch({ type: 'CHANGE_WORD_ROTATION', payload: { wordRotation: value } });
     }
 
@@ -117,13 +116,15 @@ function Font() {
                     <GridColumn>
 
                         Font Weight
-                        <Dropdown 
-                            placeholder='Select Font Weight'
-                            options={options}
-                            onChange={changeFontWeight}
-                            openOnFocus closeOnEscape
-                            style={{ marginLeft: '2rem' }}
-                        />
+                        
+                        <select onChange={changeFontWeight} defaultValue={state.fontWeight}>
+                            {options.map(opt =>
+                                <option key={opt.text}
+                                    value={opt.value}>
+                                    {opt.text}
+                                </option>
+                            )}
+                        </select>
 
                     </GridColumn>
                 </GridRow>

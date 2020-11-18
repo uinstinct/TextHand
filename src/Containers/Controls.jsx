@@ -23,7 +23,7 @@ const initialState = {
     lineHeight: 1.1,
     strikeFreq: 0,
     signValue: "",
-    signPosition: "none",
+    signPosition: "top-right",
 
     // extras
     resolutionScale: 2,
@@ -126,7 +126,7 @@ export function ControlProvider({ children }) {
         <ControlContext.Provider value={contextValue}>
             {children}
         </ControlContext.Provider>
-        )
+    );
 }
 
 export function useControl() {

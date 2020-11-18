@@ -22,13 +22,13 @@ body[data-theme='dark'] .ui.form textarea::selection {
 
 .text-area.core {
     margin-right: 1.2rem;
-    height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
+    height: calc(11.7 * 400px / 8.3);
     width: 450px;
 }
 
 .generated.container {
     width: 400px;
-    height: calc(11.7 * 400px / 8.3); /*A4 Ratio*/
+    height: calc(11.7 * 400px / 8.3);
     background: white;
     background-size: cover;
     position: relative;
@@ -52,8 +52,6 @@ body[data-theme='dark'] .ui.form textarea::selection {
 
 .generated.signature {
     position: absolute;
-    top: 15px;
-    right: 20px;
     transform: rotate(-15deg);
     display: none;
 }

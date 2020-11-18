@@ -11,8 +11,20 @@ function createHTML(text) {
 
 }
 
-const originalStyles = state => {
-    return {
+const makeSignStyles = (fontFamily, color, position) =>
+    (
+        {
+            fontFamily,
+            color,
+            top: position === "top-right" ? "15px" : "auto",
+            right: "20px",
+            bottom: position === "bottom-right" ? "15px" : "auto"
+        }
+    );
+
+const originalStyles = state =>
+    (
+        {
         fontFamily: state.fontFamily,
         fontWeight: state.fontWeight,
         fontSize: state.fontSize,
@@ -24,9 +36,10 @@ const originalStyles = state => {
 
         wordSpacing: state.wordSpacing,
         letterSpacing: state.letterSpacing,
-        lineHeight: state.lineHeight,
-    };
-}
+        lineHeight: state.lineHeight
+        }
+    );
+
 
 const paperLines = state => {
     const spaceInBetween = `${(parseInt(state.fontSize) + 1) * state.lineHeight}px`;
@@ -56,6 +69,8 @@ function Generated(props) {
 
     }, [state]);
 
+    const signStyles = useMemo(() => makeSignStyles(state.fontFamily, state.color, state.signPosition), [state.fontFamily, state.color, state.signPosition]);
+
     const madeHTML = useMemo(() => createHTML(props.text), [props.text]);
 
     return (
@@ -66,10 +81,7 @@ function Generated(props) {
             />
             <div id="overlay" className="generated overlay" />
             <div id="signature" className="generated signature"
-                style={{
-                    fontFamily: state.fontFamily,
-                    color: state.color,
-                }}
+                style={signStyles}
             >{state.signValue}</div>
         </div>
     );

@@ -3,7 +3,10 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn, Dropdown, Input } from 'semantic-ui-react';
+import {
+    Grid, GridRow, GridColumn,
+    Input
+} from 'semantic-ui-react';
 
 
 let signTimer = null;
@@ -18,17 +21,10 @@ function showSignature() {
 
 const options = [
     {
-        key: "none",
-        text: "No Signature",
-        value: "none",
-    },
-    {
-        key: "top-right",
         text: "Top Right",
         value: "top-right",
     },
     {
-        key: "bottom-right",
         text: "Bottom Right",
         value: "bottom-right",
     }
@@ -62,7 +58,6 @@ export default function Spacinge() {
         showSignature();
     }
 
-    // is not working. fix during migration
     const changeSignaturePosition = event => {
         dispatch({ type: 'CHANGE_SIGNATURE_POSITION', payload: { signPosition: event.target.value } });
         showSignature();
@@ -96,27 +91,43 @@ export default function Spacinge() {
                     <GridColumn>
 
                         Strike Frequency*
-                        <input disabled type="number" step="1" style={{ marginLeft: '1rem' }} onChange={changeStrikeFreq} value={state.strikeFreq} />
+                        <input
+                            disabled type="number" step="1"
+                            style={{ marginLeft: '1rem' }}
+                            onChange={changeStrikeFreq}
+                            value={state.strikeFreq}
+                        />
 
                     </GridColumn>
                 </GridRow>
                 <GridRow>
                     <GridColumn>
-                        
+
                         Signature*
                         <Input type="text" size="mini"
-                            onChange={changeSignatureValue} value={state.signValue} />
+                            onChange={changeSignatureValue}
+                            value={state.signValue}
+                        />
 
                     </GridColumn>
                     <GridColumn>
 
-                        Signature Position*
-                        <Dropdown
-                            placeholder="position"
-                            options={options}
-                            onChange={changeSignaturePosition}
-                            openOnFocus closeOnEscape
-                        />
+                        {state.signValue && state.signValue.length > 0 &&
+                            <>
+                                Signature Position*
+                                <select
+                                    defaultValue={state.signPosition}
+                                    onChange={changeSignaturePosition}
+                                >
+                                    {options.map(opt =>
+                                        <option key={opt.text}
+                                            value={opt.value}>
+                                            {opt.text}
+                                        </option>
+                                    )}
+                                </select>
+                            </>
+                        }
 
                     </GridColumn>
                 </GridRow>
