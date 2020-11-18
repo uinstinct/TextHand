@@ -38,7 +38,7 @@ function randomizeWord(word, shouldLetterRandomize) {
 }
 
 
-function createStrikePositions(pages, noOfWords) {
+/*function createStrikePositions(pages, noOfWords) {
     const frequency = copyControls.strikeFreq || 0;
     let prev = 0;
     let positions = [];
@@ -52,21 +52,24 @@ function createStrikePositions(pages, noOfWords) {
         positions.push(position);
     }
     return positions;
-}
+}*/
 
 export default class TakeSnapshotRandomizer {
 
-    constructor(pages, noOfWords) {
+    /*constructor(pages, noOfWords) {
         this.applyRandomization = this.applyRandomization.bind(this);
         this.strikePositions = createStrikePositions(pages, noOfWords);
         this.strikeCurrPos = 0;
         this.willStrike = copyControls.strikeFreq > 0 ? true : false;
-    }
+    }*/
 
     applyRandomization(word, shouldLetterRandomize, currentWord) {
+        return randomizeWord(word, shouldLetterRandomize);
 
-        if(this.willStrike
-            && this.strikePositions.includes(currentWord.value, this.strikeCurrPos)){
+        /*if(this.willStrike
+            && this.strikePositions
+                .includes(currentWord.value, this.strikeCurrPos)) {
+
             this.strikeCurrPos++;
             currentWord.value--;
 
@@ -76,6 +79,6 @@ export default class TakeSnapshotRandomizer {
 
         }else{
             return randomizeWord(word, shouldLetterRandomize);
-        }
+        }*/
     }
 };

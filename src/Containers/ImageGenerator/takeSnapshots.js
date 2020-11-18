@@ -8,12 +8,6 @@ let content = null;
 
 async function convertDIVToImage() {
 
-    /* the scale does not default to 1 but to the browser window device pixel ration
-     * disabling the scale option results in a higher quality image
-     * replace this with blur filter of canvas
-     * use blur as slider and show in overlay
-     * make indentation optional
-     */
     const options = {
         logging: false,
         scrollX: 0,
@@ -21,7 +15,7 @@ async function convertDIVToImage() {
         scale: copyControls.resolutionScale
     };
 
-    const canvas = await html2canvas(container, options); // just take the snapshot
+    const canvas = await html2canvas(container, options); 
     return canvas;
 }
 
@@ -43,9 +37,9 @@ async function generateImages() {
 
     container.scrollTo(0, 0);
     const scrollHeight = content.scrollHeight;
-    const clientHeight = copyControls.clientHeight || 550; // height of .page-content when there is no content (increase this value to remove space at the bottom)
+    const clientHeight = copyControls.clientHeight || 550;
 
-    const totalPages = Math.ceil(scrollHeight / clientHeight) + 1; // always add +1 to get the extra page to due to random font size
+    const totalPages = Math.ceil(scrollHeight / clientHeight) + 1; 
 
 
     let copiedText = content.innerHTML.trim();
@@ -76,13 +70,14 @@ async function generateImages() {
         content.innerHTML = "";
 
         while (content.scrollHeight <= clientHeight && words.length <= splitContent.length + copyControls.strikeFreq) {
+
             const word = splitContent[currentWordPos];
             if (!word) {
                 break;
             } else if (word === '<br>') {
                 words.push(word);
             } else if (
-                word.includes("&lt") || word.includes("&gt") || word.includes("&amp")
+                (/&lt|&gt|&amp/gi).test(word)
             ) {
                 words.push(word);
             } else if (word.includes(":~:")) {
@@ -93,12 +88,11 @@ async function generateImages() {
                 }
                 words.push(newWord);
             } else {
-                const currentWord = {value:currentWordPos};
                 const styledWord = applyRandomization(
-                    word, shouldLetterRandomize,
-                    currentWord
+                    word,
+                    shouldLetterRandomize,
+                    currentWordPos
                 );
-                currentWordPos = currentWord.value;
                 words.push(styledWord.outerHTML);
                 styledWord.remove();
             }
@@ -107,7 +101,6 @@ async function generateImages() {
 
             content.innerHTML = text;
             currentWordPos++;
-
         }
 
         // remove the last word
@@ -124,7 +117,8 @@ async function generateImages() {
         signature.style.display = 'block';
         if (JSON.parse(copyControls.shadowEffect) === true) {
             overlay.style.display = 'block';
-            overlay.style.background = `linear-gradient(${Math.random() * 360}deg, #0005, #0000)`;
+            overlay.style.background =
+                `linear-gradient(${Math.random() * 360}deg, #0008, #0000)`;
         }
 
         const canvas = await convertDIVToImage();

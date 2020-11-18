@@ -96,7 +96,7 @@ export default function Spacinge() {
                     <GridColumn>
 
                         Strike Frequency*
-                        <input type="number" step="1" style={{ marginLeft: '1rem' }} onChange={changeStrikeFreq} value={state.strikeFreq} />
+                        <input disabled type="number" step="1" style={{ marginLeft: '1rem' }} onChange={changeStrikeFreq} value={state.strikeFreq} />
 
                     </GridColumn>
                 </GridRow>
