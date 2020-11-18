@@ -124,7 +124,7 @@ async function generateImages() {
         signature.style.display = 'block';
         if (JSON.parse(copyControls.shadowEffect) === true) {
             overlay.style.display = 'block';
-            overlay.style.background = `linear-gradient(${Math.random() * 360}deg, #0008, #0000)`;
+            overlay.style.background = `linear-gradient(${Math.random() * 360}deg, #0005, #0000)`;
         }
 
         const canvas = await convertDIVToImage();

@@ -22,6 +22,8 @@ const initialState = {
     letterSpacing: '1px',
     lineHeight: 1.1,
     strikeFreq: 0,
+    signValue: "",
+    signPosition: "none",
 
     // extras
     resolutionScale: 2,
@@ -69,8 +71,7 @@ function reducer(state, action) {
             return { ...state, marginBottom: action.payload.marginBottom + 'px' };
         case 'APPLY_PAPER_LINES':
             return { ...state, paperLines: action.payload.paperLines };
-        case 'CHANGE_STRIKE_FREQUENCY': 
-            return {...state,strikeFreq:action.payload.strikeFreq};
+        
 
         // SPACING
         case 'CHANGE_WORD_SPACING':
@@ -79,6 +80,12 @@ function reducer(state, action) {
             return { ...state, letterSpacing: action.payload.letterSpacing + 'px' };
         case 'CHANGE_LINE_HEIGHT':
             return { ...state, lineHeight: action.payload.lineHeight };
+        case 'CHANGE_STRIKE_FREQUENCY':
+            return { ...state, strikeFreq: action.payload.strikeFreq };
+        case 'CHANGE_SIGNATURE_VALUE':
+            return { ...state, signValue: action.payload.signValue };
+        case 'CHANGE_SIGNATURE_POSITION':
+            return { ...state, signPosition: action.payload.signPosition };
 
         // EXTRAS
         case 'CHANGE_RESOLUTION_SCALE':

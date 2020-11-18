@@ -70,7 +70,7 @@ function Generated(props) {
                     fontFamily: state.fontFamily,
                     color: state.color,
                 }}
-            >Aditya</div>
+            >{state.signValue}</div>
         </div>
     );
 

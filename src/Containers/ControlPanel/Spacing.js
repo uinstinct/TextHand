@@ -3,9 +3,38 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn, TextArea, Form, Dropdown } from 'semantic-ui-react';
+import { Grid, GridRow, GridColumn, Dropdown, Input } from 'semantic-ui-react';
 
-function Spacing() {
+
+let signTimer = null;
+function showSignature() {
+    const signature = document.getElementById("signature");
+    signature.style.display = "block";
+    clearTimeout(signTimer);
+    signTimer = setTimeout(() => {
+        signature.style.display = "none";
+    }, 1000);
+}
+
+const options = [
+    {
+        key: "none",
+        text: "No Signature",
+        value: "none",
+    },
+    {
+        key: "top-right",
+        text: "Top Right",
+        value: "top-right",
+    },
+    {
+        key: "bottom-right",
+        text: "Bottom Right",
+        value: "bottom-right",
+    }
+];
+
+export default function Spacinge() {
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
@@ -23,9 +52,20 @@ function Spacing() {
         dispatch({ type: 'CHANGE_LINE_HEIGHT', payload: { lineHeight: event.target.value } });
     }
 
-    const changeStrikeFreq = event =>{
+    const changeStrikeFreq = event => {
         const value = event.target.value === '' ? 0:parseInt(event.target.value);
-        dispatch({type:'CHANGE_STRIKE_FREQUENCY',payload:{strikeFreq:value}});
+        dispatch({ type: 'CHANGE_STRIKE_FREQUENCY', payload: { strikeFreq: value } });
+    }
+
+    const changeSignatureValue = event => {
+        dispatch({ type: 'CHANGE_SIGNATURE_VALUE', payload: { signValue: event.target.value } });
+        showSignature();
+    }
+
+    // is not working. fix during migration
+    const changeSignaturePosition = event => {
+        dispatch({ type: 'CHANGE_SIGNATURE_POSITION', payload: { signPosition: event.target.value } });
+        showSignature();
     }
 
     return (
@@ -49,7 +89,7 @@ function Spacing() {
                 <GridRow>
                     <GridColumn>
 
-                        Line Height*
+                        Line Height
                         <input type="number" step="0.1" style={{ marginLeft: '1rem' }} onChange={changeLineHeight} value={state.lineHeight} />
 
                     </GridColumn>
@@ -64,15 +104,19 @@ function Spacing() {
                     <GridColumn>
                         
                         Signature*
-                        <Form>
-                            <TextArea placeholder="signature" rows="1" />
-                        </Form>
+                        <Input type="text" size="mini"
+                            onChange={changeSignatureValue} value={state.signValue} />
 
                     </GridColumn>
                     <GridColumn>
 
                         Signature Position*
-                        <Dropdown />
+                        <Dropdown
+                            placeholder="position"
+                            options={options}
+                            onChange={changeSignaturePosition}
+                            openOnFocus closeOnEscape
+                        />
 
                     </GridColumn>
                 </GridRow>
@@ -80,5 +124,3 @@ function Spacing() {
         </div>
     );
 }
-
-export default Spacing;
