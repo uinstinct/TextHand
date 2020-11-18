@@ -5,7 +5,12 @@ import { jsPDF } from 'jspdf';
 import { DarkTheme } from '../../Themes';
 import GenerationProgress from '../GenerationProgress';
 
-import { Image, Segment, Grid, GridRow, GridColumn, Button, Label, Icon } from 'semantic-ui-react';
+import {
+    Image,
+    Segment, Label, Icon,
+    Grid, GridRow, GridColumn,
+    Button,
+} from 'semantic-ui-react';
 import "./index.css";
 
 function ShowOutput(props) {

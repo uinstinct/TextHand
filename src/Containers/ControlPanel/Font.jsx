@@ -115,8 +115,8 @@ function Font() {
                     </GridColumn>
                     <GridColumn>
 
-                        Font Weight
-                        
+                        Font Weight (BUG HERE)
+                        {/*Rever to semantic dropdown if you still see whitespace at bottom*/}
                         <select onChange={changeFontWeight} defaultValue={state.fontWeight}>
                             {options.map(opt =>
                                 <option key={opt.text}

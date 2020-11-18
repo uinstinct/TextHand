@@ -1,17 +1,17 @@
 import React, {  useState, useEffect, useRef } from 'react';
 import marked from 'marked';
 
-import rulesFile from '../../assets/rules.md';
+import guideFile from '../../assets/guide.md';
 
 import { Modal, ModalHeader, ModalContent, ModalActions, Button } from 'semantic-ui-react';
 
-function Rules(props) {
+function Rules({ showGuide, setShowGuide}) {
 
     const [md, setMd] = useState('');
     const isMounted = useRef(true);
 
     useEffect(() => {
-        fetch(rulesFile)
+        fetch(guideFile)
             .then(response => response.text())
             .then(text => {
                 if (isMounted) {
@@ -19,16 +19,16 @@ function Rules(props) {
                     isMounted.current = false;
                 }
             })
-            .catch(e => console.log('error while fetching rules.md', e));
+            .catch(e => console.log('error while fetching guide.md', e));
 
     }, []);
 
     return (
         <>
             <Modal
-                open={props.showRules}
-                onOpen={() => props.setShowRules(true)}
-                onClose={() => props.setShowRules(false)}
+                open={showGuide}
+                onOpen={() => setShowGuide(true)}
+                onClose={() => setShowGuide(false)}
             >
                 <ModalHeader>
                     Before you proceed
@@ -42,7 +42,7 @@ function Rules(props) {
                         content="Okay!"
                         labelPosition='right'
                         icon='checkmark'
-                        onClick={() => props.setShowRules(false)}
+                        onClick={() => setShowGuide(false)}
                         positive
                     />
                 </ModalActions>

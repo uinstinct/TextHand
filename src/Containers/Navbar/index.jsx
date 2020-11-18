@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 
-import Rules from './Rules';
+import Guide from './guide';
 
 import { DarkTheme } from '../../Themes';
 
@@ -16,7 +16,7 @@ export default function NavbarIndex() {
         darkTheme.setDarkmode(data.checked);
     }
 
-    const [showRules, setShowRules] = useState(false);
+    const [showGuide, setShowGuide] = useState(false);
     
     return (
         <>
@@ -34,7 +34,7 @@ export default function NavbarIndex() {
                     <Menu.Item position='right'>
                         <Button color='olive'
                             inverted={darkTheme.isActive}
-                            onClick={() => setShowRules(true)}
+                            onClick={() => setShowGuide(true)}
                             style={{ marginRight: '2rem' }}
                             id='guide-modal'
                         >
@@ -52,7 +52,7 @@ export default function NavbarIndex() {
                     </Menu.Item>
                 </Menu>
             </Segment>
-            <Rules showRules={showRules} setShowRules={setShowRules} />
+            <Guide showGuide={showGuide} setShowGuide={setShowGuide} />
         </>
     );
 }
