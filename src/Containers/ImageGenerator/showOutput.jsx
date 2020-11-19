@@ -6,7 +6,6 @@ import { DarkTheme } from '../../Themes';
 import GenerationProgress from '../GenerationProgress';
 
 import {
-    Image,
     Segment, Label, Icon,
     Grid, GridRow, GridColumn,
     Button,
@@ -37,7 +36,7 @@ function ShowOutput(props) {
                                 <Icon inverted={isActive} name='close' size='big' />
                             </Label>
                             <br />
-                            <img src={imageURL} />
+                            <img src={imageURL} alt={j}/>
                             <br />
                             <a download href={imageURL} >
                                 <Button inverted={isActive} > Download</Button>

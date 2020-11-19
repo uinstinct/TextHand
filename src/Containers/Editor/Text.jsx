@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 function Text(props) {
-    const changeInput = (event) => {
+    const handleChange = (event) => {
         props.setText(event.target.value);
     }
 
@@ -25,7 +25,7 @@ function Text(props) {
                 placedholder="type your text here"
                 className='text-area core'
                 value={props.text}
-                onInput={changeInput}
+                onChange={handleChange}
                 onKeyDown={event => handleKeyPress(event)}
                 ref={textareaRef}
             />

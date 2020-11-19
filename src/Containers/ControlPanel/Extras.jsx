@@ -135,7 +135,7 @@ export default function Extras() {
                     />
                 }
                 trigger={
-                    <Button icon='repeat' inverted={isActive}>
+                    <Button inverted={isActive}>
                         Reset All
                     </Button>
                 }

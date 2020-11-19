@@ -1,48 +1,12 @@
 import React, { useReducer, createContext, useContext, useEffect } from 'react';
+import { initialState, lazyInit } from "./init";
+import { initializeDB } from './dbStore';
 
-const initialState = {
 
-    // fonts
-    fontFamily: 'Homemade Apple, cursive',
-    fontWeight: 400,
-    fontSize: '10px',
-    fontSizeRandom: 0,
-    color: 'rgb(0, 15, 85)',
-    wordRotation: 0,
-
-    // margins
-    marginLeft: '16px',
-    marginRight: '16px',
-    marginTop: '10px',
-    clientHeight: 550,
-    paperLines: false,
-
-    // spacing
-    wordSpacing: '4px',
-    letterSpacing: '1px',
-    lineHeight: 1.1,
-    strikeFreq: 0,
-    signValue: "",
-    signPosition: "top-right",
-
-    // extras
-    resolutionScale: 2,
-    shadowEffect: true,
-    preserveIndentation: true,
-}
 
 let copyControls = {
     ...initialState
 };
-
-function init() {
-    const storedState = { ...initialState };
-    for (const [key, value] of Object.entries(localStorage)) {
-        storedState[key] = value;
-    }
-    return storedState;
-}
-
 
 function reducer(state, action) {
     switch (action.type) {
@@ -51,12 +15,14 @@ function reducer(state, action) {
             return { ...state, fontFamily: action.payload.fontFamily };
         case 'CHANGE_FONT_SIZE':
             return { ...state, fontSize: action.payload.fontSize + 'px' };
-        case 'CHANGE_FONT_SIZE_RANDOM':
-            return { ...state, fontSizeRandom: action.payload.fontSizeRandom };
         case 'CHANGE_FONT_COLOUR':
             return { ...state, color: action.payload.fontColour };
         case 'CHANGE_FONT_WEIGHT':
             return { ...state, fontWeight: action.payload.fontWeight };
+
+        // RANDOMS
+        case 'CHANGE_FONT_SIZE_RANDOM':
+            return { ...state, fontSizeRandom: action.payload.fontSizeRandom };
         case 'CHANGE_WORD_ROTATION':
             return { ...state, wordRotation: action.payload.wordRotation };
 
@@ -69,6 +35,8 @@ function reducer(state, action) {
             return { ...state, marginTop: action.payload.marginTop + 'px' };
         case 'CHANGE_MARGIN_BOTTOM':
             return { ...state, marginBottom: action.payload.marginBottom + 'px' };
+
+        // PAGES
         case 'APPLY_PAPER_LINES':
             return { ...state, paperLines: action.payload.paperLines };
         
@@ -82,6 +50,8 @@ function reducer(state, action) {
             return { ...state, lineHeight: action.payload.lineHeight };
         case 'CHANGE_STRIKE_FREQUENCY':
             return { ...state, strikeFreq: action.payload.strikeFreq };
+
+        // SIGNS
         case 'CHANGE_SIGNATURE_VALUE':
             return { ...state, signValue: action.payload.signValue };
         case 'CHANGE_SIGNATURE_POSITION':
@@ -107,18 +77,19 @@ function reducer(state, action) {
 
 const ControlContext = createContext();
 
-let timer;
+let controlTimer;
 export function ControlProvider({ children }) {
-    const contextValue = useReducer(reducer, initialState, init);
+    const contextValue = useReducer(reducer, initialState, lazyInit);
 
     useEffect(() => {
         copyControls = { ...contextValue[0] };
-        clearTimeout(timer);
-        timer = setTimeout(() => {
+        clearTimeout(controlTimer);
+        controlTimer = setTimeout(() => {
             for (const [key, value] of Object.entries(copyControls)) {
                 localStorage.setItem(key, value);
             }
             localStorage.removeItem('fontFamily');
+            initializeDB({ ...copyControls });
         }, 650);
     }, [contextValue]);
 
