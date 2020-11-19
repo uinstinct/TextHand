@@ -11,11 +11,11 @@ async function convertDIVToImage() {
     const options = {
         logging: false,
         scrollX: 0,
-        scrollY: -(window.scrollY + 22.5),
+        scrollY: -(window.scrollY + 101.25), // (22.5*4.5) BUG
         scale: copyControls.resolutionScale
     };
 
-    const canvas = await html2canvas(container, options); 
+    const canvas = await html2canvas(container, options);
     return canvas;
 }
 
@@ -30,7 +30,7 @@ async function generateImages() {
     const shouldLetterRandomize =
         parseInt(copyControls.fontSizeRandom) > 0 || false;
     const { updateProgress } = progress;
-    let images = [];
+    let canvases = [];
 
     container = document.getElementById('page-container');
     content = document.getElementById('page-content');
@@ -122,7 +122,7 @@ async function generateImages() {
         }
 
         const canvas = await convertDIVToImage();
-        images.push(canvas);
+        canvases.push(canvas);
 
         signature.style.display = 'none';
         overlay.style.display = 'none';
@@ -132,7 +132,7 @@ async function generateImages() {
     updateProgress({ type: "APPLY_FILTERS" });
     container.style.overflowY = 'scroll';
 
-    return images;
+    return canvases;
 }
 
 export { generateImages };

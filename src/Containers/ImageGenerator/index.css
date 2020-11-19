@@ -11,6 +11,10 @@
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
+body[data-theme="dark"] #generate-button {
+    color: rgb(102, 255, 51);
+    background-color: rgb(0, 38, 77);
+}
 #generate-button:disabled{
     cursor: none;
 }

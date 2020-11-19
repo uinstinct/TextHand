@@ -66,13 +66,13 @@ export default function Extras() {
             <Popup inverted={isActive}
                 trigger=
                 {
-                    <span
+                    <div
                         className="controlpanel inline"
-                        style={{ width: "100%" }}
+                        style={{ width: "90%" }}
                     >
                         <input
                             type='file'
-                            accept='.jpg,.jpeg,.png'
+                            accept=".jpg,.jpeg,.png"
                             onChange={changeBackgroundImage}
                         />
                         <Button
@@ -80,7 +80,7 @@ export default function Extras() {
                             inverted={isActive}
                             onClick={changeToWhiteBackground}
                         />
-                    </span>
+                    </div>
                 } content={instructions.imageUpload}>
 
             </Popup>

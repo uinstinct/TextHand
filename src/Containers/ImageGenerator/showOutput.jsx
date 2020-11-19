@@ -37,7 +37,7 @@ function ShowOutput(props) {
                                 <Icon inverted={isActive} name='close' size='big' />
                             </Label>
                             <br />
-                            <Image src={imageURL} size='large' />
+                            <img src={imageURL} />
                             <br />
                             <a download href={imageURL} >
                                 <Button inverted={isActive} > Download</Button>
