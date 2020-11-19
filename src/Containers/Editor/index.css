@@ -24,6 +24,16 @@ body[data-theme='dark'] .ui.form textarea::selection {
     margin-right: 1.2rem;
     height: calc(11.7 * 400px / 8.3);
     width: 450px;
+    background: transparent;
+    color: black;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 3px solid lightblue;
+}
+
+body[data-theme='dark'] .text-area.core {
+    color: papayawhip;
+    border-color: #00134d;
 }
 
 .generated.container {

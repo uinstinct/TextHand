@@ -11,9 +11,9 @@ const initialState = {
     wordRotation: 0,
 
     // margins
-    marginLeft: '1rem',
-    marginRight: '1rem',
-    marginTop: '1rem',
+    marginLeft: '16px',
+    marginRight: '16px',
+    marginTop: '16px',
     clientHeight: 550,
     paperLines: false,
 

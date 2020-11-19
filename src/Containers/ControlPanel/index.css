@@ -9,7 +9,7 @@ input {
 
     input[type="number"] {
         width: 50%;
-        border-radius: 40%;
+        border-radius: 8.5%;
         text-align: center;
         vertical-align: middle;
         padding-bottom: 2px;
@@ -27,7 +27,7 @@ input {
 
 .controlpanel.spacing input[type="number"] {
     width: 65%;
-    border-radius: 20%;
+    border-radius: 6.5%;
 }
 
 .controlpanel.font input[type="number"] {

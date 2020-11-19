@@ -1,9 +1,15 @@
-#generate-button{
+#generate-button {
     padding: 1rem;
     font-weight: lighter;
-    border-radius: 20%;
-    border: 2px solid lightgreen;
+    border: none;
+    letter-spacing: 2.5px;
+    border-radius: 45px;
     cursor: pointer;
+    color: greenyellow;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 #generate-button:disabled{
     cursor: none;

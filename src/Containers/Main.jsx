@@ -18,7 +18,7 @@ function Main() {
             <ControlProvider>
                 <GridRow columns={1}>
                     <GridColumn>
-                        <h1>Control Panel</h1>
+                        <h1>Settings</h1>
                         <em style={{ marginBottom:'1rem' }}>Most of the values are in px</em>
                         <ControlPanel />
                     </GridColumn>

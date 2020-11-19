@@ -3,7 +3,10 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Grid, GridRow, GridColumn, Checkbox } from 'semantic-ui-react';
+import {
+    Grid, GridRow, GridColumn,
+    Checkbox, Label
+} from 'semantic-ui-react';
 
 function Margin() {
     const { isActive } = useContext(DarkTheme);
@@ -61,7 +64,7 @@ function Margin() {
                 <GridRow>
                     <GridColumn>
                         <span>
-                            Use Paper Lines*
+                            <Label color="yellow" pointing="right" horizontal>Beta</Label> Use Paper Lines
                             <Checkbox style={{ marginLeft: '0.5rem' }} onChange={applyPaperLines} defaultChecked={JSON.parse(state.paperLines)} />
                         </span>
                     </GridColumn>

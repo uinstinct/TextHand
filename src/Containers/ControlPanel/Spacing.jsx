@@ -5,7 +5,8 @@ import { useControl } from '../Controls';
 
 import {
     Grid, GridRow, GridColumn,
-    Input
+    Input,
+    Label
 } from 'semantic-ui-react';
 
 
@@ -90,7 +91,8 @@ export default function Spacinge() {
                     </GridColumn>
                     <GridColumn>
 
-                        Strike Frequency*
+                        <Label horizontal pointing="right" color="yellow">Beta</Label>
+                        Strike Frequency 
                         <input
                             disabled type="number" step="1"
                             style={{ marginLeft: '1rem' }}
@@ -100,7 +102,9 @@ export default function Spacinge() {
 
                     </GridColumn>
                 </GridRow>
+                <h2>Signatures</h2>
                 <GridRow>
+
                     <GridColumn>
 
                         Signature*

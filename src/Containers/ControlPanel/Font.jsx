@@ -6,7 +6,7 @@ import { useControl } from '../Controls';
 import {
     Grid, GridRow, GridColumn,
     Input,
-    Popup
+    Popup, Label
 } from 'semantic-ui-react';
 
 const options = [
@@ -115,8 +115,8 @@ function Font() {
                     </GridColumn>
                     <GridColumn>
 
-                        Font Weight (BUG HERE)
-                        {/*Rever to semantic dropdown if you still see whitespace at bottom*/}
+                        <Label color="red" pointing="right" horizontal>Bug</Label> Font Weight
+                        {/*Revert to semantic dropdown if you still see whitespace at bottom https://github.com/uinstinct/TextHand/commit/c305337f3890b9c37f053b1a9fea6cbdd350c8c9*/}
                         <select onChange={changeFontWeight} defaultValue={state.fontWeight}>
                             {options.map(opt =>
                                 <option key={opt.text}
@@ -132,7 +132,13 @@ function Font() {
                     <GridColumn>
 
                         Word Rotation (in degs)
-                            <br /><input size='small' type='number' step='0.1' min='0' max='10' onChange={changeWordRotation} value={parseFloat(state.wordRotation)} />
+                            <br />
+                        <input
+                            size='small' type='number'
+                            step='0.1' min='0' max='10'
+                            onChange={changeWordRotation}
+                            value={parseFloat(state.wordRotation)}
+                        />
 
                     </GridColumn>
                 </GridRow>
