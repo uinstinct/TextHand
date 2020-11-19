@@ -1,37 +1,15 @@
 import React, { useContext } from 'react';
 
 import { DarkTheme } from 'Themes';
-import { useControl } from '../Controls';
+import { useControl } from 'Containers/Controls';
 
 import {
     Grid, GridRow, GridColumn,
-    Input,
-    Label
+    Label, Divider
 } from 'semantic-ui-react';
 
 
-let signTimer = null;
-function showSignature() {
-    const signature = document.getElementById("signature");
-    signature.style.display = "block";
-    clearTimeout(signTimer);
-    signTimer = setTimeout(() => {
-        signature.style.display = "none";
-    }, 1000);
-}
-
-const options = [
-    {
-        text: "Top Right",
-        value: "top-right",
-    },
-    {
-        text: "Bottom Right",
-        value: "bottom-right",
-    }
-];
-
-export default function Spacinge() {
+export default function Spacing() {
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
@@ -50,23 +28,16 @@ export default function Spacinge() {
     }
 
     const changeStrikeFreq = event => {
-        const value = event.target.value === '' ? 0:parseInt(event.target.value);
+        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
         dispatch({ type: 'CHANGE_STRIKE_FREQUENCY', payload: { strikeFreq: value } });
     }
 
-    const changeSignatureValue = event => {
-        dispatch({ type: 'CHANGE_SIGNATURE_VALUE', payload: { signValue: event.target.value } });
-        showSignature();
-    }
-
-    const changeSignaturePosition = event => {
-        dispatch({ type: 'CHANGE_SIGNATURE_POSITION', payload: { signPosition: event.target.value } });
-        showSignature();
-    }
 
     return (
         <div className="controlpanel spacing">
-            <h2>Spacing</h2>
+            <Divider horizontal inverted={isActive}>
+                <h2>Spacing</h2>
+            </Divider>
             <Grid columns={2} inverted={isActive} stackable>
                 <GridRow >
                     <GridColumn>
@@ -92,46 +63,13 @@ export default function Spacinge() {
                     <GridColumn>
 
                         <Label horizontal pointing="right" color="yellow">Beta</Label>
-                        Strike Frequency 
+                        Strike Frequency
                         <input
                             disabled type="number" step="1"
                             style={{ marginLeft: '1rem' }}
                             onChange={changeStrikeFreq}
                             value={state.strikeFreq}
                         />
-
-                    </GridColumn>
-                </GridRow>
-                <h2>Signatures</h2>
-                <GridRow>
-
-                    <GridColumn>
-
-                        Signature*
-                        <Input type="text" size="mini"
-                            onChange={changeSignatureValue}
-                            value={state.signValue}
-                        />
-
-                    </GridColumn>
-                    <GridColumn>
-
-                        {state.signValue && state.signValue.length > 0 &&
-                            <>
-                                Signature Position*
-                                <select
-                                    defaultValue={state.signPosition}
-                                    onChange={changeSignaturePosition}
-                                >
-                                    {options.map(opt =>
-                                        <option key={opt.text}
-                                            value={opt.value}>
-                                            {opt.text}
-                                        </option>
-                                    )}
-                                </select>
-                            </>
-                        }
 
                     </GridColumn>
                 </GridRow>

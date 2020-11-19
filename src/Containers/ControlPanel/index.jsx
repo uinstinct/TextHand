@@ -2,11 +2,14 @@ import React, { useContext } from 'react';
 import { DarkTheme } from 'Themes';
 
 import Font from './Font';
-import Margin from './Margin';
-import Spacing from './Spacing';
+import MarginPage from './Margin_Page';
+import SpacingSign from './Spacing_Sign';
 import Extras from './Extras';
 
-import { Segment, Grid, GridRow, GridColumn } from 'semantic-ui-react';
+import {
+    Segment,
+    Grid, GridRow, GridColumn
+} from 'semantic-ui-react';
 import "./index.css";
 
 function ControlPanelIndex() {
@@ -20,10 +23,10 @@ function ControlPanelIndex() {
                             <Font />
                         </GridColumn>
                         <GridColumn>
-                            <Margin />
+                            <MarginPage />
                         </GridColumn>
                         <GridColumn>
-                            <Spacing/>
+                            <SpacingSign/>
                         </GridColumn>
                         <GridColumn>
                             <Extras />

@@ -3,7 +3,11 @@ import React, { useContext } from 'react';
 import { DarkTheme } from '../../Themes';
 import { useControl } from '../Controls';
 
-import { Popup, Checkbox, Button } from 'semantic-ui-react';
+import {
+    Popup,
+    Checkbox, Button,
+    Divider
+} from 'semantic-ui-react';
 
 
 const instructions = {
@@ -22,7 +26,7 @@ function addImageToBackground(fileObj) {
 }
 
 
-function Extras() {
+export default function Extras() {
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
@@ -54,15 +58,28 @@ function Extras() {
 
     return (
         <div className="controlpanel extras">
-            <h2>Extras</h2>
+            <Divider horizontal inverted={isActive}>
+                <h2>Extras</h2>
+            </Divider>
 
             Background Image
             <Popup inverted={isActive}
                 trigger=
                 {
-                    <span>
-                        <input type='file' accept='.jpg,.jpeg,.png' onChange={changeBackgroundImage} />
-                        <Button circular style={{ marginLeft: '0.2rem' }} size='mini' inverted={isActive} icon='repeat' onClick={changeToWhiteBackground} />
+                    <span
+                        className="controlpanel inline"
+                        style={{ width: "100%" }}
+                    >
+                        <input
+                            type='file'
+                            accept='.jpg,.jpeg,.png'
+                            onChange={changeBackgroundImage}
+                        />
+                        <Button
+                            circular size='mini' icon='repeat'
+                            inverted={isActive}
+                            onClick={changeToWhiteBackground}
+                        />
                     </span>
                 } content={instructions.imageUpload}>
 
@@ -71,30 +88,58 @@ function Extras() {
 
             <div style={{ margin: '10px 0' }} />
 
-            Resolution Scale
+            <div className="controlpanel inline">
+                Resolution Scale
             <Popup inverted={isActive}
-                trigger={
-                    <input min='0.8' max='4' step='0.1' onChange={changeResolutionScale} type='number' style={{ display: 'block', appearance: 'none' }} value={parseFloat(state.resolutionScale)} />
-                } content={instructions.resolutionScale} />
+                    trigger={
+                        <input min='0.7' max='4' step='0.1' type='number'
+                            onChange={changeResolutionScale}
+                            value={parseFloat(state.resolutionScale)}
+                        />
+                    }
+                    content={instructions.resolutionScale}
+                />
+            </div>
 
-            <div style={{ margin: '1rem' }}>
+            <div
+                style={{ margin: '1rem' }}
+            >
                 Use Shadow Effect
-                <Checkbox style={{ marginLeft: '1rem' }} slider onChange={applyShadowEffect} defaultChecked={JSON.parse(state.shadowEffect)} />
+                <Checkbox slider
+                    style={{ marginLeft: '1rem' }}
+                    defaultChecked={JSON.parse(state.shadowEffect)}
+                    onChange={applyShadowEffect}
+                />
             </div>
 
-            <div style={{ margin: '1rem' }}>
+            <div
+                style={{ margin: '1rem' }}
+            >
                 Preserve Indentation
-                <Checkbox style={{ marginLeft: '1rem' }} onChange={applyPreserveIndentation} defaultChecked={JSON.parse(state.preserveIndentation)} />
+                <Checkbox
+                    style={{ marginLeft: '1rem' }}
+                    defaultChecked={JSON.parse(state.preserveIndentation)}
+                    onChange={applyPreserveIndentation}
+                />
             </div>
 
-            <Popup on='click' position='right center' inverted={isActive}
-                content={<Button size='big' color='red' inverted={isActive} onClick={applyResetAll} >Reset All</Button>}
-                trigger={<Button icon='repeat' inverted={isActive} size='big' />} />
-            <br />
-
-            
+            <Popup
+                on='click' position='right center'
+                inverted={isActive}
+                content={
+                    <Button
+                        color='red'
+                        icon='repeat'
+                        inverted={isActive}
+                        onClick={applyResetAll}
+                    />
+                }
+                trigger={
+                    <Button icon='repeat' inverted={isActive}>
+                        Reset All
+                    </Button>
+                }
+            />
         </div>
     );
 }
-
-export default Extras;

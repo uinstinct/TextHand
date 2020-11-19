@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 
 import { DarkTheme } from 'Themes';
-import { useControl } from '../Controls';
+import { useControl } from 'Containers/Controls';
 
 import {
     Grid, GridRow, GridColumn,
-    Checkbox, Label
+    Divider
 } from 'semantic-ui-react';
 
-function Margin() {
+export default function Margin() {
+
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
@@ -27,17 +28,11 @@ function Margin() {
         dispatch({ type: 'CHANGE_MARGIN_TOP', payload: { marginTop: value } });
     }
 
-    const changeClientHeight = (event) => {
-        dispatch({ type: 'CHANGE_CLIENT_HEIGHT', payload: { clientHeight: event.target.value } });
-    }
-
-    const applyPaperLines = (event, data) => {
-        dispatch({ type: 'APPLY_PAPER_LINES', payload: { paperLines: data.checked } });
-    }
-
     return (
         <div className="controlpanel margin">
-            <h2>Margin</h2>
+            <Divider inverted={isActive} horizontal>
+                <h2>Margin</h2>
+            </Divider>
             <Grid inverted={isActive} columns={3} stretched>
                 <GridRow>
                     <GridColumn>
@@ -53,25 +48,7 @@ function Margin() {
                             <input type="number" value={parseInt(state.marginTop)} onChange={changeMarginTop} />
                     </GridColumn>
                 </GridRow>
-                <GridRow>
-                    <GridColumn>
-                        <div className="controlpanel inline">
-                            Page Content Height*
-                        <input type="number" onChange={changeClientHeight} value={parseInt(state.clientHeight)} min="0" max="700" />
-                        </div>
-                    </GridColumn>
-                </GridRow>
-                <GridRow>
-                    <GridColumn>
-                        <span>
-                            <Label color="yellow" pointing="right" horizontal>Beta</Label> Use Paper Lines
-                            <Checkbox style={{ marginLeft: '0.5rem' }} onChange={applyPaperLines} defaultChecked={JSON.parse(state.paperLines)} />
-                        </span>
-                    </GridColumn>
-                </GridRow>
             </Grid>
         </div>
     );
 }
-
-export default Margin;
