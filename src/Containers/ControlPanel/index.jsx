@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DarkTheme } from '../../Themes';
+import { DarkTheme } from 'Themes';
 
 import Font from './Font';
 import Margin from './Margin';

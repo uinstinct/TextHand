@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { DarkTheme } from '../../Themes';
+import { DarkTheme } from 'Themes';
 import { useControl } from '../Controls';
 
 import {

@@ -13,7 +13,7 @@ const initialState = {
     // margins
     marginLeft: '16px',
     marginRight: '16px',
-    marginTop: '16px',
+    marginTop: '10px',
     clientHeight: 550,
     paperLines: false,
 
