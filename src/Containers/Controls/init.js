@@ -20,6 +20,9 @@ export const initialState = {
     clientHeight: 550,
     paperLines: false,
 
+    // background-paper
+    pageBG: "white",
+
     // spacing
     wordSpacing: '4px',
     letterSpacing: '1px',

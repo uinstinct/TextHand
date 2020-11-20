@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 
-import { DarkTheme } from '../../Themes';
-import { progress } from '../GenerationProgress';
+import { DarkTheme } from 'Themes/index';
+import { progress } from 'Containers/GenerationProgress';
 
-import { generateImages } from './takeSnapshots';
+import { generateImages } from 'lib/takeSnapshots';
 import ShowOutput from './showOutput';
 
 import { Segment, Grid, GridRow, GridColumn } from 'semantic-ui-react';
