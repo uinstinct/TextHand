@@ -17,6 +17,8 @@ const initialState = {
     clientHeight: 550,
     paperLines: false,
 
+    pageBG: "white",
+
     // spacing
     wordSpacing: '4px',
     letterSpacing: '1px',
@@ -71,6 +73,9 @@ function reducer(state, action) {
             return { ...state, marginBottom: action.payload.marginBottom + 'px' };
         case 'APPLY_PAPER_LINES':
             return { ...state, paperLines: action.payload.paperLines };
+
+        case 'CHANGE_PAPER':
+            return { ...state, pageBG: action.payload.pageBG };
         
 
         // SPACING

@@ -1,8 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import path from "path";
+
+import { useControl } from 'Containers/Controls';
+import {
+    addImageToBackground,
+    changeToWhiteBackground,
+    readFileAndChangeBG
+} from "lib/paperChange"
 
 import { DarkTheme } from 'Themes';
-import { useControl } from 'Containers/Controls';
-
 import {
     Grid, GridRow, GridColumn,
     Button,
@@ -12,42 +18,35 @@ import {
 const paperOptions = [
     {
         text: "Paper 2",
-        value: "paper-2.jpg"
+        value: "paper2"
     },
     {
         text: "Paper 3",
-        value: "paper-3.jpg"
+        value: "paper3"
     },
     {
         text: "Paper 4",
-        value: "paper-4.jpg"
+        value: "paper4"
     }
 ]
-
-function addImageToBackground(url) {
-    var editorContainer = document.getElementById('page-container');
-    editorContainer.style.background = `url(${url})`;
-    editorContainer.style.backgroundSize = 'cover';
-}
-
-function readFileAndChangeBG(fileObj) {
-    const reader = new FileReader();
-    reader.readAsDataURL(fileObj);
-    reader.onload = e => addImageToBackground(e.target.result);
-}
-
 
 export default function CustomPaper() {
 
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
-    const changePaper = event => console.log(event.target.value);
-
-    const changeToWhiteBackground = () => {
-        var editorContainer = document.getElementById('page-container');
-        editorContainer.style.background = "white";
+    const changePaper = event => {
+        const paper = event.target.value;
+        dispatch({ type: 'CHANGE_PAPER', payload: { pageBG: paper } });
     }
+
+    useEffect(() => {
+        if (state.pageBG === "white") {
+            changeToWhiteBackground();
+        } else {
+            addImageToBackground(state.pageBG);
+        }
+    }, [state.pageBG]);
 
     return (
         <div className="controlpanel custom-paper">
@@ -59,44 +58,53 @@ export default function CustomPaper() {
                     <GridColumn>
                         Custom Paper
                         <div className="controlpanel inline"
-                            style={{ width: "100%"}}>
-                        <Popup
-                            inverted={isActive}
-                            trigger=
-                            {
+                            style={{ width: "100%" }}>
+                            <Popup
+                                inverted={isActive}
+                                trigger=
+                                {
                                     <input
                                         type='file'
                                         accept=".jpg,.jpeg,.png"
-                                    onChange=
-                                    {e =>
-                                        readFileAndChangeBG(e.target.files[0])
-                                    }
+                                        onChange=
+                                        {e =>
+                                            readFileAndChangeBG(
+                                                e.target.files[0]
+                                            )
+                                        }
                                     />
-                            }
-                            content="Upload a valid image of type jpg or png">
+                                }
+                                content=
+                                "Upload a valid image of type jpg or png">
 
-                        </Popup>
-                        <Button
+                            </Popup>
+                            <Button
                                 circular size='mini' icon='repeat'
                                 inverted={isActive}
-                                onClick={changeToWhiteBackground}
+                                onClick={() =>
+                                    changePaper(
+                                        { target: { value: "white" } }
+                                    )
+                                }
                                 style={{
                                     alignSelf: "flex-end",
                                     justifySelf: "flex-end"
-
                                 }}
                             />
-                            </div>
+                        </div>
                     </GridColumn>
                 </GridRow>
                 <GridRow columns={1}>
                     <GridColumn>
                         <select
                             className="controlpanel select"
-                            onChange={e=>changePaper(e)}
+                            onChange={changePaper}
+                            value={state.pageBG}
                         >
+                            <option disabled value="white">None</option>
                             {paperOptions.map(p =>
                                 <option
+                                    key={p.text}
                                     value={p.value}
                                 >{p.text}</option>
                             )}
