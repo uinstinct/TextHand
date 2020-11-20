@@ -16,11 +16,17 @@ export default function Extras() {
 
     const changeResolutionScale = event => {
         const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
-        dispatch({ type: 'CHANGE_RESOLUTION_SCALE', payload: { resolutionScale: value } });
+        dispatch({
+            type: 'CHANGE_RESOLUTION_SCALE',
+            payload: { resolutionScale: value }
+        });
     }
 
     const applyShadowEffect = (event, data) => {
-        dispatch({ type: 'APPLY_SHADOW_EFFECT', payload: { shadowEffect: data.checked } });
+        dispatch({
+            type: 'APPLY_SHADOW_EFFECT',
+            payload: { shadowEffect: data.checked }
+        });
     }
 
     const applyResetAll = () => {
@@ -29,7 +35,10 @@ export default function Extras() {
     }
 
     const applyPreserveIndentation = (event, data) => {
-        dispatch({ type: 'APPLY_PRESERVE_INDENTATION', payload: { preserveIndentation: data.checked } });
+        dispatch({
+            type: 'APPLY_PRESERVE_INDENTATION',
+            payload: { preserveIndentation: data.checked }
+        });
     }
 
     return (
@@ -54,10 +63,10 @@ export default function Extras() {
             <div
                 style={{ margin: '1rem' }}
             >
-                Use Shadow Effect
+                Apply Shadow Effect
                 <Checkbox slider
                     style={{ marginLeft: '1rem' }}
-                    defaultChecked={JSON.parse(state.shadowEffect)}
+                    checked={JSON.parse(state.shadowEffect)}
                     onChange={applyShadowEffect}
                 />
             </div>

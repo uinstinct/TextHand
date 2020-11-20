@@ -27,6 +27,8 @@ export default function reducer(state, action) {
             return { ...state, marginBottom: action.payload.marginBottom + 'px' };
 
         // PAGES
+        case 'CHANGE_CLIENT_HEIGHT':
+            return { ...state, clientHeight: action.payload.clientHeight };
         case 'APPLY_PAPER_LINES':
             return { ...state, paperLines: action.payload.paperLines };
 
@@ -55,8 +57,6 @@ export default function reducer(state, action) {
             return { ...state, resolutionScale: action.payload.resolutionScale };
         case 'APPLY_SHADOW_EFFECT':
             return { ...state, shadowEffect: action.payload.shadowEffect };
-        case 'CHANGE_CLIENT_HEIGHT':
-            return { ...state, clientHeight: action.payload.clientHeight };
         case 'APPLY_PRESERVE_INDENTATION':
             return { ...state, preserveIndentation: action.payload.preserveIndentation };
         case 'APPLY_RESET':

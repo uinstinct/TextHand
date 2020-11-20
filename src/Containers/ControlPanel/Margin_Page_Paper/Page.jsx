@@ -45,7 +45,7 @@ export default function Page() {
                 <GridRow>
                     <GridColumn>
                         <span>
-                            <Label color="yellow" pointing="right" horizontal>Beta</Label> Use Paper Lines
+                            <Label color="yellow" pointing="right" horizontal>Beta</Label> Apply Paper Lines
                             <Checkbox
                                 style={{ marginLeft: '0.5rem' }}
                                 onChange={applyPaperLines}

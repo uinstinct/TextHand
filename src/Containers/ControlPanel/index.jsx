@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { DarkTheme } from 'Themes';
+import { DarkTheme } from 'Themes/index';
 
 import Font from './Font';
-import MarginPage from './Margin_Page';
+import MarginPagePaper from './Margin_Page_Paper';
 import SpacingSign from './Spacing_Sign';
 import Extras from './Extras';
 
@@ -23,7 +23,7 @@ function ControlPanelIndex() {
                             <Font />
                         </GridColumn>
                         <GridColumn>
-                            <MarginPage />
+                            <MarginPagePaper />
                         </GridColumn>
                         <GridColumn>
                             <SpacingSign/>

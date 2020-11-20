@@ -2,17 +2,14 @@ import React from 'react';
 
 import Margin from './Margin';
 import Page from './Page';
-import CustomPaper from './CustomPaper';
-
+import BackgroundPaper from './BackgroundPaper';
 
 export default function Margin_Page() {
-
-
     return (
         <>
             <Margin />
             <Page />
-            <CustomPaper />
+            <BackgroundPaper />
         </>
     );
 }

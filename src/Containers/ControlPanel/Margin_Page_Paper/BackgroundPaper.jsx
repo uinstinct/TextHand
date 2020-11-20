@@ -38,6 +38,10 @@ export default function CustomPaper() {
     const changePaper = event => {
         const paper = event.target.value;
         dispatch({ type: 'CHANGE_PAPER', payload: { pageBG: paper } });
+        dispatch({
+            type: 'APPLY_SHADOW_EFFECT',
+            payload: { shadowEffect: false }
+        });
     }
 
     useEffect(() => {
