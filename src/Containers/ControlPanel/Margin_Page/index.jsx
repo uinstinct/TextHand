@@ -2,6 +2,7 @@ import React from 'react';
 
 import Margin from './Margin';
 import Page from './Page';
+import CustomPaper from './CustomPaper';
 
 
 export default function Margin_Page() {
@@ -11,6 +12,7 @@ export default function Margin_Page() {
         <>
             <Margin />
             <Page />
+            <CustomPaper />
         </>
     );
 }

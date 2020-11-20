@@ -22,7 +22,7 @@ input {
     }
 
     input:focus {
-        box-shadow: 0 0 5px 3px blue;
+        box-shadow: 0 0 2px 3px blue;
     }
 
 .controlpanel.spacing input[type="number"] {
@@ -34,15 +34,35 @@ input {
     margin-top: 0;
 }
 
-.controlpanel.extras input[type="file"]{
+.controlpanel.extras input[type="file"] {
     margin-bottom: 10px;
 }
 
-.controlpanel.inline{
+.controlpanel.inline {
     width: 200px;
-
+    position: relative;
     display: flex;
     flex-direction: row;
     align-content: space-around;
     justify-content: center;
+}
+
+.controlpanel.select {
+    border: 0.5px solid;
+    border-radius: 0.4em;
+    line-height: 1.2;
+    margin: 0 0.2rem;
+    background: transparent;
+    text-transform: capitalize;
+    color: black;
+    text-align: center;
+}
+
+    .controlpanel.select:focus {
+        box-shadow: 0 0 2px 3px blue;
+    }
+
+body[data-theme="dark"] .controlpanel.select {
+    color: white;
+    border-color: transparent;
 }

@@ -10,33 +10,9 @@ import {
 } from 'semantic-ui-react';
 
 
-const instructions = {
-    imageUpload: "Upload a valid image of type jpg or png",
-    resolutionScale: "Enter a value between 0 and 1 in decimals"
-}
-
-function addImageToBackground(fileObj) {
-    const reader = new FileReader();
-    reader.readAsDataURL(fileObj);
-    reader.onload = e => {
-        var editorContainer = document.getElementById('page-container');
-        editorContainer.style.background = `url(${e.target.result})`;
-        editorContainer.style.backgroundSize = 'cover';
-    }
-}
-
-
 export default function Extras() {
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
-
-    const changeBackgroundImage = event => {
-        addImageToBackground(event.target.files[0]);
-    }
-    const changeToWhiteBackground = () => {
-        var editorContainer = document.getElementById('page-container');
-        editorContainer.style.background = "white";
-    }
 
     const changeResolutionScale = event => {
         const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
@@ -62,32 +38,6 @@ export default function Extras() {
                 <h2>Extras</h2>
             </Divider>
 
-            Background Image
-            <Popup inverted={isActive}
-                trigger=
-                {
-                    <div
-                        className="controlpanel inline"
-                        style={{ width: "90%" }}
-                    >
-                        <input
-                            type='file'
-                            accept=".jpg,.jpeg,.png"
-                            onChange={changeBackgroundImage}
-                        />
-                        <Button
-                            circular size='mini' icon='repeat'
-                            inverted={isActive}
-                            onClick={changeToWhiteBackground}
-                        />
-                    </div>
-                } content={instructions.imageUpload}>
-
-            </Popup>
-
-
-            <div style={{ margin: '10px 0' }} />
-
             <div className="controlpanel inline">
                 Resolution Scale
             <Popup inverted={isActive}
@@ -97,7 +47,7 @@ export default function Extras() {
                             value={parseFloat(state.resolutionScale)}
                         />
                     }
-                    content={instructions.resolutionScale}
+                    content="Enter a value between 0 and 1 in decimals"
                 />
             </div>
 
@@ -135,7 +85,7 @@ export default function Extras() {
                     />
                 }
                 trigger={
-                    <Button icon='repeat' inverted={isActive}>
+                    <Button inverted={isActive}>
                         Reset All
                     </Button>
                 }

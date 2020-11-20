@@ -6,7 +6,6 @@ import { DarkTheme } from '../../Themes';
 import GenerationProgress from '../GenerationProgress';
 
 import {
-    Image,
     Segment, Label, Icon,
     Grid, GridRow, GridColumn,
     Button,
@@ -37,7 +36,7 @@ function ShowOutput(props) {
                                 <Icon inverted={isActive} name='close' size='big' />
                             </Label>
                             <br />
-                            <img src={imageURL} />
+                            <img src={imageURL} alt={j} />
                             <br />
                             <a download href={imageURL} >
                                 <Button inverted={isActive} > Download</Button>
@@ -88,11 +87,33 @@ function ShowOutput(props) {
                         <Grid stackable>
                             <GridRow columns={3}>
                                 <GridColumn floated='left'>
-                                    <Button inverted={isActive} onClick={doDownloadAll}><Icon name='download' inverted={isActive} />Download All</Button>
-                                    <Button floated='right' inverted={isActive} onClick={props.removeAllImages}>Remove All Images</Button>
+                                    <Button
+                                        inverted={isActive}
+                                        onClick={doDownloadAll}>
+                                        <Icon
+                                            name='download'
+                                            inverted={isActive}
+                                        />
+                                        Download All
+                                    </Button>
+                                    <Button
+                                        floated='right' inverted={isActive}
+                                        onClick={props.removeAllImages}
+                                    >
+                                        Remove All Images
+                                    </Button>
                                 </GridColumn>
                                 <GridColumn floated='right'>
-                                    <Button inverted={isActive} onClick={doDownloadAllAsPDF}><Icon name='file pdf' inverted={isActive} /> Download All as PDF</Button>
+                                    <Button
+                                        inverted={isActive}
+                                        onClick={doDownloadAllAsPDF}
+                                    >
+                                        <Icon
+                                            name='file pdf'
+                                            inverted={isActive}
+                                        />
+                                        Download All as PDF
+                                    </Button>
                                 </GridColumn>
                             </GridRow>
                             {images}

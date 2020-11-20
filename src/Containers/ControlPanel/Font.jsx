@@ -10,7 +10,7 @@ import {
     Popup, Label
 } from 'semantic-ui-react';
 
-const options = [
+const fontWeightOptions = [
     {
         text: "normal",
         value: 400,
@@ -116,14 +116,19 @@ export default function Font() {
                         {/*Revert to semantic dropdown if you still see whitespace at bottom https://github.com/uinstinct/TextHand/commit/c305337f3890b9c37f053b1a9fea6cbdd350c8c9
                          Currently working but check for compatibility in all
                          */}
-                        <select onChange={changeFontWeight} defaultValue={state.fontWeight}>
-                            {options.map(opt =>
+
+                        <select
+                            onChange={changeFontWeight}
+                            defaultValue={state.fontWeight}
+                            className="controlpanel select"
+                        >
+                            {fontWeightOptions.map(opt =>
                                 <option key={opt.text}
                                     value={opt.value}>
                                     {opt.text}
                                 </option>
                             )}
-                        </select>
+                            </select>
 
                     </GridColumn>
                 </GridRow>
