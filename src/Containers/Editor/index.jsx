@@ -17,7 +17,7 @@ function Editor() {
         <>
             <GridColumn>
                 <Segment inverted={isActive} piled secondary>
-                        <h1>Generated</h1>
+                    <h1>Generator</h1>
                     <div style={{ color: 'black' }}>
                         <Generated text={text} />
                     </div>
@@ -25,7 +25,7 @@ function Editor() {
             </GridColumn>
             <GridColumn>
                 <Segment inverted={isActive} raised stacked >
-                    <h1>Text Area</h1>
+                    <h1>Writer</h1>
                     <Text text={text} setText={setText} />
                 </Segment>
             </GridColumn>
