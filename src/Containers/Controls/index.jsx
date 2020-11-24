@@ -3,8 +3,6 @@ import React, { useReducer, createContext, useContext, useEffect } from 'react';
 import { initialState, lazyInit } from "./init";
 import reducer from "./reducer";
 
-import { initializeDB } from './dbStore';
-
 let copyControls = {
     ...initialState
 };
@@ -23,7 +21,6 @@ export function ControlProvider({ children }) {
                 localStorage.setItem(key, value);
             }
             localStorage.removeItem('fontFamily');
-            initializeDB({ ...copyControls });
         }, 650);
     }, [contextValue]);
 

@@ -1,5 +1,3 @@
-import Dexie from 'dexie';
-
 export const initialState = {
 
     // fonts
@@ -46,13 +44,3 @@ export function lazyInit() {
     }
     return storedState;
 }
-
-const tempArr = [];
-for (const [key] of Object.entries(initialState)) {
-    tempArr.push(key);
-}
-const tempStr = tempArr.join(",");
-
-const db = new Dexie("TextHandStorage");
-db.version(1).stores({ preferences: tempStr });
-export { db };
