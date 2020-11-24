@@ -6,7 +6,7 @@ import { DarkTheme } from 'Themes/index';
 import Navbar from 'Containers/Navbar';
 import TextAndImage from './Main';
 
-function App() {
+export default function App() {
     const storedMode = JSON.parse(localStorage.getItem('darkmode')) || true;
     const [darkmode, setDarkmode] = useState(storedMode);
 
@@ -21,12 +21,10 @@ function App() {
 
     return (
         <DarkTheme.Provider value={{ isActive: darkmode, setDarkmode }}>
-            <div className="App">
+            <div>
                 <Navbar />
                 <TextAndImage />
             </div>
         </DarkTheme.Provider>
     );
 }
-
-export default App;
