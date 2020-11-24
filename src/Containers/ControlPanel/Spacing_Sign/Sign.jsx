@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
-import { DarkTheme } from 'Themes';
+import { DarkTheme } from 'Themes/index';
 import { useControl } from 'Utils/Controls';
 
 import {
@@ -72,6 +72,7 @@ export default function Sign() {
                                 <select
                                     defaultValue={state.signPosition}
                                     onChange={changeSignaturePosition}
+                                    className="controlpanel select"
                                 >
                                     {options.map(opt =>
                                         <option key={opt.text}

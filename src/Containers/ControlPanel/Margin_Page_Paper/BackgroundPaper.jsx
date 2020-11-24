@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { useControl } from 'Utils/Controls';
 import {
@@ -7,7 +7,7 @@ import {
     readFileAndChangeBG
 } from 'Utils/paperChange';
 
-import { DarkTheme } from 'Themes';
+import { DarkTheme } from 'Themes/index';
 import {
     Grid, GridRow, GridColumn,
     Button,

@@ -1,6 +1,6 @@
-import React, { useReducer, useContext } from 'react';
+import { useReducer, useContext } from 'react';
 
-import { DarkTheme } from '../../Themes';
+import { DarkTheme } from 'Themes/index';
 import { Progress } from 'semantic-ui-react';
 
 

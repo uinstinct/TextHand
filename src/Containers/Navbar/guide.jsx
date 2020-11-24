@@ -1,11 +1,14 @@
-import React, {  useState, useEffect, useRef } from 'react';
+import {  useState, useEffect, useRef } from 'react';
 import marked from 'marked';
 
-import guideFile from '../../assets/guide.md';
+import guideFile from 'assets/guide.md';
 
-import { Modal, ModalHeader, ModalContent, ModalActions, Button } from 'semantic-ui-react';
+import {
+    Modal, ModalHeader, ModalContent, ModalActions,
+    Button
+} from 'semantic-ui-react';
 
-function Rules({ showGuide, setShowGuide}) {
+export default function Rules({ showGuide, setShowGuide}) {
 
     const [md, setMd] = useState('');
     const isMounted = useRef(true);
@@ -51,5 +54,3 @@ function Rules({ showGuide, setShowGuide}) {
     );
 
 }
-
-export default Rules;

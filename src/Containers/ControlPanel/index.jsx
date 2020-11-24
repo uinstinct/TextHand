@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { DarkTheme } from 'Themes/index';
 
 import Font from './Font';
@@ -12,7 +12,7 @@ import {
 } from 'semantic-ui-react';
 import "./index.css";
 
-function ControlPanelIndex() {
+export default function ControlPanelIndex() {
     const { isActive } = useContext(DarkTheme);
     return (
         <div className='main container'>
@@ -38,5 +38,3 @@ function ControlPanelIndex() {
     );
 
 }
-
-export default ControlPanelIndex;

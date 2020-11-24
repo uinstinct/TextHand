@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 import { Grid, GridColumn, GridRow } from 'semantic-ui-react';
 
@@ -6,7 +6,7 @@ import Editor from './Editor';
 import ControlPanel from './ControlPanel';
 import ImageGenerator from './ImageGenerator';
 
-import { DarkTheme } from '../Themes';
+import { DarkTheme } from 'Themes/index';
 import { ControlProvider } from 'Utils/Controls';
 
 

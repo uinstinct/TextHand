@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import 'semantic-ui-css/semantic.min.css';
-import { DarkTheme } from '../Themes'
+import { DarkTheme } from 'Themes/index';
 
-import Navbar from './Navbar'
-import TextAndImage from './Main'
+import Navbar from 'Containers/Navbar';
+import TextAndImage from './Main';
 
 function App() {
     const storedMode = JSON.parse(localStorage.getItem('darkmode')) || true;
@@ -12,10 +12,11 @@ function App() {
 
     useEffect(() => {
         localStorage.setItem('darkmode', darkmode);
-        if (darkmode)
+        if (darkmode) {
             document.body.setAttribute('data-theme', 'dark');
-        else
+        } else {
             document.body.removeAttribute('data-theme', 'dark');
+        }
     }, [darkmode, setDarkmode]);
 
     return (

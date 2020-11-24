@@ -1,7 +1,7 @@
-import React, { useReducer, createContext, useContext, useEffect } from 'react';
+import { useReducer, createContext, useContext, useEffect } from 'react';
 
-import { initialState, lazyInit } from "./init";
-import reducer from "./reducer";
+import { initialState, lazyInit } from './init';
+import reducer from './reducer';
 
 let copyControls = {
     ...initialState

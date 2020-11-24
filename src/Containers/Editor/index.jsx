@@ -1,14 +1,15 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
+
+import { DarkTheme } from 'Themes/index';
 
 import Generated from './Generated';
 import Text from './Text';
-import { DarkTheme } from '../../Themes';
 
 import { GridColumn, Segment } from 'semantic-ui-react';
 import "./index.css";
 
 
-function Editor() {
+export default function Editor() {
     const { isActive } = useContext(DarkTheme)
 
     const [text, setText] = useState('');
@@ -33,5 +34,3 @@ function Editor() {
     );
 
 }
-
-export default Editor;

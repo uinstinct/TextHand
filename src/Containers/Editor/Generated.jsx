@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { useControl } from 'Utils/Controls';
 
@@ -52,7 +52,7 @@ const paperLines = state => {
     };
 }
 
-function Generated(props) {
+export default function Generated(props) {
 
     const state = useControl()[0];
 
@@ -87,5 +87,3 @@ function Generated(props) {
     );
 
 }
-
-export default Generated;

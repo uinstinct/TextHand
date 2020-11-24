@@ -1,9 +1,9 @@
-import React, { useMemo, useContext } from 'react';
+import { useMemo, useContext } from 'react';
 import { saveAs } from 'file-saver';
 import { jsPDF } from 'jspdf';
 
-import { DarkTheme } from '../../Themes';
-import GenerationProgress from '../GenerationProgress';
+import { DarkTheme } from 'Themes/index';
+import GenerationProgress from 'Containers/GenerationProgress';
 
 import {
     Segment, Label, Icon,
@@ -12,7 +12,7 @@ import {
 } from 'semantic-ui-react';
 import "./index.css";
 
-function ShowOutput(props) {
+export default function ShowOutput(props) {
     const { isActive } = useContext(DarkTheme);
 
     const allImageURLs = props.images;
@@ -124,5 +124,3 @@ function ShowOutput(props) {
         </div>
     );
 }
-
-export default ShowOutput;

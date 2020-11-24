@@ -1,10 +1,14 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import Guide from './guide';
 
-import { DarkTheme } from '../../Themes';
+import { DarkTheme } from 'Themes/index';
 
-import { Menu, Segment, Checkbox, Label, Button } from 'semantic-ui-react';
+import {
+    Menu, Segment,
+    Label,
+    Button, Checkbox
+} from 'semantic-ui-react';
 import "./index.css";
 
 

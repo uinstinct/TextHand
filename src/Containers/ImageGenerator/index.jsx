@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { DarkTheme } from 'Themes/index';
 import { progress } from 'Containers/GenerationProgress';
@@ -54,7 +54,7 @@ async function applyFilters(canvases) {
 }
 
 
-function ImageGenerator() {
+export default function ImageGenerator() {
 
     const { isActive } = useContext(DarkTheme);
 
@@ -115,5 +115,3 @@ function ImageGenerator() {
         </div>
     );
 }
-
-export default ImageGenerator;

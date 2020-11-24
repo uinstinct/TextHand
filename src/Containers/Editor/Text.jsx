@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
-function Text(props) {
+export default function Text(props) {
     const handleChange = (event) => {
         props.setText(event.target.value);
     }
@@ -32,5 +32,3 @@ function Text(props) {
         </div>
     );
 }
-
-export default Text;
