@@ -1,4 +1,4 @@
-import { copyControls } from "Containers/Controls";
+import { copyControls } from 'Utils/Controls';
 
 function randomizeLetters(letter) {
 

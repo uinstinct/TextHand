@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { useControl } from '../Controls';
+import { useControl } from 'Utils/Controls';
 
 function createHTML(text) {
 

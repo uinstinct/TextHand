@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { DarkTheme } from 'Themes/index';
 import { progress } from 'Containers/GenerationProgress';
 
-import { generateImages } from 'utils/takeSnapshots';
+import { generateImages } from 'Utils/takeSnapshots';
 import ShowOutput from './showOutput';
 
 import {

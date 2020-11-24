@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { DarkTheme } from 'Themes';
-import { useControl } from 'Containers/Controls';
+import { useControl } from 'Utils/Controls';
 
 import {
     Grid, GridRow, GridColumn,

@@ -7,10 +7,10 @@ import ControlPanel from './ControlPanel';
 import ImageGenerator from './ImageGenerator';
 
 import { DarkTheme } from '../Themes';
-import { ControlProvider } from './Controls';
+import { ControlProvider } from 'Utils/Controls';
 
 
-function Main() {
+export default function Main() {
     const { isActive } = useContext(DarkTheme)
 
     return (
@@ -35,5 +35,3 @@ function Main() {
         </Grid>
     );
 }
-
-export default Main;

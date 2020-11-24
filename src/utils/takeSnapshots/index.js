@@ -1,8 +1,8 @@
 import html2canvas from 'html2canvas';
 
-import { copyControls } from 'Containers/Controls';
+import { copyControls } from 'Utils/Controls';
 import { progress } from 'Containers/GenerationProgress';
-import Randomizer from "./randomizers";
+import Randomizer from './randomizers';
 
 let container = null;
 let content = null;

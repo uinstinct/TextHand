@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 
-import { useControl } from 'Containers/Controls';
+import { useControl } from 'Utils/Controls';
 import {
     addImageToBackground,
     changeToWhiteBackground,
     readFileAndChangeBG
-} from 'utils/paperChange';
+} from 'Utils/paperChange';
 
 import { DarkTheme } from 'Themes';
 import {
