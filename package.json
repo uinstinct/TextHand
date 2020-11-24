@@ -1,21 +1,15 @@
 {
-  "name": "react-text-handwriting",
-  "version": "0.4.5",
+  "name": "text-hand",
+  "version": "0.5.5",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^11.1.1",
-    "@testing-library/user-event": "^7.2.1",
-    "canvas": "^2.6.1",
-    "file-saver": "^2.0.2",
+    "file-saver": "^2.0.5",
     "html2canvas": "^1.0.0-rc.7",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "jsdom": "^16.4.0",
     "jspdf": "^2.1.1",
-    "marked": "^1.2.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
+    "marked": "^1.2.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1"
   },
@@ -40,6 +34,12 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^5.5.0"
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.2",
+    "canvas": "^2.6.1",
+    "cypress": "^5.5.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "jsdom": "^16.4.0"
   }
 }

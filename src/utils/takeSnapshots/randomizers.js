@@ -81,4 +81,4 @@ export default class TakeSnapshotRandomizer {
             return randomizeWord(word, shouldLetterRandomize);
         }*/
     }
-};
+}
