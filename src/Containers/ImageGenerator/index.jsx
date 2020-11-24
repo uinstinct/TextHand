@@ -3,10 +3,13 @@ import React, { useContext, useState } from 'react';
 import { DarkTheme } from 'Themes/index';
 import { progress } from 'Containers/GenerationProgress';
 
-import { generateImages } from 'lib/takeSnapshots';
+import { generateImages } from 'utils/takeSnapshots';
 import ShowOutput from './showOutput';
 
-import { Segment, Grid, GridRow, GridColumn } from 'semantic-ui-react';
+import {
+    Segment,
+    Grid, GridRow, GridColumn
+} from 'semantic-ui-react';
 
 async function applyFilters(canvases) {
 

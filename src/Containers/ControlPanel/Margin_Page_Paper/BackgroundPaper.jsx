@@ -5,7 +5,7 @@ import {
     addImageToBackground,
     changeToWhiteBackground,
     readFileAndChangeBG
-} from "lib/paperChange"
+} from 'utils/paperChange';
 
 import { DarkTheme } from 'Themes';
 import {
