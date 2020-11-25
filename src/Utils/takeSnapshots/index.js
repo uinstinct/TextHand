@@ -11,7 +11,7 @@ async function convertDIVToImage() {
     const options = {
         logging: false,
         scrollX: 0,
-        scrollY: -(window.scrollY + 101.25), // (22.5*4.5) BUG
+        scrollY: -(window.scrollY + 130.25), // (the plus is varying) BUG
         scale: copyControls.resolutionScale,
     };
 

@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { useContext, useState } from 'react';
 
 import { DarkTheme } from 'Themes/index';
@@ -8,64 +6,25 @@ import { progress } from 'Containers/GenerationProgress';
 import generateImages from 'Utils/takeSnapshots';
 import {
     Segment,
-    Grid, GridRow, GridColumn,
+    Grid, GridRow, GridColumn
 } from 'semantic-ui-react';
+import applyFilters from 'Utils/applyFilters';
+
 import ShowOutput from './showOutput';
 
-async function applyFilters(canvases) {
-    const newImages = [];
-    if (canvases.length > 0) {
-        for (const convertedCanvas of canvases) {
-            const convertedImageURI = convertedCanvas.toDataURL();
-            const imgEl = document.createElement('img');
-            imgEl.src = convertedImageURI;
-
-            const makeNewImage = async function () {
-                return new Promise((resolve) => {
-                    imgEl.onload = () => {
-                        const newCanvas = document.createElement('canvas');
-                        newCanvas.width = imgEl.width;
-                        newCanvas.height = imgEl.height;
-
-                        const ctx = newCanvas.getContext('2d');
-                        // ctx.filter = "contrast(25)";
-
-                        /* ctx.filter = "blur(2px)";
-                         * preview the filters in OVERLAY and NOT GENERATEDCONTAINER
-                         * do not use another canvas
-                         * most values are in %
-                         * refer https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter
-                         * this is a default html slider - <input type="range" min="1" max="100" />
-                         * styling has to be done manually
-                         */
-                        ctx.drawImage(imgEl, 0, 0);
-
-                        const newImage = newCanvas.toDataURL();
-                        resolve(newImage);
-                    };
-                });
-            };
-
-            const newImg = await makeNewImage();
-            newImages.push(newImg);
-        }
-    }
-    return newImages;
-}
-
 export default function ImageGenerator() {
-    const { isActive } = useContext(DarkTheme);
+    const { isActive, } = useContext(DarkTheme);
 
     const [loading, setLoading] = useState(false);
     const [images, setImages] = useState([]);
 
     const applyImageGeneration = async () => {
-        const { updateProgress } = progress;
-        updateProgress({ type: 'START' });
+        const { updateProgress, } = progress;
+        updateProgress({ type: 'START', });
         setLoading(true);
 
-        const newCanvases = await generateImages();
-        const filteredImages = await applyFilters(newCanvases);
+        const canvases = await generateImages();
+        const filteredImages = await applyFilters(canvases);
         const newImages = images.concat(filteredImages);
         setImages(newImages);
 
@@ -74,7 +33,7 @@ export default function ImageGenerator() {
 
     const removeImage = (idx) => {
         const newImages = [];
-        for (let i = 0; i < images.length; i++) {
+        for (let i = 0; i < images.length; i += 1) {
             if (i !== idx) {
                 newImages.push(images[i]);
             }
@@ -87,7 +46,7 @@ export default function ImageGenerator() {
     };
 
     return (
-        <div style={{ margin: '1rem', padding: '1rem' }}>
+        <div style={{ margin: '1rem', padding: '1rem', }}>
             <Grid>
                 <GridRow textAlign="center">
                     <GridColumn textAlign="center">
@@ -103,9 +62,9 @@ export default function ImageGenerator() {
                         </Segment>
                     </GridColumn>
                 </GridRow>
-                <GridRow style={{ margin: '0 1rem' }} columns={1} stretched>
+                <GridRow style={{ margin: '0 1rem', }} columns={1} stretched>
                     <GridColumn>
-                        <h3>Showing output here</h3>
+                        <h3>Output Images</h3>
                         <ShowOutput
                             images={images}
                             removeImage={removeImage}
