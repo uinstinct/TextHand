@@ -17,6 +17,12 @@ export default function Text({ text, setText, }) {
             textarea.value = textarea.value.substring(0, start) + '\t' + textarea.value.substring(end);
             textarea.selectionStart = start + 1;
             textarea.selectionEnd = start + 1;
+        } else if (
+            (event.ctrlKey || event.metaKey)
+            && (event.keyCode === 13 || event.keyCode === 10)
+        ) {
+            const generateButton = document.getElementById('generate-button');
+            generateButton.click();
         }
     };
 
