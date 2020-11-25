@@ -66,22 +66,12 @@ export default function Font() {
         dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: event.target.value } });
     };
 
-    const changeFontSizeRandom = (event) => {
-        const value = event.target.value === '' ? 0 : parseInt(event.target.value, 10);
-        dispatch({ type: 'CHANGE_FONT_SIZE_RANDOM', payload: { fontSizeRandom: value } });
-    };
-
-    const changeWordRotation = (event) => {
-        const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
-        dispatch({ type: 'CHANGE_WORD_ROTATION', payload: { wordRotation: value } });
-    };
-
     return (
         <div className="controlpanel font">
-            <Divider horizontal inverted={isActive}>
-                <h2>Font</h2>
-            </Divider>
             <Grid inverted={isActive} doubling>
+                <Divider horizontal inverted={isActive}>
+                    <h2>Font</h2>
+                </Divider>
                 <GridRow columns={1}>
                     <GridColumn>
 
@@ -149,38 +139,6 @@ export default function Font() {
                     </GridColumn>
                 </GridRow>
 
-                <Divider horizontal inverted={isActive}>
-                    <h4>Randomization</h4>
-                </Divider>
-                <GridRow columns={2}>
-                    <GridColumn>
-
-                        Word Rotation (in degs)
-                        <input
-                            type="number"
-                            step="0.1"
-                            min="0"
-                            max="10"
-                            onChange={changeWordRotation}
-                            value={parseFloat(state.wordRotation)}
-                        />
-
-                    </GridColumn>
-                    <GridColumn>
-
-                        Letter Sizing
-                        <input
-                            type="number"
-                            min="0"
-                            max="30"
-                            step={1}
-                            style={{ width: '3rem' }}
-                            value={state.fontSizeRandom}
-                            onChange={changeFontSizeRandom}
-                        />
-
-                    </GridColumn>
-                </GridRow>
             </Grid>
         </div>
     );
