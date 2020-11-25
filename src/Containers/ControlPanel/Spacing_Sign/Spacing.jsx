@@ -43,13 +43,13 @@ export default function Spacing() {
                     <GridColumn>
 
                         Word Spacing
-                            <input type="number" style={{ marginLeft: '1rem' }} value={parseFloat(state.wordSpacing)} onChange={changeWordSpacing} />
+                        <input type="number" style={{ marginLeft: '1rem' }} value={parseFloat(state.wordSpacing)} onChange={changeWordSpacing} />
 
                     </GridColumn>
                     <GridColumn>
 
                         Letter Spacing
-                            <input type="number" style={{ marginLeft: '1rem' }} onChange={changeLetterSpacing} value={parseFloat(state.letterSpacing)} />
+                        <input type="number" style={{ marginLeft: '1rem' }} onChange={changeLetterSpacing} value={parseFloat(state.letterSpacing)} />
 
                     </GridColumn>
                 </GridRow>

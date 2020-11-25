@@ -65,20 +65,20 @@ export default function CustomPaper() {
                             <Popup
                                 inverted={isActive}
                                 trigger=
-                                {
-                                    <input
-                                        type='file'
-                                        accept=".jpg,.jpeg,.png"
-                                        onChange=
-                                        {e =>
-                                            readFileAndChangeBG(
-                                                e.target.files[0]
-                                            )
-                                        }
-                                    />
-                                }
+                                    {
+                                        <input
+                                            type='file'
+                                            accept=".jpg,.jpeg,.png"
+                                            onChange=
+                                                {e =>
+                                                    readFileAndChangeBG(
+                                                        e.target.files[0]
+                                                    )
+                                                }
+                                        />
+                                    }
                                 content=
-                                "Upload a valid image of type jpg or png">
+                                    "Upload a valid image of type jpg or png">
 
                             </Popup>
                             <Button

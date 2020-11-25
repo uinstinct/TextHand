@@ -11,20 +11,20 @@ const initialState = {
 
 function reducer(state, action) {
     switch (action.type) {
-        case "START":
-            return { ...state, label: "initializing ..." };
-        case "INCREMENT_PROGRESS": {
+    case "START":
+        return { ...state, label: "initializing ..." };
+    case "INCREMENT_PROGRESS": {
 
-            const { i, totalPages } = action.payload;
-            const percent = Math.ceil((i + 1) / (totalPages + 1) * 100);
-            const label = "Taking Snapshots ... " + percent + "%";
-            return { ...state, percent, label };
+        const { i, totalPages } = action.payload;
+        const percent = Math.ceil((i + 1) / (totalPages + 1) * 100);
+        const label = "Taking Snapshots ... " + percent + "%";
+        return { ...state, percent, label };
 
-        }
-        case "APPLY_FILTERS":
-            return { ...state, label: "Applying Filters", percent: 100 };
-        default:
-            return state;
+    }
+    case "APPLY_FILTERS":
+        return { ...state, label: "Applying Filters", percent: 100 };
+    default:
+        return state;
     }
 }
 

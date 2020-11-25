@@ -33,7 +33,7 @@ export default function Page() {
                     <GridColumn>
                         <div className="controlpanel inline">
                             Page Content Length*
-                        <input
+                            <input
                                 type="number"
                                 min="0" max="700"
                                 value={parseInt(state.clientHeight)}
@@ -50,7 +50,7 @@ export default function Page() {
                                 style={{ marginLeft: '0.5rem' }}
                                 onChange={applyPaperLines}
                                 defaultChecked=
-                                {JSON.parse(state.paperLines)}
+                                    {JSON.parse(state.paperLines)}
                             />
                         </span>
                     </GridColumn>

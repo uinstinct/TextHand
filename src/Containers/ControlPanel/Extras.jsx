@@ -49,7 +49,7 @@ export default function Extras() {
 
             <div className="controlpanel inline">
                 Resolution Scale
-            <Popup inverted={isActive}
+                <Popup inverted={isActive}
                     trigger={
                         <input min='0.7' max='4' step='0.1' type='number'
                             onChange={changeResolutionScale}

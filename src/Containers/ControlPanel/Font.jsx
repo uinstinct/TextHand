@@ -98,7 +98,7 @@ export default function Font() {
                                     style={{ marginLeft: '1rem' }}
                                 />
                             }
-                            content="Upload files of .ttf and .otf format only"
+                        content="Upload files of .ttf and .otf format only"
                         />
 
                     </GridColumn>
@@ -107,7 +107,7 @@ export default function Font() {
                     <GridColumn>
 
                         Font Size
-                            <input type="number" onChange={changeFontSize} value={parseInt(state.fontSize)} min="0" />
+                        <input type="number" onChange={changeFontSize} value={parseInt(state.fontSize)} min="0" />
 
                     </GridColumn>
                     <GridColumn>
@@ -128,7 +128,7 @@ export default function Font() {
                                     {opt.text}
                                 </option>
                             )}
-                            </select>
+                        </select>
 
                     </GridColumn>
                 </GridRow>
@@ -166,7 +166,7 @@ export default function Font() {
                     <GridColumn>
 
                         Letter Sizing
-                            <input
+                        <input
                             type='number'
                             min='0' max='30' step={1}
                             style={{ width: '3rem' }}

@@ -37,15 +37,15 @@ export default function Margin() {
                 <GridRow>
                     <GridColumn>
                         Left
-                            <input type="number" value={parseInt(state.marginLeft)} onChange={changeMarginLeft} />
+                        <input type="number" value={parseInt(state.marginLeft)} onChange={changeMarginLeft} />
                     </GridColumn>
                     <GridColumn>
                         Right
-                            <input type="number" value={parseInt(state.marginRight)} onChange={changeMarginRight} />
+                        <input type="number" value={parseInt(state.marginRight)} onChange={changeMarginRight} />
                     </GridColumn>
                     <GridColumn>
                         Top
-                            <input type="number" value={parseInt(state.marginTop)} onChange={changeMarginTop} />
+                        <input type="number" value={parseInt(state.marginTop)} onChange={changeMarginTop} />
                     </GridColumn>
                 </GridRow>
             </Grid>

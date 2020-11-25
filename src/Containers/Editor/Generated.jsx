@@ -25,18 +25,18 @@ const makeSignStyles = (fontFamily, color, position) =>
 const originalStyles = state =>
     (
         {
-        fontFamily: state.fontFamily,
-        fontWeight: state.fontWeight,
-        fontSize: state.fontSize,
-        color: state.color,
+            fontFamily: state.fontFamily,
+            fontWeight: state.fontWeight,
+            fontSize: state.fontSize,
+            color: state.color,
 
-        marginLeft: state.marginLeft,
-        marginRight: state.marginRight,
-        marginTop: state.marginTop,
+            marginLeft: state.marginLeft,
+            marginRight: state.marginRight,
+            marginTop: state.marginTop,
 
-        wordSpacing: state.wordSpacing,
-        letterSpacing: state.letterSpacing,
-        lineHeight: state.lineHeight
+            wordSpacing: state.wordSpacing,
+            letterSpacing: state.letterSpacing,
+            lineHeight: state.lineHeight
         }
     );
 
