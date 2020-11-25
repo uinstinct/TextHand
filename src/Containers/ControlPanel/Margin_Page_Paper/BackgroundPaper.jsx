@@ -6,6 +6,7 @@ import {
     changeToWhiteBackground,
     readFileAndChangeBG,
 } from 'Utils/paperChange';
+import { paperOptions } from 'Utils/options';
 
 import { DarkTheme } from 'Themes/index';
 import {
@@ -13,21 +14,6 @@ import {
     Button,
     Divider, Popup,
 } from 'semantic-ui-react';
-
-const paperOptions = [
-    {
-        text: 'Paper 2',
-        value: 'paper2',
-    },
-    {
-        text: 'Paper 3',
-        value: 'paper3',
-    },
-    {
-        text: 'Paper 4',
-        value: 'paper4',
-    },
-];
 
 export default function CustomPaper() {
     const { isActive } = useContext(DarkTheme);

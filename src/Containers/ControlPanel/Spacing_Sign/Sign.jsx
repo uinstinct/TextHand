@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import { DarkTheme } from 'Themes/index';
 import { useControl } from 'Utils/Controls';
+import { signPositionOptions } from 'Utils/options';
 
 import {
     Grid, GridRow, GridColumn,
@@ -18,17 +19,6 @@ function showSignature() {
         signature.style.display = 'none';
     }, 1000);
 }
-
-const options = [
-    {
-        text: 'Top Right',
-        value: 'top-right',
-    },
-    {
-        text: 'Bottom Right',
-        value: 'bottom-right',
-    },
-];
 
 export default function Sign() {
     const { isActive } = useContext(DarkTheme);
@@ -75,7 +65,7 @@ export default function Sign() {
                                         onChange={changeSignaturePosition}
                                         className="controlpanel select"
                                     >
-                                        {options.map((opt) => (
+                                        {signPositionOptions.map((opt) => (
                                             <option
                                                 key={opt.text}
                                                 value={opt.value}

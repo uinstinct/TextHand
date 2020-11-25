@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import { DarkTheme } from 'Themes/index';
 import { useControl } from 'Utils/Controls';
+import { fontWeightOptions } from 'Utils/options';
 
 import {
     Grid, GridRow, GridColumn,
@@ -9,29 +10,6 @@ import {
     Input,
     Popup, Label,
 } from 'semantic-ui-react';
-
-const fontWeightOptions = [
-    {
-        text: 'normal',
-        value: 400,
-    },
-    {
-        text: 'light',
-        value: 150,
-    },
-    {
-        text: 'lighter',
-        value: 10,
-    },
-    {
-        text: 'bold',
-        value: 600,
-    },
-    {
-        text: 'bolder',
-        value: 800,
-    },
-];
 
 function addFontFromFile(fileObj) {
     const reader = new FileReader();
