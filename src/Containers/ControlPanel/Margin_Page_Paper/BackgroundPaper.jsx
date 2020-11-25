@@ -4,7 +4,7 @@ import { useControl } from 'Utils/Controls';
 import {
     addImageToBackground,
     changeToWhiteBackground,
-    readFileAndChangeBG,
+    readFileAndChangeBG
 } from 'Utils/paperChange';
 import { paperOptions } from 'Utils/options';
 
@@ -12,19 +12,19 @@ import { DarkTheme } from 'Themes/index';
 import {
     Grid, GridRow, GridColumn,
     Button,
-    Divider, Popup,
+    Divider, Popup
 } from 'semantic-ui-react';
 
 export default function CustomPaper() {
-    const { isActive } = useContext(DarkTheme);
+    const { isActive, } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
     const changePaper = (event) => {
         const paper = event.target.value;
-        dispatch({ type: 'CHANGE_PAPER', payload: { pageBG: paper } });
+        dispatch({ type: 'CHANGE_PAPER', payload: { pageBG: paper, }, });
         dispatch({
             type: 'APPLY_SHADOW_EFFECT',
-            payload: { shadowEffect: false },
+            payload: { shadowEffect: false, },
         });
     };
 
@@ -47,7 +47,7 @@ export default function CustomPaper() {
                         Custom Paper
                         <div
                             className="controlpanel inline"
-                            style={{ width: '100%' }}
+                            style={{ width: '100%', }}
                         >
                             <Popup
                                 inverted={isActive}
@@ -56,7 +56,7 @@ export default function CustomPaper() {
                                         type="file"
                                         accept=".jpg,.jpeg,.png"
                                         onChange={(e) => readFileAndChangeBG(
-                                            e.target.files[0],
+                                            e.target.files[0]
                                         )}
                                     />
                                 )}
@@ -68,7 +68,7 @@ export default function CustomPaper() {
                                 icon="repeat"
                                 inverted={isActive}
                                 onClick={() => changePaper(
-                                    { target: { value: 'white' } },
+                                    { target: { value: 'white', }, }
                                 )}
                                 style={{
                                     alignSelf: 'flex-end',

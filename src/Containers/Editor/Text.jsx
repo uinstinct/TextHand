@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-export default function Text({ text, setText }) {
+export default function Text({ text, setText, }) {
     const handleChange = (event) => {
         setText(event.target.value);
     };

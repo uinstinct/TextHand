@@ -1,5 +1,5 @@
 import {
-    useReducer, createContext, useContext, useEffect,
+    useReducer, createContext, useContext, useEffect
 } from 'react';
 
 import { initialState, lazyInit } from './init';
@@ -13,11 +13,11 @@ let copyControls = {
 const ControlContext = createContext();
 
 let controlTimer;
-export function ControlProvider({ children }) {
+export function ControlProvider({ children, }) {
     const contextValue = useReducer(reducer, initialState, lazyInit);
 
     useEffect(() => {
-        copyControls = { ...contextValue[0] };
+        copyControls = { ...contextValue[0], };
         clearTimeout(controlTimer);
         controlTimer = setTimeout(() => {
             const copyControlsArray = Object.entries(copyControls);

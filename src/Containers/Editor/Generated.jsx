@@ -47,7 +47,7 @@ const paperLines = (state) => {
     };
 };
 
-export default function Generated({ text }) {
+export default function Generated({ text, }) {
     const state = useControl()[0];
 
     const manipulatedStyles = useMemo(() => {
@@ -57,12 +57,12 @@ export default function Generated({ text }) {
                 ...paperLines(state),
             };
         }
-        return { ...originalStyles(state) };
+        return { ...originalStyles(state), };
     }, [state]);
 
     const signStyles = useMemo(
         () => makeSignStyles(state.fontFamily, state.color, state.signPosition),
-        [state.fontFamily, state.color, state.signPosition],
+        [state.fontFamily, state.color, state.signPosition]
     );
 
     const madeHTML = useMemo(() => createHTML(text), [text]);
@@ -73,7 +73,7 @@ export default function Generated({ text }) {
                 className="generated core"
                 id="page-content"
                 style={manipulatedStyles}
-                dangerouslySetInnerHTML={{ __html: madeHTML }}
+                dangerouslySetInnerHTML={{ __html: madeHTML, }}
             />
             <div id="overlay" className="generated overlay" />
             <div

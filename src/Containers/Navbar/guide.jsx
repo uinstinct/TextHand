@@ -5,10 +5,10 @@ import guideFile from 'assets/guide.md';
 
 import {
     Modal, ModalHeader, ModalContent, ModalActions,
-    Button,
+    Button
 } from 'semantic-ui-react';
 
-export default function Rules({ showGuide, setShowGuide }) {
+export default function Rules({ showGuide, setShowGuide, }) {
     const [md, setMd] = useState('');
     const isMounted = useRef(true);
 
@@ -35,7 +35,7 @@ export default function Rules({ showGuide, setShowGuide }) {
                     Before you proceed
                 </ModalHeader>
                 <ModalContent>
-                    <div dangerouslySetInnerHTML={{ __html: md }} className="markdown rules" />
+                    <div dangerouslySetInnerHTML={{ __html: md, }} className="markdown rules" />
                 </ModalContent>
                 <ModalActions>
                     <Button

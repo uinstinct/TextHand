@@ -27,14 +27,14 @@ function transformSpaces(match) {
 
 export default async function generateImages() {
     const shouldLetterRandomize = parseInt(copyControls.fontSizeRandom, 10) > 0 || false;
-    const { updateProgress } = progress;
+    const { updateProgress, } = progress;
     const canvases = [];
 
     container = document.getElementById('page-container');
     content = document.getElementById('page-content');
 
     container.scrollTo(0, 0);
-    const { scrollHeight } = content;
+    const { scrollHeight, } = content;
     const clientHeight = copyControls.clientHeight || 550;
 
     const totalPages = Math.ceil(scrollHeight / clientHeight) + 1;
@@ -57,10 +57,10 @@ export default async function generateImages() {
 
     let currentWordPos = 0;
     // const { applyRandomization } = new Randomizer(totalPages, splitContent.length);
-    const { applyRandomization } = Randomizer;
+    const { applyRandomization, } = Randomizer;
 
     for (let i = 0; i < totalPages; i += 1) {
-        updateProgress({ type: 'INCREMENT_PROGRESS', payload: { i, totalPages } });
+        updateProgress({ type: 'INCREMENT_PROGRESS', payload: { i, totalPages, }, });
 
         const words = [];
         let text = '';
@@ -90,7 +90,7 @@ export default async function generateImages() {
                 const styledWord = applyRandomization(
                     word,
                     shouldLetterRandomize,
-                    currentWordPos,
+                    currentWordPos
                 );
                 words.push(styledWord.outerHTML);
                 styledWord.remove();
@@ -127,7 +127,7 @@ export default async function generateImages() {
         overlay.style.background = 'none';
     }
 
-    updateProgress({ type: 'APPLY_FILTERS' });
+    updateProgress({ type: 'APPLY_FILTERS', });
     container.style.overflowY = 'scroll';
 
     const resolvedCanvases = await Promise.all(canvases);

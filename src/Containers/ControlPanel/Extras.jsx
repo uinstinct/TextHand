@@ -6,37 +6,37 @@ import { useControl } from 'Utils/Controls';
 import {
     Popup,
     Checkbox, Button,
-    Divider,
+    Divider
 } from 'semantic-ui-react';
 
 export default function Extras() {
-    const { isActive } = useContext(DarkTheme);
+    const { isActive, } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
     const changeResolutionScale = (event) => {
         const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
         dispatch({
             type: 'CHANGE_RESOLUTION_SCALE',
-            payload: { resolutionScale: value },
+            payload: { resolutionScale: value, },
         });
     };
 
     const applyShadowEffect = (event, data) => {
         dispatch({
             type: 'APPLY_SHADOW_EFFECT',
-            payload: { shadowEffect: data.checked },
+            payload: { shadowEffect: data.checked, },
         });
     };
 
     const applyResetAll = () => {
         localStorage.clear();
-        dispatch({ type: 'APPLY_RESET' });
+        dispatch({ type: 'APPLY_RESET', });
     };
 
     const applyPreserveIndentation = (event, data) => {
         dispatch({
             type: 'APPLY_PRESERVE_INDENTATION',
-            payload: { preserveIndentation: data.checked },
+            payload: { preserveIndentation: data.checked, },
         });
     };
 
@@ -65,23 +65,23 @@ export default function Extras() {
             </div>
 
             <div
-                style={{ margin: '1rem' }}
+                style={{ margin: '1rem', }}
             >
                 Apply Shadow Effect
                 <Checkbox
                     slider
-                    style={{ marginLeft: '1rem' }}
+                    style={{ marginLeft: '1rem', }}
                     checked={JSON.parse(state.shadowEffect)}
                     onChange={applyShadowEffect}
                 />
             </div>
 
             <div
-                style={{ margin: '1rem' }}
+                style={{ margin: '1rem', }}
             >
                 Preserve Indentation
                 <Checkbox
-                    style={{ marginLeft: '1rem' }}
+                    style={{ marginLeft: '1rem', }}
                     defaultChecked={JSON.parse(state.preserveIndentation)}
                     onChange={applyPreserveIndentation}
                 />

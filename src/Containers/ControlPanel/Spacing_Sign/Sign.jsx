@@ -7,7 +7,7 @@ import { signPositionOptions } from 'Utils/options';
 import {
     Grid, GridRow, GridColumn,
     Input,
-    Divider,
+    Divider
 } from 'semantic-ui-react';
 
 let signTimer = null;
@@ -21,16 +21,16 @@ function showSignature() {
 }
 
 export default function Sign() {
-    const { isActive } = useContext(DarkTheme);
+    const { isActive, } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
     const changeSignatureValue = (event) => {
-        dispatch({ type: 'CHANGE_SIGNATURE_VALUE', payload: { signValue: event.target.value } });
+        dispatch({ type: 'CHANGE_SIGNATURE_VALUE', payload: { signValue: event.target.value, }, });
         showSignature();
     };
 
     const changeSignaturePosition = (event) => {
-        dispatch({ type: 'CHANGE_SIGNATURE_POSITION', payload: { signPosition: event.target.value } });
+        dispatch({ type: 'CHANGE_SIGNATURE_POSITION', payload: { signPosition: event.target.value, }, });
         showSignature();
     };
 

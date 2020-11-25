@@ -18,7 +18,7 @@ const fontWeightOptions = [
     {
         text: 'bolder',
         value: 800,
-    },
+    }
 ];
 
 const paperOptions = [
@@ -33,7 +33,7 @@ const paperOptions = [
     {
         text: 'Paper 4',
         value: 'paper4',
-    },
+    }
 ];
 
 const signPositionOptions = [
@@ -44,7 +44,7 @@ const signPositionOptions = [
     {
         text: 'Bottom Right',
         value: 'bottom-right',
-    },
+    }
 ];
 
 export { fontWeightOptions, paperOptions, signPositionOptions };

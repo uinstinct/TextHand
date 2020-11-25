@@ -20,7 +20,7 @@ export default function App() {
     }, [darkmode, setDarkmode]);
 
     return (
-        <DarkTheme.Provider value={{ isActive: darkmode, setDarkmode }}>
+        <DarkTheme.Provider value={{ isActive: darkmode, setDarkmode, }}>
             <div>
                 <Navbar />
                 <TextAndImage />

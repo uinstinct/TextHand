@@ -8,7 +8,7 @@ import {
     Grid, GridRow, GridColumn,
     Divider,
     Input,
-    Popup, Label,
+    Popup, Label
 } from 'semantic-ui-react';
 
 function addFontFromFile(fileObj) {
@@ -23,25 +23,25 @@ function addFontFromFile(fileObj) {
 }
 
 export default function Font() {
-    const { isActive } = useContext(DarkTheme);
+    const { isActive, } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
     const changeFontFamily = (event) => {
         addFontFromFile(event.target.files[0]);
-        dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'loadedFont' } });
+        dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'loadedFont', }, });
     };
 
     const changeFontSize = (event) => {
         const value = event.target.value === '' ? 0 : parseInt(event.target.value, 10);
-        dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value } });
+        dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value, }, });
     };
 
     const changeInkColour = (event) => {
-        dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: event.target.value } });
+        dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: event.target.value, }, });
     };
 
     const changeFontWeight = (event) => {
-        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: event.target.value } });
+        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: event.target.value, }, });
     };
 
     return (
@@ -61,7 +61,7 @@ export default function Font() {
                                     type="file"
                                     accept=".ttf,.otf"
                                     onChange={changeFontFamily}
-                                    style={{ marginLeft: '1rem' }}
+                                    style={{ marginLeft: '1rem', }}
                                 />
                             )}
                             content="Upload files of .ttf and .otf format only"
@@ -109,7 +109,7 @@ export default function Font() {
                             <Input
                                 type="color"
                                 inverted={isActive}
-                                style={{ marginLeft: '1rem' }}
+                                style={{ marginLeft: '1rem', }}
                                 onChange={changeInkColour}
                             />
                         </div>

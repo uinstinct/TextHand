@@ -8,16 +8,16 @@ import GenerationProgress from 'Containers/GenerationProgress';
 import {
     Segment, Label, Icon,
     Grid, GridRow, GridColumn,
-    Button,
+    Button
 } from 'semantic-ui-react';
 import './index.css';
 
 export default function ShowOutput(
     {
         removeImage, images: allImageURLs, removeAllImages, loading,
-    },
+    }
 ) {
-    const { isActive } = useContext(DarkTheme);
+    const { isActive, } = useContext(DarkTheme);
 
     const images = useMemo(() => {
         if (allImageURLs.length > 0) {
@@ -31,7 +31,7 @@ export default function ShowOutput(
 
                     const col = (
                         <GridColumn key={j}>
-                            <Label circular attached="top right" color="red" style={{ cursor: 'pointer' }} onClick={() => removeImage(j)}>
+                            <Label circular attached="top right" color="red" style={{ cursor: 'pointer', }} onClick={() => removeImage(j)}>
                                 <Icon inverted={isActive} name="close" size="big" />
                             </Label>
                             <br />
@@ -61,8 +61,8 @@ export default function ShowOutput(
 
     const doDownloadAllAsPDF = () => {
         const doc = new JsPDF('p', 'pt', 'a4');
-        const { width } = doc.internal.pageSize;
-        const { height } = doc.internal.pageSize;
+        const { width, } = doc.internal.pageSize;
+        const { height, } = doc.internal.pageSize;
 
         for (let i = 0; i < allImageURLs.length; i += 1) {
             doc.text(10, 20, '');

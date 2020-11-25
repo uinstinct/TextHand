@@ -38,7 +38,7 @@ export const initialState = {
 };
 
 export function lazyInit() {
-    const storedState = { ...initialState };
+    const storedState = { ...initialState, };
     const localStorageArray = Object.entries(localStorage);
 
     localStorageArray.forEach(([key, value]) => {

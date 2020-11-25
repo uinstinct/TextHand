@@ -10,6 +10,16 @@
       "files": [ "**/*.js?(x)" ],
       "rules": {
         "react/prop-types": 0, // fix with typescript
+        "comma-dangle": [
+          1,
+          {
+            "arrays": "never",
+            "objects": "always",
+            "imports": "never",
+            "exports": "never",
+            "functions": "never"
+          }
+        ],
         "eol-last": [ 2, "never" ],
         "global-require": 1,
         "import/no-unresolved": 0,

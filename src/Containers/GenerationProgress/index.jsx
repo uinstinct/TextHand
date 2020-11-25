@@ -11,15 +11,15 @@ const initialState = {
 function reducer(state, action) {
     switch (action.type) {
     case 'START':
-        return { ...state, label: 'initializing ...' };
+        return { ...state, label: 'initializing ...', };
     case 'INCREMENT_PROGRESS': {
-        const { i, totalPages } = action.payload;
+        const { i, totalPages, } = action.payload;
         const percent = Math.ceil(((i + 1) / (totalPages + 1)) * 100);
         const label = 'Taking Snapshots ... ' + percent + '%';
-        return { ...state, percent, label };
+        return { ...state, percent, label, };
     }
     case 'APPLY_FILTERS':
-        return { ...state, label: 'Applying Filters', percent: 100 };
+        return { ...state, label: 'Applying Filters', percent: 100, };
     default:
         return state;
     }
@@ -28,8 +28,8 @@ function reducer(state, action) {
 // eslint-disable-next-line import/no-mutable-exports
 let progress = {};
 
-function GenerationProgress({ attached }) {
-    const { isActive } = useContext(DarkTheme);
+function GenerationProgress({ attached, }) {
+    const { isActive, } = useContext(DarkTheme);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const updateProgress = (obj) => {
@@ -38,7 +38,7 @@ function GenerationProgress({ attached }) {
         }, 1000);
     };
 
-    progress = { progressState: state, updateProgress };
+    progress = { progressState: state, updateProgress, };
 
     return (
         <Progress attached={attached ? 'top' : null} inverted={isActive} indicating percent={state.percent}>
