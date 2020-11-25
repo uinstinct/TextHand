@@ -22,9 +22,16 @@ export default function CustomPaper() {
     const changePaper = (event) => {
         const paper = event.target.value;
         dispatch({ type: 'CHANGE_PAPER', payload: { pageBG: paper, }, });
+
+        let shadowEffect = null;
+        if (event.target.value === 'white') {
+            shadowEffect = true;
+        } else {
+            shadowEffect = false;
+        }
         dispatch({
             type: 'APPLY_SHADOW_EFFECT',
-            payload: { shadowEffect: false, },
+            payload: { shadowEffect, },
         });
     };
 
