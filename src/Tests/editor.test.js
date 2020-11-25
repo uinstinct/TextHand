@@ -21,7 +21,7 @@ jest.mock("../Containers/Controls", () => (
 
 afterEach(() => cleanup());
 
-describe("test the generated container and its functionalities | ", () => {
+describe("test the generated container and its functionalities |", () => {
     it("renders and matches snapshot", () => {
         const generated = render(<Generated text={dummyText} />);
         expect(generated.container.outerHTML).toMatchSnapshot();
@@ -37,7 +37,7 @@ describe("test the generated container and its functionalities | ", () => {
     });
 });
 
-describe("test the text area container and it functionalities | ", () => {
+describe("test the text area container and it functionalities |", () => {
     it("renders and matches snapshot", () => {
         const { container } = render(<TextEdit text={dummyText} />);
         expect(container.innerHTML).toMatchSnapshot();
@@ -67,7 +67,7 @@ describe("test the text area container and it functionalities | ", () => {
 /** this is an Integration test
  * test the working of both the generated and the text container
  * */
-describe("test the whole editor container and its functionalities | ", () => {
+describe("test the whole editor container and its functionalities |", () => {
     it("renders and matches snapshot", () => {
         const { container } = render(withDarkThemeProvider(<EditorIndex />));
         expect(container.innerHTML).toMatchSnapshot();

@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from "../Containers/App";
 
-describe("test the app container | ", () => {
+describe("test the app container |", () => {
 
     it("whole app is rendered without failing", () => {
 

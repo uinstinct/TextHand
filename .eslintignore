@@ -1,8 +1,10 @@
-node_modules/
 .github/
-public/
-assets/
-tests/
-build/
 .vs/
+
+assets/
+build/
+cypress/
+node_modules/
+public/
+
 __snapshots__/

@@ -13,7 +13,7 @@ import Guide from '../containers/Navbar/Rules';
 
 const navBarTests = () => {
     
-    describe("test the guide component and its functionalities | ", () => {
+    describe("test the guide component and its functionalities |", () => {
 
         const mockFetch = jest.spyOn(global, 'fetch');
 
@@ -79,4 +79,4 @@ const navBarTests = () => {
 
 }
 
-describe("test the navbar container and its components | ", navBarTests);
+describe("test the navbar container and its components |", navBarTests);

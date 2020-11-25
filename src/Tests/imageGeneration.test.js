@@ -27,7 +27,7 @@ jest.mock("../Containers/Controls", () => (
 jest.mock("html2canvas", () => jest.fn());
 
 // this is an integrated test
-describe("test the image generation phenomenon | ", () => {
+describe("test the image generation phenomenon |", () => {
 
     let econtainer = null;
 
