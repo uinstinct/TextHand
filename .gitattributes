@@ -1,0 +1,6 @@
+* text=auto
+
+# Files js and json files will have lf line endings only
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
