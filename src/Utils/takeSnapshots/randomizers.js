@@ -1,12 +1,12 @@
 import { copyControls } from 'Utils/Controls';
 
 function randomizeLetters(letter) {
-
     const randomValue = Math.random();
-    const randomScale = ((randomValue * parseInt(copyControls.fontSizeRandom)) + parseInt(copyControls.fontSize)).toFixed(2);
+    const randomScale = ((randomValue * parseInt(copyControls.fontSizeRandom, 10))
+        + parseInt(copyControls.fontSize, 10)).toFixed(2);
 
-    let wrappedLetter = document.createElement('span');
-    wrappedLetter.style = "all:unset";
+    const wrappedLetter = document.createElement('span');
+    wrappedLetter.style = 'all:unset';
     wrappedLetter.style.fontSize = randomScale + 'px';
     wrappedLetter.innerText = letter;
 
@@ -14,13 +14,12 @@ function randomizeLetters(letter) {
 }
 
 function randomizeWord(word, shouldLetterRandomize) {
-
     const wordWrapper = document.createElement('span');
-    wordWrapper.style = "all:unset";
+    wordWrapper.style = 'all:unset';
 
     if (shouldLetterRandomize) {
-        let letters = word.split('');
-        for (let i = 0; i < letters.length; i++) {
+        const letters = word.split('');
+        for (let i = 0; i < letters.length; i += 1) {
             letters[i] = randomizeLetters(letters[i]);
             letters[i] = letters[i].outerHTML;
         }
@@ -37,8 +36,7 @@ function randomizeWord(word, shouldLetterRandomize) {
     return wordWrapper;
 }
 
-
-/*function createStrikePositions(pages, noOfWords) {
+/* function createStrikePositions(pages, noOfWords) {
     const frequency = copyControls.strikeFreq || 0;
     let prev = 0;
     let positions = [];
@@ -52,21 +50,20 @@ function randomizeWord(word, shouldLetterRandomize) {
         positions.push(position);
     }
     return positions;
-}*/
+} */
 
 export default class TakeSnapshotRandomizer {
-
-    /*constructor(pages, noOfWords) {
+    /* constructor(pages, noOfWords) {
         this.applyRandomization = this.applyRandomization.bind(this);
         this.strikePositions = createStrikePositions(pages, noOfWords);
         this.strikeCurrPos = 0;
         this.willStrike = copyControls.strikeFreq > 0 ? true : false;
-    }*/
+    } */
 
-    applyRandomization(word, shouldLetterRandomize, currentWord) {
+    static applyRandomization(word, shouldLetterRandomize/* . currentWord */) {
         return randomizeWord(word, shouldLetterRandomize);
 
-        /*if(this.willStrike
+        /* if(this.willStrike
             && this.strikePositions
                 .includes(currentWord.value, this.strikeCurrPos)) {
 
@@ -79,6 +76,6 @@ export default class TakeSnapshotRandomizer {
 
         }else{
             return randomizeWord(word, shouldLetterRandomize);
-        }*/
+        } */
     }
 }

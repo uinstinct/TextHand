@@ -1,8 +1,7 @@
 import Sign from './Sign';
 import Spacing from './Spacing';
 
-export default function Spacing_Sign() {
-
+export default function SpacingSign() {
     return (
         <>
             <Spacing />

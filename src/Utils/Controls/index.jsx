@@ -1,10 +1,13 @@
-import { useReducer, createContext, useContext, useEffect } from 'react';
+import {
+    useReducer, createContext, useContext, useEffect,
+} from 'react';
 
 import { initialState, lazyInit } from './init';
 import reducer from './reducer';
 
+// eslint-disable-next-line import/no-mutable-exports
 let copyControls = {
-    ...initialState
+    ...initialState,
 };
 
 const ControlContext = createContext();
@@ -17,9 +20,11 @@ export function ControlProvider({ children }) {
         copyControls = { ...contextValue[0] };
         clearTimeout(controlTimer);
         controlTimer = setTimeout(() => {
-            for (const [key, value] of Object.entries(copyControls)) {
+            const copyControlsArray = Object.entries(copyControls);
+
+            copyControlsArray.forEach(([key, value]) => {
                 localStorage.setItem(key, value);
-            }
+            });
             localStorage.removeItem('fontFamily');
         }, 650);
     }, [contextValue]);

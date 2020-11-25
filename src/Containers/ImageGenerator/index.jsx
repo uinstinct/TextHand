@@ -1,34 +1,34 @@
+/* eslint-disable */
+
 import { useContext, useState } from 'react';
 
 import { DarkTheme } from 'Themes/index';
 import { progress } from 'Containers/GenerationProgress';
 
-import { generateImages } from 'Utils/takeSnapshots';
-import ShowOutput from './showOutput';
-
+import generateImages from 'Utils/takeSnapshots';
 import {
     Segment,
-    Grid, GridRow, GridColumn
+    Grid, GridRow, GridColumn,
 } from 'semantic-ui-react';
+import ShowOutput from './showOutput';
 
 async function applyFilters(canvases) {
-
-    let newImages = [];
+    const newImages = [];
     if (canvases.length > 0) {
         for (const convertedCanvas of canvases) {
             const convertedImageURI = convertedCanvas.toDataURL();
             const imgEl = document.createElement('img');
             imgEl.src = convertedImageURI;
 
-            const makeNewImage = async function() {
-                return new Promise((resolve, reject) => {
-                    imgEl.onload = function () {
+            const makeNewImage = async function () {
+                return new Promise((resolve) => {
+                    imgEl.onload = () => {
                         const newCanvas = document.createElement('canvas');
                         newCanvas.width = imgEl.width;
                         newCanvas.height = imgEl.height;
 
                         const ctx = newCanvas.getContext('2d');
-                        //ctx.filter = "contrast(25)";
+                        // ctx.filter = "contrast(25)";
 
                         /* ctx.filter = "blur(2px)";
                          * preview the filters in OVERLAY and NOT GENERATEDCONTAINER
@@ -42,9 +42,9 @@ async function applyFilters(canvases) {
 
                         const newImage = newCanvas.toDataURL();
                         resolve(newImage);
-                    }
+                    };
                 });
-            }
+            };
 
             const newImg = await makeNewImage();
             newImages.push(newImg);
@@ -53,18 +53,15 @@ async function applyFilters(canvases) {
     return newImages;
 }
 
-
 export default function ImageGenerator() {
-
     const { isActive } = useContext(DarkTheme);
 
     const [loading, setLoading] = useState(false);
     const [images, setImages] = useState([]);
 
-
     const applyImageGeneration = async () => {
         const { updateProgress } = progress;
-        updateProgress({ type: "START" });
+        updateProgress({ type: 'START' });
         setLoading(true);
 
         const newCanvases = await generateImages();
@@ -73,30 +70,31 @@ export default function ImageGenerator() {
         setImages(newImages);
 
         setLoading(false);
-    }
-
+    };
 
     const removeImage = (idx) => {
-        let newImages = [];
+        const newImages = [];
         for (let i = 0; i < images.length; i++) {
             if (i !== idx) {
                 newImages.push(images[i]);
             }
         }
         setImages(newImages);
-    }
+    };
 
     const removeAllImages = () => {
         setImages([]);
-    }
+    };
 
     return (
-        <div style={{ margin: "1rem", padding: "1rem" }}>
+        <div style={{ margin: '1rem', padding: '1rem' }}>
             <Grid>
-                <GridRow textAlign='center'>
-                    <GridColumn textAlign='center'>
-                        <Segment inverted={isActive} >
-                            <button disabled={loading}
+                <GridRow textAlign="center">
+                    <GridColumn textAlign="center">
+                        <Segment inverted={isActive}>
+                            <button
+                                type="button"
+                                disabled={loading}
                                 onClick={applyImageGeneration}
                                 id="generate-button"
                             >
@@ -108,7 +106,11 @@ export default function ImageGenerator() {
                 <GridRow style={{ margin: '0 1rem' }} columns={1} stretched>
                     <GridColumn>
                         <h3>Showing output here</h3>
-                        <ShowOutput images={images} removeImage={removeImage} removeAllImages={removeAllImages} />
+                        <ShowOutput
+                            images={images}
+                            removeImage={removeImage}
+                            removeAllImages={removeAllImages}
+                        />
                     </GridColumn>
                 </GridRow>
             </Grid>

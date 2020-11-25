@@ -5,33 +5,31 @@ import { useControl } from 'Utils/Controls';
 
 import {
     Grid, GridRow, GridColumn,
-    Label, Divider
+    Label, Divider,
 } from 'semantic-ui-react';
-
 
 export default function Spacing() {
     const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
-    const changeWordSpacing = event => {
+    const changeWordSpacing = (event) => {
         const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
         dispatch({ type: 'CHANGE_WORD_SPACING', payload: { wordSpacing: value } });
-    }
+    };
 
-    const changeLetterSpacing = event => {
+    const changeLetterSpacing = (event) => {
         const value = event.target.value === '' ? 0 : parseFloat(event.target.value);
         dispatch({ type: 'CHANGE_LETTER_SPACING', payload: { letterSpacing: value } });
-    }
+    };
 
-    const changeLineHeight = event => {
+    const changeLineHeight = (event) => {
         dispatch({ type: 'CHANGE_LINE_HEIGHT', payload: { lineHeight: event.target.value } });
-    }
+    };
 
-    const changeStrikeFreq = event => {
-        const value = event.target.value === '' ? 0 : parseInt(event.target.value);
+    const changeStrikeFreq = (event) => {
+        const value = event.target.value === '' ? 0 : parseInt(event.target.value, 10);
         dispatch({ type: 'CHANGE_STRIKE_FREQUENCY', payload: { strikeFreq: value } });
-    }
-
+    };
 
     return (
         <div className="controlpanel spacing">
@@ -39,7 +37,7 @@ export default function Spacing() {
                 <h2>Spacing</h2>
             </Divider>
             <Grid columns={2} inverted={isActive} stackable>
-                <GridRow >
+                <GridRow>
                     <GridColumn>
 
                         Word Spacing
@@ -65,7 +63,9 @@ export default function Spacing() {
                         <Label horizontal pointing="right" color="yellow">Beta</Label>
                         Strike Frequency
                         <input
-                            disabled type="number" step="1"
+                            disabled
+                            type="number"
+                            step="1"
                             style={{ marginLeft: '1rem' }}
                             onChange={changeStrikeFreq}
                             value={state.strikeFreq}

@@ -1,3 +1,9 @@
+function applyReset() {
+    // eslint-disable-next-line global-require
+    const { initialState } = require('./init');
+    return { ...initialState };
+}
+
 export default function reducer(state, action) {
     switch (action.type) {
     // FONTS
@@ -65,10 +71,4 @@ export default function reducer(state, action) {
     default:
         return state;
     }
-
-}
-
-function applyReset() {
-    const { initialState } = require("./init");
-    return { ...initialState };
 }

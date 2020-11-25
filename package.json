@@ -1,6 +1,6 @@
 {
   "name": "text-hand",
-  "version": "0.5.5",
+  "version": "0.6.3",
   "private": true,
   "dependencies": {
     "file-saver": "^2.0.5",
@@ -20,7 +20,7 @@
     "test:cypress": "cypress open",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lintf": "npm run lint -- --fix"
   },
   "browserslist": {
     "production": [
@@ -41,6 +41,7 @@
     "canvas": "^2.6.1",
     "cypress": "^5.5.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "jsdom": "^16.4.0"
   }

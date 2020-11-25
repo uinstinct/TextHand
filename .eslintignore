@@ -6,5 +6,7 @@ build/
 cypress/
 node_modules/
 public/
+src/Tests
+src/serviceWorker.js
 
 __snapshots__/

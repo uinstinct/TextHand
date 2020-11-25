@@ -1,12 +1,31 @@
 {
-  "extends": [ "eslint:recommended", "react-app", "react-app/jest" ],
+  "extends": [ "airbnb", "eslint:recommended", "react-app/jest" ],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
   "overrides": [
     {
       "files": [ "**/*.js?(x)" ],
       "rules": {
+        "react/prop-types": 0, // fix with typescript
         "eol-last": [ 2, "never" ],
-        "indent": [ 2, 4 ],
+        "global-require": 1,
+        "import/no-unresolved": 0,
+        "import/no-extraneous-dependencies": [
+          1,
+          {
+            "devDependencies": [ "./src/Tests", "./src/setupTests.js" ]
+          }
+        ],
+        "indent": [
+          1,
+          4,
+          { "ignoredNodes": [ "JSXElement" ] }
+        ],
         "linebreak-style": [ 2, "unix" ],
+        "no-console": 0, // change in production
         "no-unused-vars": [
           1,
           {
@@ -14,7 +33,12 @@
             "args": "after-used",
             "ignoreRestSiblings": false
           }
-        ]
+        ],
+        "prefer-template": 0,
+        "react/jsx-indent": [ 2, 4 ],
+        "react/jsx-indent-props": 0,
+        "react/no-danger": 0,
+        "react/react-in-jsx-scope": 0
       }
     }
   ]

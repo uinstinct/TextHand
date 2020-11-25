@@ -1,23 +1,23 @@
 import { useContext } from 'react';
 import { DarkTheme } from 'Themes/index';
 
+import {
+    Segment,
+    Grid, GridRow, GridColumn,
+} from 'semantic-ui-react';
 import Font from './Font';
 import MarginPagePaper from './Margin_Page_Paper';
 import SpacingSign from './Spacing_Sign';
 import Extras from './Extras';
 
-import {
-    Segment,
-    Grid, GridRow, GridColumn
-} from 'semantic-ui-react';
-import "./index.css";
+import './index.css';
 
 export default function ControlPanelIndex() {
     const { isActive } = useContext(DarkTheme);
     return (
-        <div className='main container'>
+        <div className="main container">
             <Segment raised inverted={isActive}>
-                <Grid stackable divided columns={4} inverted={isActive} >
+                <Grid stackable divided columns={4} inverted={isActive}>
                     <GridRow>
                         <GridColumn>
                             <Font />
@@ -26,7 +26,7 @@ export default function ControlPanelIndex() {
                             <MarginPagePaper />
                         </GridColumn>
                         <GridColumn>
-                            <SpacingSign/>
+                            <SpacingSign />
                         </GridColumn>
                         <GridColumn>
                             <Extras />
@@ -36,5 +36,4 @@ export default function ControlPanelIndex() {
             </Segment>
         </div>
     );
-
 }

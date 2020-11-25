@@ -19,7 +19,7 @@ export const initialState = {
     paperLines: false,
 
     // background-paper
-    pageBG: "white",
+    pageBG: 'white',
 
     // spacing
     wordSpacing: '4px',
@@ -28,19 +28,21 @@ export const initialState = {
     strikeFreq: 0,
 
     // signs
-    signValue: "",
-    signPosition: "top-right",
+    signValue: '',
+    signPosition: 'top-right',
 
     // extras
     resolutionScale: 2,
     shadowEffect: true,
     preserveIndentation: true,
-}
+};
 
 export function lazyInit() {
     const storedState = { ...initialState };
-    for (const [key, value] of Object.entries(localStorage)) {
+    const localStorageArray = Object.entries(localStorage);
+
+    localStorageArray.forEach(([key, value]) => {
         storedState[key] = value;
-    }
+    });
     return storedState;
 }

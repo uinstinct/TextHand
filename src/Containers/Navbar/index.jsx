@@ -1,56 +1,55 @@
 import { useContext, useState } from 'react';
 
-import Guide from './guide';
-
 import { DarkTheme } from 'Themes/index';
 
 import {
     Menu, Segment,
     Label,
-    Button, Checkbox
+    Button, Checkbox,
 } from 'semantic-ui-react';
-import "./index.css";
-
+import Guide from './guide';
+import './index.css';
 
 export default function NavbarIndex() {
-
     const darkTheme = useContext(DarkTheme);
 
     const changeMode = (event, data) => {
         darkTheme.setDarkmode(data.checked);
-    }
+    };
 
     const [showGuide, setShowGuide] = useState(false);
-    
+
     return (
         <>
             <Segment inverted={darkTheme.isActive}>
                 <Menu inverted={darkTheme.isActive} secondary pointing>
                     <Menu.Item
-                        name='home'
-                        active={true}
+                        name="home"
+                        active
                     />
-                    <Menu.Item >
-                        <a target='_blank' rel='noopener noreferrer' href="https://t.me/AdityaMitra" >
+                    <Menu.Item>
+                        <a target="_blank" rel="noopener noreferrer" href="https://t.me/AdityaMitra">
                             Report a Bug
                         </a>
                     </Menu.Item>
-                    <Menu.Item position='right'>
-                        <Button color='olive'
+                    <Menu.Item position="right">
+                        <Button
+                            color="olive"
                             inverted={darkTheme.isActive}
                             onClick={() => setShowGuide(true)}
                             style={{ marginRight: '2rem' }}
-                            id='guide-modal'
+                            id="guide-modal"
                         >
                             Show Guide
                         </Button>
-                        <Checkbox toggle
+                        <Checkbox
+                            toggle
                             checked={darkTheme.isActive}
                             onChange={changeMode}
                         />
                         <span style={{ marginLeft: '1rem' }}>
                             <Label color={darkTheme.isActive ? 'violet' : 'blue'} horizontal>
-                                {darkTheme.isActive ? "Dark Mode" : "Light Mode"}
+                                {darkTheme.isActive ? 'Dark Mode' : 'Light Mode'}
                             </Label>
                         </span>
                     </Menu.Item>

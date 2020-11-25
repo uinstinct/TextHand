@@ -1,6 +1,6 @@
-import "@testing-library/jest-dom/extend-expect";
+import '@testing-library/jest-dom/extend-expect';
 
-jest.requireActual("semantic-ui-react");
+jest.requireActual('semantic-ui-react');
 
 const localStorageMock = {
     getItem: jest.fn(),
