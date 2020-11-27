@@ -1,33 +1,43 @@
-import PouchDB from "pouchdb";
+import PouchDB from 'pouchdb';
 
-const db = new PouchDB("font-file");
+const db = new PouchDB('font-file');
+
+function getDocRev() {
+    const rev = db.get('doc-id-1')
+        // eslint-disable-next-line
+        .then((resp) => (resp._rev ? resp._rev : null))
+        .catch(() => null);
+    return rev;
+}
 
 export async function saveFont(data) {
+    const rev = await getDocRev();
 
-    //db.getAttachment("doc")
-
-    const doc = {
-        "_id": "font-family-id",
-        "title": "FontFamily",
-        "_attachments": {
-            "font-file-id": {
-                "content_type": "font/ttf",
-                "data": data
-            }
-        }
-    };
-
-    db.put(doc)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => console.log(err));
+    db.putAttachment('doc-id-1', 'attachment-id-1', rev, data, 'font/ttf')
+        .then((resp) => (!!resp.ok))
+        .catch(() => false);
 }
 
 export async function loadFont() {
-    return db.getAttachment("font-family-id", "font-file-id")
-        .then(blob => {
-            return blob;
+    const rev = await getDocRev();
+    if (rev) {
+        return db.getAttachment('doc-id-1', 'attachment-id-1')
+            .then((blob) => blob)
+            .catch((err) => console.log(err));
+    }
+    return null;
+}
+
+export function deleteFont() {
+    return db.remove('doc-id-1')
+        .then((resp) => (!!resp.ok))
+        .catch(() => false);
+}
+
+export function destroyDB() {
+    db.destroy()
+        .then((resp) => {
+            console.log(resp);
         })
-        .catch(err => console.log(err));
+        .catch(() => console.info('db was not destroyed'));
 }

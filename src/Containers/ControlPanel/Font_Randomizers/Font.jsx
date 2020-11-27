@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { DarkTheme } from 'Themes/index';
 import { useControl } from 'Utils/Controls';
@@ -10,11 +10,17 @@ import {
     Input,
     Popup
 } from 'semantic-ui-react';
+import { loadFont, saveFont } from 'Utils/db/fontFile';
 
-function addFontFromFile(fileObj) {
+function addFontFromFile(fileObj, shouldSaveFont) {
+    if (shouldSaveFont) {
+        saveFont(fileObj);
+    }
+
     const reader = new FileReader();
     reader.readAsArrayBuffer(fileObj);
     reader.onload = (e) => {
+        console.log(e.target.result, 'was found');
         const newFont = new FontFace('loadedFont', e.target.result);
         newFont.load().then((loadedFace) => {
             document.fonts.add(loadedFace);
@@ -27,7 +33,7 @@ export default function Font() {
     const [state, dispatch] = useControl();
 
     const changeFontFamily = (event) => {
-        addFontFromFile(event.target.files[0]);
+        addFontFromFile(event.target.files[0], true);
         dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'loadedFont', }, });
     };
 
@@ -40,9 +46,19 @@ export default function Font() {
         dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: event.target.value, }, });
     };
 
-    const changeFontWeight = (event) => {
+    const changeFontWeight = async (event) => {
         dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: event.target.value, }, });
     };
+
+    useEffect(() => {
+        setTimeout(async () => {
+            const file = await loadFont();
+            if (file) {
+                addFontFromFile(file, false);
+                dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'loadedFont', }, });
+            }
+        }, 2000);
+    }, []);
 
     return (
         <div className="controlpanel font">

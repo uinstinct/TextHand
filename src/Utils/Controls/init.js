@@ -1,4 +1,5 @@
-import { dbExists } from "../db/preferences";
+import { dbExists } from '../db/preferences';
+
 dbExists();
 
 export const initialState = {
