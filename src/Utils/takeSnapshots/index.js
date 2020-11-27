@@ -23,7 +23,7 @@ export default async function generateImages() {
     container.style.overflowY = 'hidden';
 
     const { scrollHeight, } = content;
-    const clientHeight = copyControls.clientHeight || 550;
+    const { clientHeight, } = copyControls;
     const totalPages = Math.ceil(scrollHeight / clientHeight) + 1;
 
     /* preserve the last word or letter also */

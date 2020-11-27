@@ -33,7 +33,7 @@ export default function Page() {
                             Page Content Length*
                             <input
                                 type="number"
-                                min="0"
+                                min="200"
                                 max="700"
                                 value={parseInt(state.clientHeight, 10)}
                                 onChange={changeClientHeight}
