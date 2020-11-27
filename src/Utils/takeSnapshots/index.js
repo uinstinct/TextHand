@@ -1,63 +1,37 @@
-import html2canvas from 'html2canvas';
-
 import { copyControls } from 'Utils/Controls';
 import { progress } from 'Containers/GenerationProgress';
-import Randomizer from './randomizers';
 
-let container = null;
-let content = null;
-
-async function convertDIVToImage() {
-    const options = {
-        logging: false,
-        scrollX: 0,
-        scrollY: -(window.scrollY + 130.25), // (the plus is varying) BUG
-        scale: copyControls.resolutionScale,
-    };
-
-    const canvas = await html2canvas(container, options);
-    return canvas;
-}
-
-function transformSpaces(match) {
-    const len = match.length - 4;
-    const temp = ' ' + len + ':~: ';
-    return temp;
-}
+import {
+    convertContainerToCanvas,
+    preserveIndentation,
+    putInWordArray,
+    Overlay
+} from './helpers';
 
 export default async function generateImages() {
     const shouldLetterRandomize = parseInt(copyControls.fontSizeRandom, 10) > 0 || false;
     const { updateProgress, } = progress;
     const canvases = [];
+    const { addOverlay, removeOverlay, } = new Overlay(JSON.parse(copyControls.shadowEffect));
 
-    container = document.getElementById('page-container');
-    content = document.getElementById('page-content');
+    const container = document.getElementById('page-container');
+    const content = document.getElementById('page-content');
 
     container.scrollTo(0, 0);
+    container.style.overflowY = 'hidden';
+
     const { scrollHeight, } = content;
     const clientHeight = copyControls.clientHeight || 550;
 
     const totalPages = Math.ceil(scrollHeight / clientHeight) + 1;
 
-    let copiedText = content.innerHTML.trim();
-    copiedText += ' lastDummy'; // preserve the last word or letter also
-    container.style.overflowY = 'hidden';
+    /* preserve the last word or letter also */
+    const copiedText = content.innerHTML.trim() + ' lastDummy';
 
-    let splitContent;
-    if (JSON.parse(copyControls.preserveIndentation) === true) {
-        splitContent = copiedText
-            .replace(/\n/g, ' <br> ')
-            .replace(/\s{3,}/g, transformSpaces)
-            .split(/\s+/g);
-    } else {
-        splitContent = copiedText
-            .replace(/\n/g, ' <br> ')
-            .split(/\s+/g);
-    }
+    const splitContent = preserveIndentation(copyControls.preserveIndentation, copiedText);
 
     let currentWordPos = 0;
     // const { applyRandomization } = new Randomizer(totalPages, splitContent.length);
-    const { applyRandomization, } = Randomizer;
 
     for (let i = 0; i < totalPages; i += 1) {
         updateProgress({ type: 'INCREMENT_PROGRESS', payload: { i, totalPages, }, });
@@ -68,32 +42,15 @@ export default async function generateImages() {
 
         while (
             content.scrollHeight <= clientHeight
-            && words.length <= splitContent.length + copyControls.strikeFreq
+            && words.length <= splitContent.length
         ) {
             const word = splitContent[currentWordPos];
             if (!word) {
                 break;
-            } else if (word === '<br>') {
-                words.push(word);
-            } else if (
-                (/&lt|&gt|&amp/gi).test(word)
-            ) {
-                words.push(word);
-            } else if (word.includes(':~:')) {
-                const len = parseInt(word, 10);
-                let newWord = '';
-                for (let j = 0; j < len; j += 1) {
-                    newWord += ' ';
-                }
-                words.push(newWord);
             } else {
-                const styledWord = applyRandomization(
-                    word,
-                    shouldLetterRandomize,
-                    currentWordPos
+                putInWordArray(
+                    word, words, shouldLetterRandomize, currentWordPos
                 );
-                words.push(styledWord.outerHTML);
-                styledWord.remove();
             }
 
             text = words.join(' ');
@@ -105,26 +62,21 @@ export default async function generateImages() {
         // remove the last word
         currentWordPos -= 1;
         words.pop(words[currentWordPos]);
+
         text = words.join(' ');
         content.innerHTML = text;
 
         content.scrollTo(0, 0);
         container.scrollTo(0, 0);
 
-        const overlay = document.querySelector('#overlay');
-        const signature = document.querySelector('#signature');
-        signature.style.display = 'block';
-        if (JSON.parse(copyControls.shadowEffect) === true) {
-            overlay.style.display = 'block';
-            overlay.style.background = `linear-gradient(${Math.random() * 360}deg, #0008, #0000)`;
-        }
+        addOverlay();
 
-        const canvas = convertDIVToImage();
+        const canvas = convertContainerToCanvas(
+            container, copyControls.resolutionScale
+        );
         canvases.push(canvas);
 
-        signature.style.display = 'none';
-        overlay.style.display = 'none';
-        overlay.style.background = 'none';
+        removeOverlay();
     }
 
     updateProgress({ type: 'APPLY_FILTERS', });
