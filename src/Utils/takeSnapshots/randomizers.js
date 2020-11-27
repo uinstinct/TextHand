@@ -1,5 +1,18 @@
 import { copyControls } from 'Utils/Controls';
 
+function randomizeLetters(letter, fontSizeRandom, fontSize) {
+    const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
+    const randomScale = ((Math.random() * fontSizeRandom * sign) + fontSize)
+        .toFixed(2);
+
+    const wrappedLetter = document.createElement('span');
+    wrappedLetter.style = 'all:unset';
+    wrappedLetter.style.fontSize = randomScale + 'px';
+    wrappedLetter.innerText = letter;
+
+    return wrappedLetter;
+}
+
 export default class TakeSnapshotRandomizer {
     constructor() {
         this.fontSizeRandom = parseInt(copyControls.fontSizeRandom, 10);
@@ -9,7 +22,6 @@ export default class TakeSnapshotRandomizer {
 
         this.applyRandomization = this.applyRandomization.bind(this);
         this.randomizeWord = this.randomizeWord.bind(this);
-        this.randomizeLetters = this.randomizeLetters.bind(this);
     }
 
     applyRandomization(word) {
@@ -22,8 +34,9 @@ export default class TakeSnapshotRandomizer {
 
         if (this.shouldLetterRandomize) {
             const letters = word.split('');
+            const { fontSizeRandom, fontSize, } = this;
             for (let i = 0; i < letters.length; i += 1) {
-                letters[i] = this.randomizeLetters(letters[i]);
+                letters[i] = randomizeLetters(letters[i], fontSizeRandom, fontSize);
                 letters[i] = letters[i].outerHTML;
             }
             const styledLetters = letters.join('');
@@ -39,19 +52,6 @@ export default class TakeSnapshotRandomizer {
             wordWrapper.style.transform = `rotate(${randomRotation}deg)`;
         }
         return wordWrapper;
-    }
-
-    randomizeLetters(letter) {
-        const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
-        const randomScale = ((Math.random() * this.fontSizeRandom * sign) + this.fontSize)
-            .toFixed(2);
-
-        const wrappedLetter = document.createElement('span');
-        wrappedLetter.style = 'all:unset';
-        wrappedLetter.style.fontSize = randomScale + 'px';
-        wrappedLetter.innerText = letter;
-
-        return wrappedLetter;
     }
 }
 

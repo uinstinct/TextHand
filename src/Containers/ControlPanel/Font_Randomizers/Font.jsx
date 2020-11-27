@@ -8,7 +8,7 @@ import {
     Grid, GridRow, GridColumn,
     Divider,
     Input,
-    Popup, Label
+    Popup
 } from 'semantic-ui-react';
 
 function addFontFromFile(fileObj) {
