@@ -1,9 +1,11 @@
 import { copyControls } from 'Utils/Controls';
 
-function randomizeLetters(letter) {
-    const randomValue = Math.random();
-    const randomScale = ((randomValue * parseInt(copyControls.fontSizeRandom, 10))
-        + parseInt(copyControls.fontSize, 10)).toFixed(2);
+function randomizeLetters(letter, sign) {
+    const fontSizeRandom = parseInt(copyControls.fontSizeRandom, 10);
+    const fontSize = parseInt(copyControls.fontSize, 10);
+
+    const randomScale = ((Math.random() * fontSizeRandom * sign) + fontSize)
+        .toFixed(2);
 
     const wrappedLetter = document.createElement('span');
     wrappedLetter.style = 'all:unset';
@@ -16,11 +18,13 @@ function randomizeLetters(letter) {
 function randomizeWord(word, shouldLetterRandomize) {
     const wordWrapper = document.createElement('span');
     wordWrapper.style = 'all:unset';
+    const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
+    const wordRotation = parseFloat(copyControls.wordRotation);
 
     if (shouldLetterRandomize) {
         const letters = word.split('');
         for (let i = 0; i < letters.length; i += 1) {
-            letters[i] = randomizeLetters(letters[i]);
+            letters[i] = randomizeLetters(letters[i], sign);
             letters[i] = letters[i].outerHTML;
         }
         const styledLetters = letters.join('');
@@ -30,8 +34,7 @@ function randomizeWord(word, shouldLetterRandomize) {
         wordWrapper.innerHTML = word;
     }
 
-    const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
-    const randomRotation = Math.random() * parseFloat(copyControls.wordRotation) * sign;
+    const randomRotation = wordRotation > 0 ? (Math.random() * wordRotation * sign) : 0;
     wordWrapper.style.transform = `rotate(${randomRotation}deg)`;
     return wordWrapper;
 }
