@@ -7,12 +7,14 @@ import {
     putInWordArray,
     Overlay
 } from './helpers';
+import Randomizer from './randomizers';
 
 export default async function generateImages() {
-    const shouldLetterRandomize = parseInt(copyControls.fontSizeRandom, 10) > 0 || false;
+    const { applyRandomization, } = new Randomizer();
+    const { addOverlay, removeOverlay, } = new Overlay(JSON.parse(copyControls.shadowEffect));
+
     const { updateProgress, } = progress;
     const canvases = [];
-    const { addOverlay, removeOverlay, } = new Overlay(JSON.parse(copyControls.shadowEffect));
 
     const container = document.getElementById('page-container');
     const content = document.getElementById('page-content');
@@ -22,7 +24,6 @@ export default async function generateImages() {
 
     const { scrollHeight, } = content;
     const clientHeight = copyControls.clientHeight || 550;
-
     const totalPages = Math.ceil(scrollHeight / clientHeight) + 1;
 
     /* preserve the last word or letter also */
@@ -49,7 +50,7 @@ export default async function generateImages() {
                 break;
             } else {
                 putInWordArray(
-                    word, words, shouldLetterRandomize, currentWordPos
+                    word, words, applyRandomization
                 );
             }
 

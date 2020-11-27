@@ -1,5 +1,4 @@
 import html2canvas from 'html2canvas';
-import Randomizer from './randomizers';
 
 export async function convertContainerToCanvas(container, resolutionScale) {
     const options = {
@@ -34,10 +33,8 @@ export function preserveIndentation(shouldPreserve, copiedText) {
 }
 
 export function putInWordArray(
-    word, words, shouldLetterRandomize, currentWordPos
+    word, words, applyRandomization
 ) {
-    const { applyRandomization, } = Randomizer;
-
     if (word === '<br>') {
         words.push(word);
     } else if (
@@ -52,11 +49,7 @@ export function putInWordArray(
         }
         words.push(newWord);
     } else {
-        const styledWord = applyRandomization(
-            word,
-            shouldLetterRandomize,
-            currentWordPos
-        );
+        const styledWord = applyRandomization(word);
         words.push(styledWord.outerHTML);
         styledWord.remove();
     }
