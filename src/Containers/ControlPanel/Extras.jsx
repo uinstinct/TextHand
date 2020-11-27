@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import { DarkTheme } from 'Themes/index';
 import { useControl } from 'Utils/Controls';
+import { destroyDB } from 'Utils/db/fontFile';
 
 import {
     Popup,
@@ -30,6 +31,7 @@ export default function Extras() {
 
     const applyResetAll = () => {
         localStorage.clear();
+        destroyDB();
         dispatch({ type: 'APPLY_RESET', });
     };
 

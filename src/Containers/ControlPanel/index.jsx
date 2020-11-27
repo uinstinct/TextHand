@@ -5,7 +5,7 @@ import {
     Segment,
     Grid, GridRow, GridColumn
 } from 'semantic-ui-react';
-import FontRandomizers from './Font_Randomizers';
+import FontFamilyRandomizers from './Font_Family_Randomizers';
 import MarginPagePaper from './Margin_Page_Paper';
 import SpacingSign from './Spacing_Sign';
 import Extras from './Extras';
@@ -20,7 +20,7 @@ export default function ControlPanelIndex() {
                 <Grid stackable divided columns={4} inverted={isActive}>
                     <GridRow>
                         <GridColumn>
-                            <FontRandomizers />
+                            <FontFamilyRandomizers />
                         </GridColumn>
                         <GridColumn>
                             <MarginPagePaper />

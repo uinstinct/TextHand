@@ -1,13 +1,9 @@
-import { dbExists } from '../db/preferences';
-
-dbExists();
-
 export const initialState = {
 
     // fonts
     fontFamily: 'Homemade Apple, cursive',
     fontWeight: 400,
-    fontSize: '10px',
+    fontSize: '16px',
     color: 'rgb(0, 15, 85)',
     // randomizers
     fontSizeRandom: 0,
