@@ -13,9 +13,11 @@ export function addImageToBackground(url) {
     if (url in papers) {
         paperURL = papers[url];
     }
-    const editorContainer = document.getElementById('page-container');
-    editorContainer.style.background = `url(${paperURL.default})`;
-    editorContainer.style.backgroundSize = 'cover';
+    if (paperURL) {
+        const editorContainer = document.getElementById('page-container');
+        editorContainer.style.background = `url(${paperURL.default})`;
+        editorContainer.style.backgroundSize = 'cover';
+    }
 }
 
 export function changeToWhiteBackground() {

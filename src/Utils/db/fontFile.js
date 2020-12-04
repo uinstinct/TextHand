@@ -2,7 +2,7 @@ import PouchDB from 'pouchdb';
 
 function getDocRev(db) {
     const rev = db.get('doc-id-1')
-        // eslint-disable-next-line
+        // eslint-disable-next-line no-underscore-dangle
         .then((resp) => (resp._rev ? resp._rev : null))
         .catch(() => null);
     return rev;

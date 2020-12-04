@@ -1,6 +1,6 @@
 {
   "name": "text-hand",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "private": true,
   "dependencies": {
     "file-saver": "^2.0.5",
@@ -15,7 +15,7 @@
     "semantic-ui-react": "^2.0.1"
   },
   "scripts": {
-    "start": "SET PORT=4000 && react-scripts start",
+    "start": "SET PORT=40 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:cypress": "cypress open",

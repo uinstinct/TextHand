@@ -68,6 +68,10 @@ export default function reducer(state, action) {
     case 'APPLY_RESET':
         return applyReset();
 
+    case 'APPLY_DB_CONTROLS':
+        console.log(action.payload.value);
+        return action.payload.value;
+
     default:
         return state;
     }

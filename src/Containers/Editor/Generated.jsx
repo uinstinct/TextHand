@@ -51,7 +51,7 @@ export default function Generated({ text, }) {
     const state = useControl()[0];
 
     const manipulatedStyles = useMemo(() => {
-        if (JSON.parse(state.paperLines) === true) {
+        if (!!state.paperLines === true) {
             return {
                 ...originalStyles(state),
                 ...paperLines(state),

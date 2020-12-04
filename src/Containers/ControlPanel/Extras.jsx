@@ -73,7 +73,7 @@ export default function Extras() {
                 <Checkbox
                     slider
                     style={{ marginLeft: '1rem', }}
-                    checked={JSON.parse(state.shadowEffect)}
+                    checked={!!state.shadowEffect}
                     onChange={applyShadowEffect}
                 />
             </div>
@@ -84,7 +84,7 @@ export default function Extras() {
                 Preserve Indentation
                 <Checkbox
                     style={{ marginLeft: '1rem', }}
-                    defaultChecked={JSON.parse(state.preserveIndentation)}
+                    defaultChecked={!!state.preserveIndentation}
                     onChange={applyPreserveIndentation}
                 />
             </div>

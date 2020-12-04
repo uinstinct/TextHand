@@ -1,3 +1,5 @@
+import { fetchControls } from 'Utils/db/controls';
+
 export const initialState = {
 
     // fonts
@@ -37,12 +39,19 @@ export const initialState = {
     preserveIndentation: true,
 };
 
-export function lazyInit() {
+export async function onMount(dispatch) {
     const storedState = { ...initialState, };
-    const localStorageArray = Object.entries(localStorage);
+    const controlsArray = await fetchControls();
 
-    localStorageArray.forEach(([key, value]) => {
-        storedState[key] = value;
-    });
-    return storedState;
+    if (controlsArray && controlsArray.length) {
+        controlsArray.forEach((doc) => {
+            storedState[doc.name] = doc.curVal;
+        });
+
+        dispatch({
+            type: 'APPLY_DB_CONTROLS',
+            payload: { value: storedState, },
+        });
+    }
+    console.log(storedState);
 }

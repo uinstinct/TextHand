@@ -50,7 +50,7 @@ export default function Page() {
                             <Checkbox
                                 style={{ marginLeft: '0.5rem', }}
                                 onChange={applyPaperLines}
-                                defaultChecked={JSON.parse(state.paperLines)}
+                                defaultChecked={!!state.paperLines}
                             />
                         </span>
                     </GridColumn>
