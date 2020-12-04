@@ -17,7 +17,6 @@
   "scripts": {
     "start": "SET PORT=40 && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:cypress": "cypress open",
     "eject": "react-scripts eject",
     "lint": "eslint .",
@@ -36,14 +35,7 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/user-event": "^12.2.2",
-    "canvas": "^2.6.1",
     "cypress": "^5.5.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "jsdom": "^16.4.0"
+    "eslint-config-airbnb": "^18.2.1"
   }
 }
