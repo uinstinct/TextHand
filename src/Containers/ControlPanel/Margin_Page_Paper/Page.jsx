@@ -14,7 +14,7 @@ export default function Page() {
     const [state, dispatch] = useControl();
 
     const changeClientHeight = (event) => {
-        dispatch({ type: 'CHANGE_CLIENT_HEIGHT', payload: { clientHeight: event.target.value, }, });
+        dispatch({ type: 'CHANGE_CLIENT_HEIGHT', payload: { clientHeight: parseInt(event.target.value, 10), }, });
     };
 
     const applyPaperLines = (event, data) => {
@@ -35,7 +35,7 @@ export default function Page() {
                                 type="number"
                                 min="200"
                                 max="700"
-                                value={parseInt(state.clientHeight, 10)}
+                                value={state.clientHeight}
                                 onChange={changeClientHeight}
                             />
                         </div>

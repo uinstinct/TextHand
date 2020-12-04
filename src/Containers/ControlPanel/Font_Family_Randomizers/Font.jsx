@@ -23,8 +23,8 @@ export default function Font() {
         dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: event.target.value, }, });
     };
 
-    const changeFontWeight = async (event) => {
-        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: event.target.value, }, });
+    const changeFontWeight = (event) => {
+        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: parseInt(event.target.value, 10), }, });
     };
 
     return (

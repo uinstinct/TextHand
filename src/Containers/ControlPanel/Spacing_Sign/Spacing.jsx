@@ -23,7 +23,7 @@ export default function Spacing() {
     };
 
     const changeLineHeight = (event) => {
-        dispatch({ type: 'CHANGE_LINE_HEIGHT', payload: { lineHeight: event.target.value, }, });
+        dispatch({ type: 'CHANGE_LINE_HEIGHT', payload: { lineHeight: parseFloat(event.target.value), }, });
     };
 
     const changeStrikeFreq = (event) => {

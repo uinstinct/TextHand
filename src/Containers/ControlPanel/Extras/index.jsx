@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { DarkTheme } from 'Themes/index';
 import { useControl } from 'Utils/Controls';
-import { destroyDB } from 'Utils/db/fontFile';
+import { destroyDB as destroyFontFileDB } from 'Utils/db/fontFile';
 
 import {
     Popup,
@@ -30,8 +30,9 @@ export default function Extras() {
     };
 
     const applyResetAll = () => {
-        localStorage.clear();
-        destroyDB();
+        /* we do not need to destroy the controls db
+         * because it is being destroyed and created on every write */
+        destroyFontFileDB();
         dispatch({ type: 'APPLY_RESET', });
     };
 

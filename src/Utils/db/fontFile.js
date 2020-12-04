@@ -44,6 +44,5 @@ export async function deleteFont() {
 
 export function destroyDB() {
     const db = new PouchDB('font-file');
-    db.destroy()
-        .finally(() => db.close());
+    db.destroy();
 }

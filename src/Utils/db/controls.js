@@ -8,7 +8,6 @@ function destroyDB() {
 export async function writeControls(controls) {
     await destroyDB();
 
-    console.log(controls, 'are received');
     const db = new PouchDB('controls');
     const controlsArray = Object.entries(controls);
 

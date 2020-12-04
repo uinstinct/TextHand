@@ -69,7 +69,6 @@ export default function reducer(state, action) {
         return applyReset();
 
     case 'APPLY_DB_CONTROLS':
-        console.log(action.payload.value);
         return action.payload.value;
 
     default:
