@@ -49,8 +49,6 @@ export default function reducer(state, action) {
         return { ...state, letterSpacing: action.payload.letterSpacing + 'px', };
     case 'CHANGE_LINE_HEIGHT':
         return { ...state, lineHeight: action.payload.lineHeight, };
-    case 'CHANGE_STRIKE_FREQUENCY':
-        return { ...state, strikeFreq: action.payload.strikeFreq, };
 
         // SIGNS
     case 'CHANGE_SIGNATURE_VALUE':

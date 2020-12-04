@@ -27,7 +27,6 @@ export const initialState = {
     wordSpacing: '4px',
     letterSpacing: '1px',
     lineHeight: 1.1,
-    strikeFreq: 0,
 
     // signs
     signValue: '',
@@ -53,5 +52,4 @@ export async function onMount(dispatch) {
             payload: { value: storedState, },
         });
     }
-    console.log(storedState);
 }

@@ -15,6 +15,12 @@ If you again want to regenerate this page, you will have to make atleast **1 cha
 - When text is wrapping, the next line is being shifted a little towards the left.
 (*Check the initial preserve indentation value*)
 
+### Auto Saving
+
+TextHand will auto-save each value **Settings** into your browser's database *(PouchDB is being used under the hood)*. It will save your settings in every 3 seconds you change them.
+
+This also incudes the font-file that you are uploading.
+
 ### Randomization
 
 

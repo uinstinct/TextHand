@@ -25,8 +25,8 @@ export function ControlProvider({ children, }) {
 
     useEffect(() => {
         clearTimeout(controlTimer);
+        copyControls = { ...state, };
         controlTimer = setTimeout(() => {
-            copyControls = { ...state, };
             writeControls({ ...copyControls, });
         }, 5000);
     }, [contextValue]);

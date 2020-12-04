@@ -5,7 +5,7 @@ import { useControl } from 'Utils/Controls';
 
 import {
     Grid, GridRow, GridColumn,
-    Label, Divider
+    Divider
 } from 'semantic-ui-react';
 
 export default function Spacing() {
@@ -24,11 +24,6 @@ export default function Spacing() {
 
     const changeLineHeight = (event) => {
         dispatch({ type: 'CHANGE_LINE_HEIGHT', payload: { lineHeight: parseFloat(event.target.value), }, });
-    };
-
-    const changeStrikeFreq = (event) => {
-        const value = event.target.value === '' ? 0 : parseInt(event.target.value, 10);
-        dispatch({ type: 'CHANGE_STRIKE_FREQUENCY', payload: { strikeFreq: value, }, });
     };
 
     return (
@@ -56,20 +51,6 @@ export default function Spacing() {
 
                         Line Height
                         <input type="number" step="0.1" style={{ marginLeft: '1rem', }} onChange={changeLineHeight} value={state.lineHeight} />
-
-                    </GridColumn>
-                    <GridColumn>
-
-                        <Label horizontal pointing="right" color="yellow">Beta</Label>
-                        Strike Frequency
-                        <input
-                            disabled
-                            type="number"
-                            step="1"
-                            style={{ marginLeft: '1rem', }}
-                            onChange={changeStrikeFreq}
-                            value={state.strikeFreq}
-                        />
 
                     </GridColumn>
                 </GridRow>

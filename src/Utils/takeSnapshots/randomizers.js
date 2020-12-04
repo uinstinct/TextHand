@@ -1,17 +1,22 @@
 import { copyControls } from 'Utils/Controls';
 
+const wrappedLetter = document.createElement('span');
+wrappedLetter.style = 'all:unset';
+
 function randomizeLetters(letter, fontSizeRandom, fontSize) {
-    const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
-    const randomScale = ((Math.random() * fontSizeRandom * sign) + fontSize)
+    const rand = Math.random();
+    const sign = (2 * (Math.floor(rand * 1.5 + 0.5))) - 1;
+    const randomScale = ((rand * fontSizeRandom * sign) + fontSize)
         .toFixed(2);
 
-    const wrappedLetter = document.createElement('span');
-    wrappedLetter.style = 'all:unset';
     wrappedLetter.style.fontSize = randomScale + 'px';
     wrappedLetter.innerText = letter;
 
     return wrappedLetter;
 }
+
+const wordWrapper = document.createElement('span');
+wordWrapper.style = 'all:unset';
 
 export default class TakeSnapshotRandomizer {
     constructor() {
@@ -29,15 +34,11 @@ export default class TakeSnapshotRandomizer {
     }
 
     randomizeWord(word) {
-        const wordWrapper = document.createElement('span');
-        wordWrapper.style = 'all:unset';
-
         if (this.shouldLetterRandomize) {
             const letters = word.split('');
             const { fontSizeRandom, fontSize, } = this;
             for (let i = 0; i < letters.length; i += 1) {
-                letters[i] = randomizeLetters(letters[i], fontSizeRandom, fontSize);
-                letters[i] = letters[i].outerHTML;
+                letters[i] = randomizeLetters(letters[i], fontSizeRandom, fontSize).outerHTML;
             }
             const styledLetters = letters.join('');
             wordWrapper.innerHTML = styledLetters;
@@ -47,8 +48,9 @@ export default class TakeSnapshotRandomizer {
         }
 
         if (this.wordRotation > 0) {
-            const sign = (2 * (Math.floor(Math.random() * 1.5 + 0.5))) - 1;
-            const randomRotation = Math.random() * this.wordRotation * sign;
+            const rand = Math.random();
+            const sign = (2 * (Math.floor(rand * 1.5 + 0.5))) - 1;
+            const randomRotation = rand * this.wordRotation * sign;
             wordWrapper.style.transform = `rotate(${randomRotation}deg)`;
         }
         return wordWrapper;
