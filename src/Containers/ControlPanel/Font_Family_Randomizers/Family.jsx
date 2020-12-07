@@ -9,6 +9,7 @@ import {
     Button
 } from 'semantic-ui-react';
 import { loadFont, saveFont, deleteFont } from 'Utils/db/fontFile';
+import { fontFamilyOptions } from '../../../Utils/options';
 
 function addFontFromFile(fileObj, shouldSaveFont) {
     if (shouldSaveFont) {
@@ -27,11 +28,15 @@ function addFontFromFile(fileObj, shouldSaveFont) {
 
 export default function Font() {
     const { isActive, } = useContext(DarkTheme);
-    const [, dispatch] = useControl();
+    const [state, dispatch] = useControl();
 
     const changeFontFamily = (event) => {
-        addFontFromFile(event.target.files[0], true);
-        dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'loadedFont', }, });
+        if (event.target.files) {
+            addFontFromFile(event.target.files[0], true);
+            dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: 'loadedFont', }, });
+        } else {
+            dispatch({ type: 'CHANGE_FONT_FAMILY', payload: { fontFamily: event.target.value, }, });
+        }
     };
 
     const resetFontFamily = () => {
@@ -90,11 +95,27 @@ export default function Font() {
                     </GridColumn>
                 </GridRow>
                 <GridRow>
-                    <select
-                        className="controlpanel select"
+                    <label
+                        htmlFor="font-family-options"
+                        style={{ marginLeft: '10px', }}
                     >
-                        <option>go</option>
-                    </select>
+                        Or choose from Options
+                        <select
+                            className="controlpanel select"
+                            id="font-family-options"
+                            defaultValue={state.fontFamily}
+                            onChange={changeFontFamily}
+                        >
+                            {fontFamilyOptions.map((font) => (
+                                <option
+                                    key={font.text}
+                                    value={font.value}
+                                >
+                                    {font.text}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
                 </GridRow>
 
             </Grid>

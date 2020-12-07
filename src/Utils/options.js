@@ -1,4 +1,4 @@
-const fontWeightOptions = [
+export const fontWeightOptions = [
     {
         text: 'normal',
         value: 400,
@@ -21,7 +21,7 @@ const fontWeightOptions = [
     }
 ];
 
-const paperOptions = [
+export const paperOptions = [
     {
         text: 'Paper 2',
         value: 'paper2',
@@ -36,7 +36,7 @@ const paperOptions = [
     }
 ];
 
-const signPositionOptions = [
+export const signPositionOptions = [
     {
         text: 'Top Right',
         value: 'top-right',
@@ -47,4 +47,13 @@ const signPositionOptions = [
     }
 ];
 
-export { fontWeightOptions, paperOptions, signPositionOptions };
+export const fontFamilyOptions = [
+    {
+        text: 'HomeMade Apple',
+        value: 'Homemade Apple',
+    },
+    {
+        text: 'Lucida Handwriting',
+        value: 'lucida',
+    }
+];

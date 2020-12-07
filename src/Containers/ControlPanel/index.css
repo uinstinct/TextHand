@@ -76,3 +76,7 @@ body[data-theme="dark"] .controlpanel.select {
     color: white;
     border-color: transparent;
 }
+
+option{
+    color: black;
+}
