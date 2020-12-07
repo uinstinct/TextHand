@@ -67,10 +67,13 @@ export default function Font() {
                                 inverted={isActive}
                                 trigger={(
                                     <input
+                                        id="font-file-input"
                                         type="file"
                                         accept=".ttf,.otf"
                                         onChange={changeFontFamily}
-                                        style={{ marginLeft: '1rem', }}
+                                        style={{
+                                            marginLeft: '1rem',
+                                        }}
                                     />
                                 )}
                                 content="Upload files of .ttf and .otf format only"
@@ -85,6 +88,13 @@ export default function Font() {
                         </span>
 
                     </GridColumn>
+                </GridRow>
+                <GridRow>
+                    <select
+                        className="controlpanel select"
+                    >
+                        <option>go</option>
+                    </select>
                 </GridRow>
 
             </Grid>

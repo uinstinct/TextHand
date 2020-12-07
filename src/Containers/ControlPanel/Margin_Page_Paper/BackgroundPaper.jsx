@@ -77,10 +77,7 @@ export default function CustomPaper() {
                                 onClick={() => changePaper(
                                     { target: { value: 'white', }, }
                                 )}
-                                style={{
-                                    alignSelf: 'flex-end',
-                                    justifySelf: 'flex-end',
-                                }}
+                                style={{ marginLeft: '40px', }}
                             />
                         </div>
                     </GridColumn>

@@ -43,8 +43,18 @@ input {
     position: relative;
     display: flex;
     flex-direction: row;
-    align-content: space-around;
-    justify-content: center;
+}
+
+    .controlpanel.inline input {
+        width: 200px;
+        text-overflow: ellipsis;
+    }
+
+body[data-theme="dark"] .controlpanel.inline button {
+    align-self: flex-end;
+    justify-self: center;
+    z-index: 99;
+    background-color: black;
 }
 
 .controlpanel.select {
