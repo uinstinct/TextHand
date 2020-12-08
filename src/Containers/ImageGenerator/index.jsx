@@ -64,7 +64,7 @@ export default function ImageGenerator() {
                 </GridRow>
                 <GridRow style={{ margin: '0 1rem' }} columns={1} stretched>
                     <GridColumn>
-                        <h3>Output Images</h3>
+                        <h2>Output Images</h2>
                         <ShowOutput
                             images={images}
                             removeImage={removeImage}

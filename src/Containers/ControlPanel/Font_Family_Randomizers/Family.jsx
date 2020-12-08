@@ -89,6 +89,7 @@ export default function Font() {
                                 icon="repeat"
                                 inverted={isActive}
                                 onClick={resetFontFamily}
+                                aria-label="reset-font-family"
                             />
                         </span>
 

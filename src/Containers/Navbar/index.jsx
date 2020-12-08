@@ -44,7 +44,10 @@ export default function NavbarIndex() {
                         active
                     />
                     <Menu.Item>
-                        <Dropdown text="Something missing?">
+                        <Dropdown
+                            aria-label="contact info"
+                            text="Something missing?"
+                        >
                             <Dropdown.Menu inverted>
                                 {dropdownOptions}
                             </Dropdown.Menu>

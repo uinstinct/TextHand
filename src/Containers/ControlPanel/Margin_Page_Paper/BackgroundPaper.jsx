@@ -73,6 +73,7 @@ export default function CustomPaper() {
                                 circular
                                 size="mini"
                                 icon="repeat"
+                                aria-label="reset-background-paper"
                                 inverted={isActive}
                                 onClick={() => changePaper(
                                     { target: { value: 'white' } }
