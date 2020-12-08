@@ -37,6 +37,10 @@ export default function Page() {
                                 max="700"
                                 value={state.clientHeight}
                                 onChange={changeClientHeight}
+                                style={{
+                                    height: '20px',
+                                    width: '100px'
+                                }}
                             />
                         </div>
                     </GridColumn>

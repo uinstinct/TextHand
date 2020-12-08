@@ -4,13 +4,11 @@ import 'semantic-ui-css/semantic.min.css';
 import { DarkTheme, } from 'Themes/index';
 
 import Navbar from 'Containers/Navbar';
-import TextAndImage from './Main';
+import Main from './Main';
 
 export default function App() {
-    const storedMode = JSON.parse(localStorage.getItem('darkmode')) ?? true;
+    const storedMode = localStorage.getItem('darkmode') === 'true';
     const [darkmode, setDarkmode] = useState(storedMode);
-
-    console.log(storedMode, localStorage.getItem('v'));
 
     useEffect(() => {
         localStorage.setItem('darkmode', darkmode);
@@ -24,7 +22,7 @@ export default function App() {
     return (
         <DarkTheme.Provider value={{ isActive: darkmode, setDarkmode }}>
             <Navbar />
-            <TextAndImage />
+            <Main />
         </DarkTheme.Provider>
     );
 }

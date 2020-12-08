@@ -32,7 +32,6 @@ export default async function generateImages() {
     const splitContent = preserveIndentation(!!(copyControls.preserveIndentation), copiedText);
 
     let currentWordPos = 0;
-    // const { applyRandomization } = new Randomizer(totalPages, splitContent.length);
 
     // working on all of the pages
     for (let i = 0; i < totalPages; i += 1) {
