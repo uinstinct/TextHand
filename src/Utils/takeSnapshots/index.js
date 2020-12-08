@@ -1,19 +1,19 @@
-import { copyControls } from 'Utils/Controls';
-import { progress } from 'Containers/GenerationProgress';
+import { copyControls, } from 'Utils/Controls';
+import { progress, } from 'Containers/GenerationProgress';
 
 import {
     convertContainerToCanvas,
     preserveIndentation,
     putInWordArray,
-    Overlay
+    Overlay,
 } from './helpers';
 import Randomizer from './randomizers';
 
 export default async function generateImages() {
-    const { applyRandomization, } = new Randomizer();
-    const { addOverlay, removeOverlay, } = new Overlay(JSON.parse(copyControls.shadowEffect));
+    const { applyRandomization } = new Randomizer();
+    const { addOverlay, removeOverlay } = new Overlay(!!(copyControls.shadowEffect));
 
-    const { updateProgress, } = progress;
+    const { updateProgress } = progress;
     const canvases = [];
 
     const container = document.getElementById('page-container');
@@ -22,25 +22,27 @@ export default async function generateImages() {
     container.scrollTo(0, 0);
     container.style.overflowY = 'hidden';
 
-    const { scrollHeight, } = content;
-    const { clientHeight, } = copyControls;
+    const { scrollHeight } = content;
+    const { clientHeight } = copyControls;
     const totalPages = Math.ceil(scrollHeight / clientHeight) + 1;
 
     /* preserve the last word or letter also */
     const copiedText = content.innerHTML.trim() + ' lastDummy';
 
-    const splitContent = preserveIndentation(copyControls.preserveIndentation, copiedText);
+    const splitContent = preserveIndentation(!!(copyControls.preserveIndentation), copiedText);
 
     let currentWordPos = 0;
     // const { applyRandomization } = new Randomizer(totalPages, splitContent.length);
 
+    // working on all of the pages
     for (let i = 0; i < totalPages; i += 1) {
-        updateProgress({ type: 'INCREMENT_PROGRESS', payload: { i, totalPages, }, });
+        updateProgress({ type: 'INCREMENT_PROGRESS', payload: { i, totalPages } });
 
         const words = [];
         let text = '';
         content.innerHTML = '';
 
+        // working on a single page
         while (
             content.scrollHeight <= clientHeight
             && words.length <= splitContent.length
@@ -80,7 +82,7 @@ export default async function generateImages() {
         removeOverlay();
     }
 
-    updateProgress({ type: 'APPLY_FILTERS', });
+    updateProgress({ type: 'APPLY_FILTERS' });
     container.style.overflowY = 'scroll';
 
     const resolvedCanvases = await Promise.all(canvases);

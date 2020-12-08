@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, } from 'react';
 
-import { DarkTheme } from 'Themes/index';
+import { DarkTheme, } from 'Themes/index';
 
 import {
     Menu, Segment,
     Label,
-    Button, Checkbox
+    Button, Checkbox,
 } from 'semantic-ui-react';
 import Guide from './guide';
 import './index.css';
@@ -37,7 +37,7 @@ export default function NavbarIndex() {
                             color="olive"
                             inverted={darkTheme.isActive}
                             onClick={() => setShowGuide(true)}
-                            style={{ marginRight: '2rem', }}
+                            style={{ marginRight: '2rem' }}
                             id="guide-modal"
                         >
                             Show Guide
@@ -47,9 +47,14 @@ export default function NavbarIndex() {
                             checked={darkTheme.isActive}
                             onChange={changeMode}
                         />
-                        <span style={{ marginLeft: '1rem', }}>
-                            <Label color={darkTheme.isActive ? 'violet' : 'blue'} horizontal>
-                                {darkTheme.isActive ? 'Dark Mode' : 'Light Mode'}
+                        <span style={{ marginLeft: '1rem' }}>
+                            <Label
+                                color={darkTheme.isActive
+                                    ? 'violet' : 'blue'}
+                                horizontal
+                            >
+                                {darkTheme.isActive
+                                    ? 'Dark Mode' : 'Light Mode'}
                             </Label>
                         </span>
                     </Menu.Item>

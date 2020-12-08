@@ -16,7 +16,7 @@ export async function writeControls(controls) {
         .map(([key, value]) => ({
             _id: key,
             name: key,
-            curVal: value,
+            curVal: value
         }));
 
     db.bulkDocs(writeArray)
@@ -29,7 +29,7 @@ export async function writeControls(controls) {
 export async function fetchControls() {
     const db = new PouchDB('controls');
     const docs = await db
-        .allDocs({ include_docs: true, })
+        .allDocs({ include_docs: true })
         .then((res) => res.rows)
         .then((rows) => rows.map((row) => row.doc))
         .catch((err) => console.log(err, 'when fetching the controls'))

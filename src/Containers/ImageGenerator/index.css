@@ -11,25 +11,31 @@
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
+
 body[data-theme="dark"] #generate-button {
     color: rgb(102, 255, 51);
     background-color: rgb(0, 38, 77);
 }
-#generate-button:disabled{
+
+#generate-button:disabled {
     cursor: none;
 }
 
-.imggen.container{
+.imggen.container {
     padding: 1rem 1rem;
 }
 
-.outputarea.noimages{
+.outputarea.segment {
+    background-color: #c1d7d7;
+}
+
+.outputarea.noimages {
     margin: 3rem;
     padding-left: 3rem;
 }
 
-@media screen and (max-width:670px){
-    .outputarea img{
+@media screen and (max-width:670px) {
+    .outputarea img {
         height: 60%;
         width: 60%;
     }

@@ -5,7 +5,7 @@ export async function convertContainerToCanvas(container, resolutionScale) {
         logging: false,
         scrollX: 0,
         scrollY: -(window.scrollY + 139), // (the plus is varying) BUG
-        scale: resolutionScale,
+        scale: resolutionScale
     };
 
     const canvas = await html2canvas(container, options);
@@ -19,7 +19,7 @@ export function preserveIndentation(shouldPreserve, copiedText) {
         return temp;
     };
 
-    if (JSON.parse(shouldPreserve) === true) {
+    if (!!(shouldPreserve) === true) {
         const splitContent = copiedText
             .replace(/\n/g, ' <br> ')
             .replace(/\s{3,}/g, transformSpaces)

@@ -1,15 +1,15 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, } from 'react';
 
-import { DarkTheme } from 'Themes/index';
+import { DarkTheme, } from 'Themes/index';
 
-import { GridColumn, Segment } from 'semantic-ui-react';
+import { GridColumn, Segment, } from 'semantic-ui-react';
 import Generated from './Generated';
 import Text from './Text';
 
 import './index.css';
 
 export default function Editor() {
-    const { isActive, } = useContext(DarkTheme);
+    const { isActive } = useContext(DarkTheme);
 
     const [text, setText] = useState('');
 
@@ -18,7 +18,7 @@ export default function Editor() {
             <GridColumn>
                 <Segment inverted={isActive} piled secondary>
                     <h1>Generator</h1>
-                    <div style={{ color: 'black', }}>
+                    <div style={{ color: 'black' }}>
                         <Generated text={text} />
                     </div>
                 </Segment>

@@ -5,7 +5,7 @@ const paper4 = require('assets/paper-4.jpg');
 const papers = {
     paper2,
     paper3,
-    paper4,
+    paper4
 };
 
 export function addImageToBackground(url) {

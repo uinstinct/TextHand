@@ -1,20 +1,20 @@
 import {
-    useReducer, createContext, useContext, useEffect
+    useReducer, createContext, useContext, useEffect,
 } from 'react';
 
-import { writeControls } from 'Utils/db/controls';
-import { initialState, onMount } from './init';
+import { writeControls, } from 'Utils/db/controls';
+import { initialState, onMount, } from './init';
 import reducer from './reducer';
 
 // eslint-disable-next-line import/no-mutable-exports
 let copyControls = {
-    ...initialState,
+    ...initialState
 };
 
 const ControlContext = createContext();
 
 let controlTimer;
-export function ControlProvider({ children, }) {
+export function ControlProvider({ children }) {
     const contextValue = useReducer(reducer, initialState);
 
     const [state, dispatch] = contextValue;
@@ -25,9 +25,9 @@ export function ControlProvider({ children, }) {
 
     useEffect(() => {
         clearTimeout(controlTimer);
-        copyControls = { ...state, };
+        copyControls = { ...state };
         controlTimer = setTimeout(() => {
-            writeControls({ ...copyControls, });
+            writeControls({ ...copyControls });
         }, 5000);
     }, [contextValue]);
 

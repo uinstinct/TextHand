@@ -1,29 +1,29 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, } from 'react';
 
-import { DarkTheme } from 'Themes/index';
-import { progress } from 'Containers/GenerationProgress';
+import { DarkTheme, } from 'Themes/index';
+import { progress, } from 'Containers/GenerationProgress';
 
-import generateImages from 'Utils/takeSnapshots';
+import generateCanvases from 'Utils/takeSnapshots';
 import {
     Segment,
-    Grid, GridRow, GridColumn
+    Grid, GridRow, GridColumn,
 } from 'semantic-ui-react';
 import applyFilters from 'Utils/applyFilters';
 
 import ShowOutput from './showOutput';
 
 export default function ImageGenerator() {
-    const { isActive, } = useContext(DarkTheme);
+    const { isActive } = useContext(DarkTheme);
 
     const [loading, setLoading] = useState(false);
     const [images, setImages] = useState([]);
 
     const applyImageGeneration = async () => {
-        const { updateProgress, } = progress;
-        updateProgress({ type: 'START', });
+        const { updateProgress } = progress;
+        updateProgress({ type: 'START' });
         setLoading(true);
 
-        const canvases = await generateImages();
+        const canvases = await generateCanvases();
         const filteredImages = await applyFilters(canvases);
         const newImages = images.concat(filteredImages);
         setImages(newImages);
@@ -46,7 +46,7 @@ export default function ImageGenerator() {
     };
 
     return (
-        <div style={{ margin: '1rem', padding: '1rem', }}>
+        <div style={{ margin: '1rem', padding: '1rem' }}>
             <Grid>
                 <GridRow textAlign="center">
                     <GridColumn textAlign="center">
@@ -62,7 +62,7 @@ export default function ImageGenerator() {
                         </Segment>
                     </GridColumn>
                 </GridRow>
-                <GridRow style={{ margin: '0 1rem', }} columns={1} stretched>
+                <GridRow style={{ margin: '0 1rem' }} columns={1} stretched>
                     <GridColumn>
                         <h3>Output Images</h3>
                         <ShowOutput

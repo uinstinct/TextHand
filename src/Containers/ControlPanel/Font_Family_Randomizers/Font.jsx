@@ -1,30 +1,30 @@
-import { useContext } from 'react';
+import { useContext, } from 'react';
 
-import { DarkTheme } from 'Themes/index';
-import { useControl } from 'Utils/Controls';
-import { fontWeightOptions } from 'Utils/options';
+import { DarkTheme, } from 'Themes/index';
+import { useControl, } from 'Utils/Controls';
+import { fontWeightOptions, } from 'Utils/options';
 
 import {
     Grid, GridRow, GridColumn,
     Divider,
-    Input
+    Input,
 } from 'semantic-ui-react';
 
 export default function Font() {
-    const { isActive, } = useContext(DarkTheme);
+    const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
     const changeFontSize = (event) => {
         const value = event.target.value === '' ? 0 : parseInt(event.target.value, 10);
-        dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value, }, });
+        dispatch({ type: 'CHANGE_FONT_SIZE', payload: { fontSize: value } });
     };
 
     const changeInkColour = (event) => {
-        dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: event.target.value, }, });
+        dispatch({ type: 'CHANGE_FONT_COLOUR', payload: { fontColour: event.target.value } });
     };
 
     const changeFontWeight = (event) => {
-        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: parseInt(event.target.value, 10), }, });
+        dispatch({ type: 'CHANGE_FONT_WEIGHT', payload: { fontWeight: parseInt(event.target.value, 10) } });
     };
 
     return (
@@ -67,7 +67,7 @@ export default function Font() {
                             <Input
                                 type="color"
                                 inverted={isActive}
-                                style={{ marginLeft: '1rem', }}
+                                style={{ marginLeft: '1rem' }}
                                 onChange={changeInkColour}
                             />
                         </div>

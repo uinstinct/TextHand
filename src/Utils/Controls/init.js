@@ -1,4 +1,4 @@
-import { fetchControls } from 'Utils/db/controls';
+import { fetchControls, } from 'Utils/db/controls';
 
 export const initialState = {
 
@@ -35,11 +35,11 @@ export const initialState = {
     // extras
     resolutionScale: 2,
     shadowEffect: true,
-    preserveIndentation: true,
+    preserveIndentation: true
 };
 
 export async function onMount(dispatch) {
-    const storedState = { ...initialState, };
+    const storedState = { ...initialState };
     const controlsArray = await fetchControls();
 
     if (controlsArray && controlsArray.length) {
@@ -49,7 +49,7 @@ export async function onMount(dispatch) {
 
         dispatch({
             type: 'APPLY_DB_CONTROLS',
-            payload: { value: storedState, },
+            payload: { value: storedState }
         });
     }
 }

@@ -1,4 +1,4 @@
-import { copyControls } from 'Utils/Controls';
+import { copyControls, } from 'Utils/Controls';
 
 const wrappedLetter = document.createElement('span');
 wrappedLetter.style = 'all:unset';
@@ -36,7 +36,7 @@ export default class TakeSnapshotRandomizer {
     randomizeWord(word) {
         if (this.shouldLetterRandomize) {
             const letters = word.split('');
-            const { fontSizeRandom, fontSize, } = this;
+            const { fontSizeRandom, fontSize } = this;
             for (let i = 0; i < letters.length; i += 1) {
                 letters[i] = randomizeLetters(letters[i], fontSizeRandom, fontSize).outerHTML;
             }

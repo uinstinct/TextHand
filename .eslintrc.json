@@ -14,8 +14,8 @@
           1,
           {
             "arrays": "never",
-            "objects": "always",
-            "imports": "never",
+            "objects": "never",
+            "imports": "always",
             "exports": "never",
             "functions": "never"
           }

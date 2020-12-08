@@ -1,24 +1,24 @@
-import { useContext } from 'react';
+import { useContext, } from 'react';
 
-import { DarkTheme } from 'Themes/index';
-import { useControl } from 'Utils/Controls';
+import { DarkTheme, } from 'Themes/index';
+import { useControl, } from 'Utils/Controls';
 
 import {
     Grid, GridRow, GridColumn,
     Checkbox, Label,
-    Divider
+    Divider,
 } from 'semantic-ui-react';
 
 export default function Page() {
-    const { isActive, } = useContext(DarkTheme);
+    const { isActive } = useContext(DarkTheme);
     const [state, dispatch] = useControl();
 
     const changeClientHeight = (event) => {
-        dispatch({ type: 'CHANGE_CLIENT_HEIGHT', payload: { clientHeight: parseInt(event.target.value, 10), }, });
+        dispatch({ type: 'CHANGE_CLIENT_HEIGHT', payload: { clientHeight: parseInt(event.target.value, 10) } });
     };
 
     const applyPaperLines = (event, data) => {
-        dispatch({ type: 'APPLY_PAPER_LINES', payload: { paperLines: data.checked, }, });
+        dispatch({ type: 'APPLY_PAPER_LINES', payload: { paperLines: data.checked } });
     };
 
     return (
@@ -48,7 +48,7 @@ export default function Page() {
                             {' '}
                             Apply Paper Lines
                             <Checkbox
-                                style={{ marginLeft: '0.5rem', }}
+                                style={{ marginLeft: '0.5rem' }}
                                 onChange={applyPaperLines}
                                 defaultChecked={!!state.paperLines}
                             />
