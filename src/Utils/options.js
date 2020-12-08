@@ -57,3 +57,14 @@ export const fontFamilyOptions = [
         value: 'lucida'
     }
 ];
+
+export const navbarDropdownOptions = [
+    {
+        text: 'Request a Feature',
+        value: 'uinstinct.com'
+    },
+    {
+        text: 'Report a Bug',
+        value: 'mailto:uinstinct@outlook.com?subject=I%20want%20to%20tell%20you%20something%20about%20TextHand&body=Please%20mention%20by%20stating%20any%20of%20the%20following%3A%0A-%20I%20found%20a%20bug%20that%20I%20want%20you%20to%20report%20to%0A-%20I%20have%20a%20great%20feature%20in%20my%20mind%20and%20would%20like%20you%20to%20add%20it'
+    }
+];
