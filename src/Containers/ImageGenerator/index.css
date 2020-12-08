@@ -21,6 +21,25 @@ body[data-theme="dark"] #generate-button {
     cursor: none;
 }
 
+.generate-button {
+    padding: 1rem;
+    font-weight: lighter;
+    border: none;
+    letter-spacing: 2.5px;
+    border-radius: 45px;
+    cursor: pointer;
+    color: greenyellow;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] .generate-button {
+    color: rgb(102, 255, 51);
+    background-color: rgb(0, 38, 77);
+}
+
 .imggen.container {
     padding: 1rem 1rem;
 }
