@@ -50,7 +50,7 @@ export default function Extras() {
             </Divider>
 
             <div className="controlpanel inline">
-                Resolution Scale
+                Resolution
                 <Popup
                     inverted={isActive}
                     trigger={(

@@ -45,7 +45,7 @@ export default function Sign() {
 
                     <GridColumn>
 
-                        Signature*
+                        Signature
                         <Input
                             type="text"
                             size="mini"

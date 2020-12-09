@@ -30,7 +30,7 @@ export default function Page() {
                 <GridRow>
                     <GridColumn>
                         <div className="controlpanel inline">
-                            Page Content Length*
+                            Page Content Length
                             <input
                                 type="number"
                                 min="200"

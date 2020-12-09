@@ -61,7 +61,7 @@ export const fontFamilyOptions = [
 export const navbarDropdownOptions = [
     {
         text: 'Request a Feature',
-        value: 'uinstinct.com'
+        value: 'mailto:uinstinct@outlook.com'
     },
     {
         text: 'Report a Bug',

@@ -21,18 +21,18 @@ export default function NavbarIndex() {
     const [showGuide, setShowGuide] = useState(false);
 
     const dropdownOptions = navbarDropdownOptions.map((option) => (
-        <Dropdown.Item
-            key={option.text}
+        <a
+            target="_blank"
+            rel="noreferrer noopenner"
+            href={option.value}
         >
-            <a
-                target="_blank"
-                rel="noreferrer noopenner"
-                href={option.value}
+            <Dropdown.Item
+                key={option.text}
                 style={{ color: 'black' }}
             >
                 {option.text}
-            </a>
-        </Dropdown.Item>
+            </Dropdown.Item>
+        </a>
     ));
 
     return (

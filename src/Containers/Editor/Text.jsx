@@ -25,7 +25,7 @@ export default function Text({ text, setText }) {
         setTr('calculating ...');
         timer.current = setTimeout(() => {
             const t = timeRemaining(text, state).toPrecision(4);
-            setTr('Will complete generating images in ' + t + ' seconds (approx)');
+            setTr('Will complete generating images in <em>' + t + ' seconds</em> (approx)');
         }, 500);
     }, [text, state]);
 
@@ -60,9 +60,7 @@ export default function Text({ text, setText }) {
                     ref={textareaRef}
                 />
             </div>
-            <div>
-                <strong>{tr}</strong>
-            </div>
+            <div dangerouslySetInnerHTML={{ __html: tr }} style={{ fontWeight: 'bolder' }} />
         </>
     );
 }
