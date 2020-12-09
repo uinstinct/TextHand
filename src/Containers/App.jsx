@@ -11,9 +11,9 @@ export default function App() {
     const initialMode = storedMode ? (storedMode === 'true') : true;
     const [darkmode, setDarkmode] = useState(initialMode);
 
-     useEffect(() => {
-         window.addEventListener('load', () => {
-             if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+    useEffect(() => {
+        window.addEventListener('load', () => {
+            if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
                 navigator.serviceWorker
                     .register(process.env.PUBLIC_URL + '/sw.js',
                         { scope: '/' })
@@ -25,7 +25,7 @@ export default function App() {
                     });
             }
         });
-     }, []);
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('darkmode', darkmode);

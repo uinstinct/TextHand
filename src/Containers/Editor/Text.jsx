@@ -1,13 +1,31 @@
-import { useRef, } from 'react';
+import {
+    useCallback, useEffect, useRef, useState,
+} from 'react';
+import timeRemaining from 'Utils/calcuateTimeRemaining';
+import { useControl, } from 'Utils/Controls';
 
 export default function Text({ text, setText }) {
     const handleChange = (event) => {
         setText(event.target.value);
     };
 
-    const textareaRef = useRef(null);
+    const [tr, setTr] = useState('type something here');
 
-    const handleKeyPress = (event) => {
+    const textareaRef = useRef(null);
+    const timer = useRef(null);
+
+    const state = useControl()[0];
+
+    useEffect(() => {
+        clearTimeout(timer.current);
+        setTr('calculating');
+        timer.current = setTimeout(() => {
+            const t = timeRemaining(text);
+            setTr('will complete generating images in ' + t);
+        }, 500);
+    }, [text, state]);
+
+    const handleKeyPress = useCallback((event) => {
         if (event.key === 'Tab') {
             event.preventDefault();
             const textarea = textareaRef.current;
@@ -24,18 +42,23 @@ export default function Text({ text, setText }) {
             const generateButton = document.getElementById('generate-button');
             generateButton.click();
         }
-    };
+    }, []);
 
     return (
-        <div className="text-area container">
-            <textarea
-                placedholder="type your text here"
-                className="text-area core"
-                value={text}
-                onChange={handleChange}
-                onKeyDown={(event) => handleKeyPress(event)}
-                ref={textareaRef}
-            />
-        </div>
+        <>
+            <div className="text-area container">
+                <textarea
+                    placedholder="type your text here"
+                    className="text-area core"
+                    value={text}
+                    onChange={handleChange}
+                    onKeyDown={(event) => handleKeyPress(event)}
+                    ref={textareaRef}
+                />
+            </div>
+            <div>
+                {tr}
+            </div>
+        </>
     );
 }
