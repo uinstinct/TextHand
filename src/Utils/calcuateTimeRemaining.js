@@ -1,13 +1,20 @@
-/**
- *
- * @param {String} text
- */
-export default function timeRemaining(text) {
-    const str = text
-        .replace(/(\s+)|(\n)/g, '');
+export default function timeRemaining(text, state) {
+    const noOfLetters = text
+        .replace(/(\s+)|(\n)/g, '')
+        .length;
 
-    if (str.length < 100) {
-        return str.length;
+    const noOfWords = text.split(/(\s+)|(\n)/g).length;
+
+    if (state.fontSizeRandom > 0 && state.wordRotation > 0) {
+        return noOfLetters * 0.01850;
+    } if (state.fontSizeRandom > 0) {
+        return noOfLetters * 0.01357;
+    } if (state.wordRotation > 0) {
+        return noOfWords * 0.00993;
     }
-    return str.length;
+
+    if (noOfWords > 2000) {
+        return noOfWords * 0.00615;
+    }
+    return noOfWords * 0.01106;
 }

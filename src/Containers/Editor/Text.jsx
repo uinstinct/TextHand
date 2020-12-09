@@ -9,7 +9,7 @@ export default function Text({ text, setText }) {
         setText(event.target.value);
     };
 
-    const [tr, setTr] = useState('type something here');
+    const [tr, setTr] = useState('');
 
     const textareaRef = useRef(null);
     const timer = useRef(null);
@@ -17,11 +17,15 @@ export default function Text({ text, setText }) {
     const state = useControl()[0];
 
     useEffect(() => {
+        if (!text.length) {
+            setTr('type something here 👆🏾');
+            return;
+        }
         clearTimeout(timer.current);
-        setTr('calculating');
+        setTr('calculating ...');
         timer.current = setTimeout(() => {
-            const t = timeRemaining(text);
-            setTr('will complete generating images in ' + t);
+            const t = timeRemaining(text, state).toPrecision(4);
+            setTr('Will complete generating images in ' + t + ' seconds (approx)');
         }, 500);
     }, [text, state]);
 
@@ -57,7 +61,7 @@ export default function Text({ text, setText }) {
                 />
             </div>
             <div>
-                {tr}
+                <strong>{tr}</strong>
             </div>
         </>
     );
