@@ -19,7 +19,7 @@ function reducer(state, action) {
         return { ...state, percent, label };
     }
     case 'APPLY_FILTERS':
-        return { ...state, label: 'Applying Filters', percent: 100 };
+        return { ...state, label: 'Finishing', percent: 100 };
     default:
         return state;
     }

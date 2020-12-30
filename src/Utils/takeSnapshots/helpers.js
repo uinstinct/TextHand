@@ -66,7 +66,7 @@ export class Overlay {
     }
 
     addOverlay() {
-        this.signature.display = 'block';
+        this.signature.style.display = 'block';
         if (this.shouldAddShadows === true) {
             this.overlay.style.display = 'block';
             this.overlay.style.background = `linear-gradient(${Math.random() * 360}deg, #0008, #0000)`;
