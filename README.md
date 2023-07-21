@@ -1,26 +1,8 @@
-# Text Hand
+# _TextHand_
 
-Convert typed text to handwriting with this app
+Convert typed text into handwriting with this app
 
+## Preview
 
-
-## KeyPoints
-
-#### For function `convertDivToImage` in *takeSnapshots.js*
-
-* the scale does not default to 1 but to the browser window device pixel ration
-* disabling the scale option results in a higher quality image
-* replace this with blur filter of canvas
-* use blur as slider and show in overlay
-* make indentation optional
-     
-
-#### Variable `clientHeight` value
-
-height of .page-content when there is no content (increase this value to remove space at the bottom)
-
-#### Reason for addition of `+1` in `totalPages` in  *takeSnapshots.js*
-
-always add +1 to get the extra page to due to random font size
-
+![app image](https://github.com/uinstinct/TextHand/assets/61635505/6f5e8b16-b863-48c4-9147-33d0fc522c55)
 
